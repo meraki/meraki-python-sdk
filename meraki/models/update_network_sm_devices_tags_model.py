@@ -28,22 +28,21 @@ class UpdateNetworkSmDevicesTagsModel(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
+        "tags":'tags',
+        "update_action":'updateAction',
         "wifi_macs":'wifiMacs',
         "ids":'ids',
         "serials":'serials',
-        "scope":'scope',
-        "tags":'tags',
-        "update_action":'updateAction'
+        "scope":'scope'
     }
 
     def __init__(self,
+                 tags=None,
+                 update_action=None,
                  wifi_macs=None,
                  ids=None,
                  serials=None,
-                 scope=None,
-                 tags=None,
-                 update_action=None,
-                 additional_properties = {}):
+                 scope=None):
         """Constructor for the UpdateNetworkSmDevicesTagsModel class"""
 
         # Initialize members of the class
@@ -53,9 +52,6 @@ class UpdateNetworkSmDevicesTagsModel(object):
         self.scope = scope
         self.tags = tags
         self.update_action = update_action
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -76,25 +72,19 @@ class UpdateNetworkSmDevicesTagsModel(object):
             return None
 
         # Extract variables from the dictionary
+        tags = dictionary.get('tags')
+        update_action = dictionary.get('updateAction')
         wifi_macs = dictionary.get('wifiMacs')
         ids = dictionary.get('ids')
         serials = dictionary.get('serials')
         scope = dictionary.get('scope')
-        tags = dictionary.get('tags')
-        update_action = dictionary.get('updateAction')
-
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
 
         # Return an object of this model
-        return cls(wifi_macs,
+        return cls(tags,
+                   update_action,
+                   wifi_macs,
                    ids,
                    serials,
-                   scope,
-                   tags,
-                   update_action,
-                   dictionary)
+                   scope)
 
 

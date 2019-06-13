@@ -27,15 +27,11 @@ class UpdateNetworkClientSplashAuthorizationStatusModel(object):
     }
 
     def __init__(self,
-                 ssids=None,
-                 additional_properties = {}):
+                 ssids=None):
         """Constructor for the UpdateNetworkClientSplashAuthorizationStatusModel class"""
 
         # Initialize members of the class
         self.ssids = ssids
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -58,13 +54,7 @@ class UpdateNetworkClientSplashAuthorizationStatusModel(object):
         # Extract variables from the dictionary
         ssids = meraki.models.ssids_model.SsidsModel.from_dictionary(dictionary.get('ssids')) if dictionary.get('ssids') else None
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
-        return cls(ssids,
-                   dictionary)
+        return cls(ssids)
 
 

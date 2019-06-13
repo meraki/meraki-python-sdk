@@ -55,8 +55,7 @@ class SchedulingModel(object):
                  thursday=None,
                  friday=None,
                  saturday=None,
-                 sunday=None,
-                 additional_properties = {}):
+                 sunday=None):
         """Constructor for the SchedulingModel class"""
 
         # Initialize members of the class
@@ -68,9 +67,6 @@ class SchedulingModel(object):
         self.friday = friday
         self.saturday = saturday
         self.sunday = sunday
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -100,11 +96,6 @@ class SchedulingModel(object):
         saturday = meraki.models.saturday_model.SaturdayModel.from_dictionary(dictionary.get('saturday')) if dictionary.get('saturday') else None
         sunday = meraki.models.sunday_model.SundayModel.from_dictionary(dictionary.get('sunday')) if dictionary.get('sunday') else None
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(enabled,
                    monday,
@@ -113,7 +104,6 @@ class SchedulingModel(object):
                    thursday,
                    friday,
                    saturday,
-                   sunday,
-                   dictionary)
+                   sunday)
 
 

@@ -15,7 +15,7 @@ class Rule3Model(object):
 
     Attributes:
         comment (string): Description of the rule (optional)
-        policy (string): 'Allow' or 'Deny' traffic specified by this rule
+        policy (string): 'allow' or 'deny' traffic specified by this rule
         protocol (string): The type of protocol (must be 'tcp', 'udp', 'icmp'
             or 'any')
         src_port (string): Comma-separated list of source port(s) (integer in
@@ -52,8 +52,7 @@ class Rule3Model(object):
                  comment=None,
                  src_port=None,
                  dest_port=None,
-                 syslog_enabled=None,
-                 additional_properties = {}):
+                 syslog_enabled=None):
         """Constructor for the Rule3Model class"""
 
         # Initialize members of the class
@@ -65,9 +64,6 @@ class Rule3Model(object):
         self.dest_port = dest_port
         self.dest_cidr = dest_cidr
         self.syslog_enabled = syslog_enabled
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -97,11 +93,6 @@ class Rule3Model(object):
         dest_port = dictionary.get('destPort')
         syslog_enabled = dictionary.get('syslogEnabled')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(policy,
                    protocol,
@@ -110,7 +101,6 @@ class Rule3Model(object):
                    comment,
                    src_port,
                    dest_port,
-                   syslog_enabled,
-                   dictionary)
+                   syslog_enabled)
 
 

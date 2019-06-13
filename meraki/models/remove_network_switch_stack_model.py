@@ -24,15 +24,11 @@ class RemoveNetworkSwitchStackModel(object):
     }
 
     def __init__(self,
-                 serial=None,
-                 additional_properties = {}):
+                 serial=None):
         """Constructor for the RemoveNetworkSwitchStackModel class"""
 
         # Initialize members of the class
         self.serial = serial
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -55,13 +51,7 @@ class RemoveNetworkSwitchStackModel(object):
         # Extract variables from the dictionary
         serial = dictionary.get('serial')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
-        return cls(serial,
-                   dictionary)
+        return cls(serial)
 
 

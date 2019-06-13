@@ -32,17 +32,13 @@ class UpdateNetworkHttpServerModel(object):
     def __init__(self,
                  name=None,
                  url=None,
-                 shared_secret=None,
-                 additional_properties = {}):
+                 shared_secret=None):
         """Constructor for the UpdateNetworkHttpServerModel class"""
 
         # Initialize members of the class
         self.name = name
         self.url = url
         self.shared_secret = shared_secret
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -67,15 +63,9 @@ class UpdateNetworkHttpServerModel(object):
         url = dictionary.get('url')
         shared_secret = dictionary.get('sharedSecret')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(name,
                    url,
-                   shared_secret,
-                   dictionary)
+                   shared_secret)
 
 

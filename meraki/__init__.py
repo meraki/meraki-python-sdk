@@ -6,5 +6,5 @@ __all__ = [
     'http',
     'exceptions',
     'decorators',
-    'meraki',
+    'meraki_client',
 ]

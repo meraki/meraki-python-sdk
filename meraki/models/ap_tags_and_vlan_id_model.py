@@ -15,7 +15,7 @@ class ApTagsAndVlanIdModel(object):
 
     Attributes:
         tags (string): Comma-separated list of AP tags
-        vlan_id (string): Numerical identifier that is assigned to the VLAN
+        vlan_id (int): Numerical identifier that is assigned to the VLAN
 
     """
 
@@ -27,16 +27,12 @@ class ApTagsAndVlanIdModel(object):
 
     def __init__(self,
                  tags=None,
-                 vlan_id=None,
-                 additional_properties = {}):
+                 vlan_id=None):
         """Constructor for the ApTagsAndVlanIdModel class"""
 
         # Initialize members of the class
         self.tags = tags
         self.vlan_id = vlan_id
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -60,14 +56,8 @@ class ApTagsAndVlanIdModel(object):
         tags = dictionary.get('tags')
         vlan_id = dictionary.get('vlanId')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(tags,
-                   vlan_id,
-                   dictionary)
+                   vlan_id)
 
 

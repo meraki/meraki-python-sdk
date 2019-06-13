@@ -43,8 +43,7 @@ class AddNetworkSmProfileUmbrellaModel(object):
                  app_bundle_identifier=None,
                  provider_bundle_identifier=None,
                  provider_configuration=None,
-                 uses_cert=None,
-                 additional_properties = {}):
+                 uses_cert=None):
         """Constructor for the AddNetworkSmProfileUmbrellaModel class"""
 
         # Initialize members of the class
@@ -52,9 +51,6 @@ class AddNetworkSmProfileUmbrellaModel(object):
         self.provider_bundle_identifier = provider_bundle_identifier
         self.provider_configuration = provider_configuration
         self.uses_cert = uses_cert
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -80,16 +76,10 @@ class AddNetworkSmProfileUmbrellaModel(object):
         provider_configuration = dictionary.get('ProviderConfiguration')
         uses_cert = dictionary.get('usesCert')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(app_bundle_identifier,
                    provider_bundle_identifier,
                    provider_configuration,
-                   uses_cert,
-                   dictionary)
+                   uses_cert)
 
 

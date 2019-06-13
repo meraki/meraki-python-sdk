@@ -15,8 +15,8 @@ class BandwidthModel(object):
     The bandwidth settings for clients bound to your group policy.
 
     Attributes:
-        settings (string): How bandwidth limits are enforced. Can be 'network
-            default', 'ignore' or 'custom'.
+        settings (SettingsEnum): How bandwidth limits are enforced. Can be
+            'network default', 'ignore' or 'custom'.
         bandwidth_limits (BandwidthLimitsModel): The bandwidth limits object,
             specifying upload and download speed for clients bound to the
             group policy. These are only enforced if 'settings' is set to
@@ -32,16 +32,12 @@ class BandwidthModel(object):
 
     def __init__(self,
                  settings=None,
-                 bandwidth_limits=None,
-                 additional_properties = {}):
+                 bandwidth_limits=None):
         """Constructor for the BandwidthModel class"""
 
         # Initialize members of the class
         self.settings = settings
         self.bandwidth_limits = bandwidth_limits
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -65,14 +61,8 @@ class BandwidthModel(object):
         settings = dictionary.get('settings')
         bandwidth_limits = meraki.models.bandwidth_limits_model.BandwidthLimitsModel.from_dictionary(dictionary.get('bandwidthLimits')) if dictionary.get('bandwidthLimits') else None
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(settings,
-                   bandwidth_limits,
-                   dictionary)
+                   bandwidth_limits)
 
 

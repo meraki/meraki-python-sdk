@@ -31,16 +31,12 @@ class BandwidthLimitsModel(object):
 
     def __init__(self,
                  limit_up=None,
-                 limit_down=None,
-                 additional_properties = {}):
+                 limit_down=None):
         """Constructor for the BandwidthLimitsModel class"""
 
         # Initialize members of the class
         self.limit_up = limit_up
         self.limit_down = limit_down
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -64,14 +60,8 @@ class BandwidthLimitsModel(object):
         limit_up = dictionary.get('limitUp')
         limit_down = dictionary.get('limitDown')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(limit_up,
-                   limit_down,
-                   dictionary)
+                   limit_down)
 
 

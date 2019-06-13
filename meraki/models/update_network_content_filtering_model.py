@@ -37,8 +37,7 @@ class UpdateNetworkContentFilteringModel(object):
                  allowed_url_patterns=None,
                  blocked_url_patterns=None,
                  blocked_url_categories=None,
-                 url_category_list_size=None,
-                 additional_properties = {}):
+                 url_category_list_size=None):
         """Constructor for the UpdateNetworkContentFilteringModel class"""
 
         # Initialize members of the class
@@ -46,9 +45,6 @@ class UpdateNetworkContentFilteringModel(object):
         self.blocked_url_patterns = blocked_url_patterns
         self.blocked_url_categories = blocked_url_categories
         self.url_category_list_size = url_category_list_size
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -74,16 +70,10 @@ class UpdateNetworkContentFilteringModel(object):
         blocked_url_categories = dictionary.get('blockedUrlCategories')
         url_category_list_size = dictionary.get('urlCategoryListSize')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(allowed_url_patterns,
                    blocked_url_patterns,
                    blocked_url_categories,
-                   url_category_list_size,
-                   dictionary)
+                   url_category_list_size)
 
 

@@ -15,7 +15,7 @@ class Rule4Model(object):
 
     Attributes:
         comment (string): Description of the rule (optional)
-        policy (string): 'Allow' or 'Deny' traffic specified by this rule
+        policy (string): 'allow' or 'deny' traffic specified by this rule
         protocol (string): The type of protocol (must be 'tcp', 'udp', 'icmp'
             or 'any')
         dest_port (string): Comma-separated list of destination port(s)
@@ -40,8 +40,7 @@ class Rule4Model(object):
                  protocol=None,
                  dest_cidr=None,
                  comment=None,
-                 dest_port=None,
-                 additional_properties = {}):
+                 dest_port=None):
         """Constructor for the Rule4Model class"""
 
         # Initialize members of the class
@@ -50,9 +49,6 @@ class Rule4Model(object):
         self.protocol = protocol
         self.dest_port = dest_port
         self.dest_cidr = dest_cidr
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -79,17 +75,11 @@ class Rule4Model(object):
         comment = dictionary.get('comment')
         dest_port = dictionary.get('destPort')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(policy,
                    protocol,
                    dest_cidr,
                    comment,
-                   dest_port,
-                   dictionary)
+                   dest_port)
 
 

@@ -27,16 +27,12 @@ class SubnetModel(object):
 
     def __init__(self,
                  local_subnet=None,
-                 use_vpn=None,
-                 additional_properties = {}):
+                 use_vpn=None):
         """Constructor for the SubnetModel class"""
 
         # Initialize members of the class
         self.local_subnet = local_subnet
         self.use_vpn = use_vpn
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -60,14 +56,8 @@ class SubnetModel(object):
         local_subnet = dictionary.get('localSubnet')
         use_vpn = dictionary.get('useVpn')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(local_subnet,
-                   use_vpn,
-                   dictionary)
+                   use_vpn)
 
 

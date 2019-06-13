@@ -34,16 +34,12 @@ class UpdateNetworkSsidsPlashSettingsModel(object):
 
     def __init__(self,
                  splash_url=None,
-                 use_splash_url=None,
-                 additional_properties = {}):
+                 use_splash_url=None):
         """Constructor for the UpdateNetworkSsidsPlashSettingsModel class"""
 
         # Initialize members of the class
         self.splash_url = splash_url
         self.use_splash_url = use_splash_url
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -67,14 +63,8 @@ class UpdateNetworkSsidsPlashSettingsModel(object):
         splash_url = dictionary.get('splashUrl')
         use_splash_url = dictionary.get('useSplashUrl')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(splash_url,
-                   use_splash_url,
-                   dictionary)
+                   use_splash_url)
 
 

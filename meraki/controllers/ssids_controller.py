@@ -16,15 +16,24 @@ class SsidsController(BaseController):
     """A Controller to access Endpoints in the meraki API."""
 
 
-    def get_network_ssids(self,
-                          network_id):
-        """Does a GET request to /networks/{networkId}/ssids.
+    def update_network_ssid(self,
+                            options=dict()):
+        """Does a PUT request to /networks/{networkId}/ssids/{number}.
 
-        List the SSIDs in a network. Supports networks with access points or
-        wireless-enabled security appliances and teleworker gateways.
+        Update the attributes of an SSID
 
         Args:
-            network_id (string): TODO: type description here. Example: 
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    network_id -- string -- TODO: type description here.
+                        Example: 
+                    number -- string -- TODO: type description here. Example:
+                                            update_network_ssid -- UpdateNetworkSsidModel -- TODO:
+                        type description here. Example: 
 
         Returns:
             mixed: Response from the API. Successful operation
@@ -38,12 +47,14 @@ class SsidsController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(network_id=network_id)
+        self.validate_parameters(network_id=options.get("network_id"),
+                                 number=options.get("number"))
 
         # Prepare query URL
-        _url_path = '/networks/{networkId}/ssids'
+        _url_path = '/networks/{networkId}/ssids/{number}'
         _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'networkId': network_id
+            'networkId': options.get('network_id', None),
+            'number': options.get('number', None)
         })
         _query_builder = Configuration.base_uri
         _query_builder += _url_path
@@ -51,11 +62,12 @@ class SsidsController(BaseController):
 
         # Prepare headers
         _headers = {
-            'accept': 'application/json'
+            'accept': 'application/json',
+            'content-type': 'application/json; charset=utf-8'
         }
 
         # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
+        _request = self.http_client.put(_query_url, headers=_headers, parameters=APIHelper.json_serialize(options.get('update_network_ssid')))
         CustomHeaderAuth.apply(_request)
         _context = self.execute_request(_request)
         self.validate_response(_context)
@@ -119,24 +131,15 @@ class SsidsController(BaseController):
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body)
 
-    def update_network_ssid(self,
-                            options=dict()):
-        """Does a PUT request to /networks/{networkId}/ssids/{number}.
+    def get_network_ssids(self,
+                          network_id):
+        """Does a GET request to /networks/{networkId}/ssids.
 
-        Update the attributes of an SSID
+        List the SSIDs in a network. Supports networks with access points or
+        wireless-enabled security appliances and teleworker gateways.
 
         Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    network_id -- string -- TODO: type description here.
-                        Example: 
-                    number -- string -- TODO: type description here. Example:
-                                            update_network_ssid -- UpdateNetworkSsidModel -- TODO:
-                        type description here. Example: 
+            network_id (string): TODO: type description here. Example: 
 
         Returns:
             mixed: Response from the API. Successful operation
@@ -150,14 +153,12 @@ class SsidsController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(network_id=options.get("network_id"),
-                                 number=options.get("number"))
+        self.validate_parameters(network_id=network_id)
 
         # Prepare query URL
-        _url_path = '/networks/{networkId}/ssids/{number}'
+        _url_path = '/networks/{networkId}/ssids'
         _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'networkId': options.get('network_id', None),
-            'number': options.get('number', None)
+            'networkId': network_id
         })
         _query_builder = Configuration.base_uri
         _query_builder += _url_path
@@ -165,12 +166,11 @@ class SsidsController(BaseController):
 
         # Prepare headers
         _headers = {
-            'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'accept': 'application/json'
         }
 
         # Prepare and execute request
-        _request = self.http_client.put(_query_url, headers=_headers, parameters=APIHelper.json_serialize(options.get('update_network_ssid')))
+        _request = self.http_client.get(_query_url, headers=_headers)
         CustomHeaderAuth.apply(_request)
         _context = self.execute_request(_request)
         self.validate_response(_context)

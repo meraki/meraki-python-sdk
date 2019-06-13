@@ -36,17 +36,13 @@ class MondayModel(object):
     def __init__(self,
                  active=None,
                  mfrom=None,
-                 to=None,
-                 additional_properties = {}):
+                 to=None):
         """Constructor for the MondayModel class"""
 
         # Initialize members of the class
         self.active = active
         self.mfrom = mfrom
         self.to = to
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -71,15 +67,9 @@ class MondayModel(object):
         mfrom = dictionary.get('from')
         to = dictionary.get('to')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(active,
                    mfrom,
-                   to,
-                   dictionary)
+                   to)
 
 

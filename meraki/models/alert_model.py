@@ -39,8 +39,7 @@ class AlertModel(object):
                  mtype=None,
                  enabled=None,
                  alert_destinations=None,
-                 filters=None,
-                 additional_properties = {}):
+                 filters=None):
         """Constructor for the AlertModel class"""
 
         # Initialize members of the class
@@ -48,9 +47,6 @@ class AlertModel(object):
         self.enabled = enabled
         self.alert_destinations = alert_destinations
         self.filters = filters
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -76,16 +72,10 @@ class AlertModel(object):
         alert_destinations = dictionary.get('alertDestinations')
         filters = dictionary.get('filters')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(mtype,
                    enabled,
                    alert_destinations,
-                   filters,
-                   dictionary)
+                   filters)
 
 

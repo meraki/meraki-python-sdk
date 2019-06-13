@@ -21,9 +21,15 @@ class UpdateNetworkDeviceModel(object):
         address (string): The address of a device
         notes (string): The notes for the device. String. Limited to 255
             characters.
-        move_map_marker (string): Whether or not to set the latitude and
+        move_map_marker (bool): Whether or not to set the latitude and
             longitude of a device based on the new address. Only applies when
             lat and lng are not specified.
+        switch_profile_id (string): The ID of a switch profile to bind to the
+            device (for available switch profiles, see the 'Switch Profiles'
+            endpoint). Use null to unbind the switch device from the current
+            profile. For a device to be bindable to a switch profile, it must
+            (1) be a switch, and (2) belong to a network that is bound to a
+            configuration template.
 
     """
 
@@ -35,7 +41,8 @@ class UpdateNetworkDeviceModel(object):
         "lng":'lng',
         "address":'address',
         "notes":'notes',
-        "move_map_marker":'moveMapMarker'
+        "move_map_marker":'moveMapMarker',
+        "switch_profile_id":'switchProfileId'
     }
 
     def __init__(self,
@@ -46,7 +53,7 @@ class UpdateNetworkDeviceModel(object):
                  address=None,
                  notes=None,
                  move_map_marker=None,
-                 additional_properties = {}):
+                 switch_profile_id=None):
         """Constructor for the UpdateNetworkDeviceModel class"""
 
         # Initialize members of the class
@@ -57,9 +64,7 @@ class UpdateNetworkDeviceModel(object):
         self.address = address
         self.notes = notes
         self.move_map_marker = move_map_marker
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
+        self.switch_profile_id = switch_profile_id
 
 
     @classmethod
@@ -87,11 +92,7 @@ class UpdateNetworkDeviceModel(object):
         address = dictionary.get('address')
         notes = dictionary.get('notes')
         move_map_marker = dictionary.get('moveMapMarker')
-
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
+        switch_profile_id = dictionary.get('switchProfileId')
 
         # Return an object of this model
         return cls(name,
@@ -101,6 +102,6 @@ class UpdateNetworkDeviceModel(object):
                    address,
                    notes,
                    move_map_marker,
-                   dictionary)
+                   switch_profile_id)
 
 

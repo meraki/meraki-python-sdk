@@ -33,17 +33,13 @@ class ServerModel(object):
     def __init__(self,
                  host=None,
                  port=None,
-                 roles=None,
-                 additional_properties = {}):
+                 roles=None):
         """Constructor for the ServerModel class"""
 
         # Initialize members of the class
         self.host = host
         self.port = port
         self.roles = roles
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -68,15 +64,9 @@ class ServerModel(object):
         port = dictionary.get('port')
         roles = dictionary.get('roles')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(host,
                    port,
-                   roles,
-                   dictionary)
+                   roles)
 
 

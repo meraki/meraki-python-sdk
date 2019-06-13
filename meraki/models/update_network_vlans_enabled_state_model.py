@@ -25,15 +25,11 @@ class UpdateNetworkVlansEnabledStateModel(object):
     }
 
     def __init__(self,
-                 enabled=None,
-                 additional_properties = {}):
+                 enabled=None):
         """Constructor for the UpdateNetworkVlansEnabledStateModel class"""
 
         # Initialize members of the class
         self.enabled = enabled
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -56,13 +52,7 @@ class UpdateNetworkVlansEnabledStateModel(object):
         # Extract variables from the dictionary
         enabled = dictionary.get('enabled')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
-        return cls(enabled,
-                   dictionary)
+        return cls(enabled)
 
 

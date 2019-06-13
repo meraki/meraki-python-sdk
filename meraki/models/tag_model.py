@@ -28,16 +28,12 @@ class TagModel(object):
 
     def __init__(self,
                  tag=None,
-                 access=None,
-                 additional_properties = {}):
+                 access=None):
         """Constructor for the TagModel class"""
 
         # Initialize members of the class
         self.tag = tag
         self.access = access
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -61,14 +57,8 @@ class TagModel(object):
         tag = dictionary.get('tag')
         access = dictionary.get('access')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(tag,
-                   access,
-                   dictionary)
+                   access)
 
 

@@ -32,16 +32,12 @@ class UpdateNetworkSsidL3FirewallRulesModel(object):
 
     def __init__(self,
                  rules=None,
-                 allow_lan_access=None,
-                 additional_properties = {}):
+                 allow_lan_access=None):
         """Constructor for the UpdateNetworkSsidL3FirewallRulesModel class"""
 
         # Initialize members of the class
         self.rules = rules
         self.allow_lan_access = allow_lan_access
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -69,14 +65,8 @@ class UpdateNetworkSsidL3FirewallRulesModel(object):
                 rules.append(meraki.models.rule4_model.Rule4Model.from_dictionary(structure))
         allow_lan_access = dictionary.get('allowLanAccess')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(rules,
-                   allow_lan_access,
-                   dictionary)
+                   allow_lan_access)
 
 

@@ -81,8 +81,7 @@ class UpdateNetworkVlanModel(object):
                  fixed_ip_assignments=None,
                  reserved_ip_ranges=None,
                  dns_nameservers=None,
-                 dhcp_options=None,
-                 additional_properties = {}):
+                 dhcp_options=None):
         """Constructor for the UpdateNetworkVlanModel class"""
 
         # Initialize members of the class
@@ -100,9 +99,6 @@ class UpdateNetworkVlanModel(object):
         self.reserved_ip_ranges = reserved_ip_ranges
         self.dns_nameservers = dns_nameservers
         self.dhcp_options = dhcp_options
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -146,11 +142,6 @@ class UpdateNetworkVlanModel(object):
             for structure in dictionary.get('dhcpOptions'):
                 dhcp_options.append(meraki.models.dhcp_option_model.DhcpOptionModel.from_dictionary(structure))
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(name,
                    subnet,
@@ -165,7 +156,6 @@ class UpdateNetworkVlanModel(object):
                    fixed_ip_assignments,
                    reserved_ip_ranges,
                    dns_nameservers,
-                   dhcp_options,
-                   dictionary)
+                   dhcp_options)
 
 

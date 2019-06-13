@@ -50,8 +50,7 @@ class PeerModel(object):
                  secret=None,
                  ipsec_policies=None,
                  ipsec_policies_preset=None,
-                 network_tags=None,
-                 additional_properties = {}):
+                 network_tags=None):
         """Constructor for the PeerModel class"""
 
         # Initialize members of the class
@@ -62,9 +61,6 @@ class PeerModel(object):
         self.ipsec_policies_preset = ipsec_policies_preset
         self.secret = secret
         self.network_tags = network_tags
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -93,11 +89,6 @@ class PeerModel(object):
         ipsec_policies_preset = dictionary.get('ipsecPoliciesPreset')
         network_tags = dictionary.get('networkTags')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(name,
                    public_ip,
@@ -105,7 +96,6 @@ class PeerModel(object):
                    secret,
                    ipsec_policies,
                    ipsec_policies_preset,
-                   network_tags,
-                   dictionary)
+                   network_tags)
 
 

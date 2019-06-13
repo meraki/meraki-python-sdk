@@ -25,6 +25,6 @@ class Configuration(object):
     # The base Uri for API calls
     base_uri = 'https://api.meraki.com/api/v0'
 
-    # TODO: Set an appropriate value
-    x_cisco_meraki_api_key = None
+    # Demo DevNet Sandbox
+    x_cisco_meraki_api_key = '15da0c6ffff295f16267f88f98694cf29a86ed87'
 

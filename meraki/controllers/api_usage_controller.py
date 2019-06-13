@@ -63,6 +63,8 @@ class APIUsageController(BaseController):
                     method -- string -- Filter the results by the method of
                         the API requests (must be 'GET', 'PUT', 'POST' or
                         'DELETE')
+                    response_code -- int -- Filter the results by the response
+                        code of the API requests
 
         Returns:
             mixed: Response from the API. Successful operation
@@ -94,7 +96,8 @@ class APIUsageController(BaseController):
             'endingBefore': options.get('ending_before', None),
             'adminId': options.get('admin_id', None),
             'path': options.get('path', None),
-            'method': options.get('method', None)
+            'method': options.get('method', None),
+            'responseCode': options.get('response_code', None)
         }
         _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
             _query_parameters, Configuration.array_serialization)
