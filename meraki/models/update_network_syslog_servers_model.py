@@ -26,15 +26,11 @@ class UpdateNetworkSyslogServersModel(object):
     }
 
     def __init__(self,
-                 servers=None,
-                 additional_properties = {}):
+                 servers=None):
         """Constructor for the UpdateNetworkSyslogServersModel class"""
 
         # Initialize members of the class
         self.servers = servers
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -61,13 +57,7 @@ class UpdateNetworkSyslogServersModel(object):
             for structure in dictionary.get('servers'):
                 servers.append(meraki.models.server_model.ServerModel.from_dictionary(structure))
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
-        return cls(servers,
-                   dictionary)
+        return cls(servers)
 
 

@@ -24,15 +24,11 @@ class UpdateOrganizationModel(object):
     }
 
     def __init__(self,
-                 name=None,
-                 additional_properties = {}):
+                 name=None):
         """Constructor for the UpdateOrganizationModel class"""
 
         # Initialize members of the class
         self.name = name
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -55,13 +51,7 @@ class UpdateOrganizationModel(object):
         # Extract variables from the dictionary
         name = dictionary.get('name')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
-        return cls(name,
-                   dictionary)
+        return cls(name)
 
 

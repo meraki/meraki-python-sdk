@@ -26,15 +26,11 @@ class UpdateNetworkCellularFirewallRulesModel(object):
     }
 
     def __init__(self,
-                 rules=None,
-                 additional_properties = {}):
+                 rules=None):
         """Constructor for the UpdateNetworkCellularFirewallRulesModel class"""
 
         # Initialize members of the class
         self.rules = rules
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -61,13 +57,7 @@ class UpdateNetworkCellularFirewallRulesModel(object):
             for structure in dictionary.get('rules'):
                 rules.append(meraki.models.rule_model.RuleModel.from_dictionary(structure))
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
-        return cls(rules,
-                   dictionary)
+        return cls(rules)
 
 

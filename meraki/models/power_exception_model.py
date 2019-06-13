@@ -15,7 +15,7 @@ class PowerExceptionModel(object):
 
     Attributes:
         serial (string): Serial number of the switch
-        power_type (string): Per switch exception (combined, redundant,
+        power_type (PowerTypeEnum): Per switch exception (combined, redundant,
             useNetworkSetting)
 
     """
@@ -28,16 +28,12 @@ class PowerExceptionModel(object):
 
     def __init__(self,
                  serial=None,
-                 power_type=None,
-                 additional_properties = {}):
+                 power_type=None):
         """Constructor for the PowerExceptionModel class"""
 
         # Initialize members of the class
         self.serial = serial
         self.power_type = power_type
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -61,14 +57,8 @@ class PowerExceptionModel(object):
         serial = dictionary.get('serial')
         power_type = dictionary.get('powerType')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(serial,
-                   power_type,
-                   dictionary)
+                   power_type)
 
 

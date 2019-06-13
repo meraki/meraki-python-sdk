@@ -28,16 +28,12 @@ class NetworkModel(object):
 
     def __init__(self,
                  id=None,
-                 access=None,
-                 additional_properties = {}):
+                 access=None):
         """Constructor for the NetworkModel class"""
 
         # Initialize members of the class
         self.id = id
         self.access = access
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -61,14 +57,8 @@ class NetworkModel(object):
         id = dictionary.get('id')
         access = dictionary.get('access')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(id,
-                   access,
-                   dictionary)
+                   access)
 
 

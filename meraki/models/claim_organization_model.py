@@ -39,8 +39,7 @@ class ClaimOrganizationModel(object):
                  order=None,
                  serial=None,
                  license_key=None,
-                 license_mode=None,
-                 additional_properties = {}):
+                 license_mode=None):
         """Constructor for the ClaimOrganizationModel class"""
 
         # Initialize members of the class
@@ -48,9 +47,6 @@ class ClaimOrganizationModel(object):
         self.serial = serial
         self.license_key = license_key
         self.license_mode = license_mode
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -76,16 +72,10 @@ class ClaimOrganizationModel(object):
         license_key = dictionary.get('licenseKey')
         license_mode = dictionary.get('licenseMode')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(order,
                    serial,
                    license_key,
-                   license_mode,
-                   dictionary)
+                   license_mode)
 
 

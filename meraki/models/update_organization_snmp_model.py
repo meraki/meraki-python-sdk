@@ -15,15 +15,16 @@ class UpdateOrganizationSnmpModel(object):
 
     Attributes:
         v_2_c_enabled (bool): Boolean indicating whether SNMP version 2c is
-            enabled for the organization
+            enabled for the organization.
         v_3_enabled (bool): Boolean indicating whether SNMP version 3 is
-            enabled for the organization
-        v_3_auth_mode (string): The SNMP version 3 authentication mode either
-            MD5 or SHA
-        v_3_auth_pass (string): The SNMP version 3 authentication password. 
+            enabled for the organization.
+        v_3_auth_mode (V3AuthModeEnum): The SNMP version 3 authentication
+            mode. Can be either 'MD5' or 'SHA'.
+        v_3_auth_pass (string): The SNMP version 3 authentication password.
             Must be at least 8 characters if specified.
-        v_3_priv_mode (string): The SNMP version 3 privacy mode DES or AES128
-        v_3_priv_pass (string): The SNMP version 3 privacy password.  Must be
+        v_3_priv_mode (V3PrivModeEnum): The SNMP version 3 privacy mode. Can
+            be either 'DES' or 'AES128'.
+        v_3_priv_pass (string): The SNMP version 3 privacy password. Must be
             at least 8 characters if specified.
         peer_ips (string): The IPs that are allowed to access the SNMP server.
             This list should be IPv4 addresses separated by semi-colons (ie.
@@ -49,8 +50,7 @@ class UpdateOrganizationSnmpModel(object):
                  v3_auth_pass=None,
                  v3_priv_mode=None,
                  v3_priv_pass=None,
-                 peer_ips=None,
-                 additional_properties = {}):
+                 peer_ips=None):
         """Constructor for the UpdateOrganizationSnmpModel class"""
 
         # Initialize members of the class
@@ -61,9 +61,6 @@ class UpdateOrganizationSnmpModel(object):
         self.v3_priv_mode = v3_priv_mode
         self.v3_priv_pass = v3_priv_pass
         self.peer_ips = peer_ips
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -92,11 +89,6 @@ class UpdateOrganizationSnmpModel(object):
         v3_priv_pass = dictionary.get('v3PrivPass')
         peer_ips = dictionary.get('peerIps')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(v2c_enabled,
                    v3_enabled,
@@ -104,7 +96,6 @@ class UpdateOrganizationSnmpModel(object):
                    v3_auth_pass,
                    v3_priv_mode,
                    v3_priv_pass,
-                   peer_ips,
-                   dictionary)
+                   peer_ips)
 
 

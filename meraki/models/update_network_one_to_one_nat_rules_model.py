@@ -6,7 +6,7 @@
     This file was automatically generated for meraki by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-import meraki.models.rule6_model
+import meraki.models.rule10_model
 
 class UpdateNetworkOneToOneNatRulesModel(object):
 
@@ -15,7 +15,7 @@ class UpdateNetworkOneToOneNatRulesModel(object):
     TODO: type model description here.
 
     Attributes:
-        rules (list of Rule6Model): An array of 1:1 nat rules
+        rules (list of Rule10Model): An array of 1:1 nat rules
 
     """
 
@@ -25,15 +25,11 @@ class UpdateNetworkOneToOneNatRulesModel(object):
     }
 
     def __init__(self,
-                 rules=None,
-                 additional_properties = {}):
+                 rules=None):
         """Constructor for the UpdateNetworkOneToOneNatRulesModel class"""
 
         # Initialize members of the class
         self.rules = rules
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -58,15 +54,9 @@ class UpdateNetworkOneToOneNatRulesModel(object):
         if dictionary.get('rules') != None:
             rules = list()
             for structure in dictionary.get('rules'):
-                rules.append(meraki.models.rule6_model.Rule6Model.from_dictionary(structure))
-
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
+                rules.append(meraki.models.rule10_model.Rule10Model.from_dictionary(structure))
 
         # Return an object of this model
-        return cls(rules,
-                   dictionary)
+        return cls(rules)
 
 

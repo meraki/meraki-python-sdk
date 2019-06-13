@@ -6,6 +6,7 @@
     This file was automatically generated for meraki by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
+import meraki.models.device_fields_model
 
 class UpdateNetworkSmDeviceFieldsModel(object):
 
@@ -17,25 +18,24 @@ class UpdateNetworkSmDeviceFieldsModel(object):
         wifi_mac (string): The wifiMac of the device to be modified.
         id (string): The id of the device to be modified.
         serial (string): The serial of the device to be modified.
-        device_fields (object): The new fields of the device. Passed in as a
-            JSON object. The list of available fields are: name, notes
+        device_fields (DeviceFieldsModel): The new fields of the device. Each
+            field of this object is optional.
 
     """
 
     # Create a mapping from Model property names to API property names
     _names = {
+        "device_fields":'deviceFields',
         "wifi_mac":'wifiMac',
         "id":'id',
-        "serial":'serial',
-        "device_fields":'deviceFields'
+        "serial":'serial'
     }
 
     def __init__(self,
+                 device_fields=None,
                  wifi_mac=None,
                  id=None,
-                 serial=None,
-                 device_fields=None,
-                 additional_properties = {}):
+                 serial=None):
         """Constructor for the UpdateNetworkSmDeviceFieldsModel class"""
 
         # Initialize members of the class
@@ -43,9 +43,6 @@ class UpdateNetworkSmDeviceFieldsModel(object):
         self.id = id
         self.serial = serial
         self.device_fields = device_fields
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -66,21 +63,15 @@ class UpdateNetworkSmDeviceFieldsModel(object):
             return None
 
         # Extract variables from the dictionary
+        device_fields = meraki.models.device_fields_model.DeviceFieldsModel.from_dictionary(dictionary.get('deviceFields')) if dictionary.get('deviceFields') else None
         wifi_mac = dictionary.get('wifiMac')
         id = dictionary.get('id')
         serial = dictionary.get('serial')
-        device_fields = dictionary.get('deviceFields')
-
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
 
         # Return an object of this model
-        return cls(wifi_mac,
+        return cls(device_fields,
+                   wifi_mac,
                    id,
-                   serial,
-                   device_fields,
-                   dictionary)
+                   serial)
 
 

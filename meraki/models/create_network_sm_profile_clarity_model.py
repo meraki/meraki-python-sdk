@@ -50,8 +50,7 @@ class CreateNetworkSmProfileClarityModel(object):
                  plugin_bundle_id=None,
                  filter_browsers=None,
                  filter_sockets=None,
-                 vendor_config=None,
-                 additional_properties = {}):
+                 vendor_config=None):
         """Constructor for the CreateNetworkSmProfileClarityModel class"""
 
         # Initialize members of the class
@@ -61,9 +60,6 @@ class CreateNetworkSmProfileClarityModel(object):
         self.filter_browsers = filter_browsers
         self.filter_sockets = filter_sockets
         self.vendor_config = vendor_config
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -91,18 +87,12 @@ class CreateNetworkSmProfileClarityModel(object):
         filter_sockets = dictionary.get('FilterSockets')
         vendor_config = dictionary.get('VendorConfig')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(name,
                    scope,
                    plugin_bundle_id,
                    filter_browsers,
                    filter_sockets,
-                   vendor_config,
-                   dictionary)
+                   vendor_config)
 
 

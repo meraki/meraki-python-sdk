@@ -33,17 +33,13 @@ class DefaultDestinationsModel(object):
     def __init__(self,
                  emails=None,
                  all_admins=None,
-                 snmp=None,
-                 additional_properties = {}):
+                 snmp=None):
         """Constructor for the DefaultDestinationsModel class"""
 
         # Initialize members of the class
         self.emails = emails
         self.all_admins = all_admins
         self.snmp = snmp
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -68,15 +64,9 @@ class DefaultDestinationsModel(object):
         all_admins = dictionary.get('allAdmins')
         snmp = dictionary.get('snmp')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(emails,
                    all_admins,
-                   snmp,
-                   dictionary)
+                   snmp)
 
 

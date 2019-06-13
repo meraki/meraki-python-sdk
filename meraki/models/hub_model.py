@@ -28,16 +28,12 @@ class HubModel(object):
 
     def __init__(self,
                  hub_id=None,
-                 use_default_route=None,
-                 additional_properties = {}):
+                 use_default_route=None):
         """Constructor for the HubModel class"""
 
         # Initialize members of the class
         self.hub_id = hub_id
         self.use_default_route = use_default_route
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -61,14 +57,8 @@ class HubModel(object):
         hub_id = dictionary.get('hubId')
         use_default_route = dictionary.get('useDefaultRoute')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(hub_id,
-                   use_default_route,
-                   dictionary)
+                   use_default_route)
 
 

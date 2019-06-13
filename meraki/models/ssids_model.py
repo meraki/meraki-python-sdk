@@ -26,15 +26,11 @@ class SsidsModel(object):
     }
 
     def __init__(self,
-                 is_authorized=None,
-                 additional_properties = {}):
+                 is_authorized=None):
         """Constructor for the SsidsModel class"""
 
         # Initialize members of the class
         self.is_authorized = is_authorized
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -57,13 +53,7 @@ class SsidsModel(object):
         # Extract variables from the dictionary
         is_authorized = dictionary.get('isAuthorized')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
-        return cls(is_authorized,
-                   dictionary)
+        return cls(is_authorized)
 
 

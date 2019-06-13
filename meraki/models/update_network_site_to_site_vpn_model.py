@@ -34,17 +34,13 @@ class UpdateNetworkSiteToSiteVpnModel(object):
     def __init__(self,
                  mode=None,
                  hubs=None,
-                 subnets=None,
-                 additional_properties = {}):
+                 subnets=None):
         """Constructor for the UpdateNetworkSiteToSiteVpnModel class"""
 
         # Initialize members of the class
         self.mode = mode
         self.hubs = hubs
         self.subnets = subnets
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -77,15 +73,9 @@ class UpdateNetworkSiteToSiteVpnModel(object):
             for structure in dictionary.get('subnets'):
                 subnets.append(meraki.models.subnet_model.SubnetModel.from_dictionary(structure))
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(mode,
                    hubs,
-                   subnets,
-                   dictionary)
+                   subnets)
 
 

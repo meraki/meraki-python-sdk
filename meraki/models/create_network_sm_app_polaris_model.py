@@ -42,8 +42,7 @@ class CreateNetworkSmAppPolarisModel(object):
                  manifest_url=None,
                  bundle_id=None,
                  prevent_auto_install=None,
-                 uses_vpp=None,
-                 additional_properties = {}):
+                 uses_vpp=None):
         """Constructor for the CreateNetworkSmAppPolarisModel class"""
 
         # Initialize members of the class
@@ -52,9 +51,6 @@ class CreateNetworkSmAppPolarisModel(object):
         self.bundle_id = bundle_id
         self.prevent_auto_install = prevent_auto_install
         self.uses_vpp = uses_vpp
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -81,17 +77,11 @@ class CreateNetworkSmAppPolarisModel(object):
         prevent_auto_install = dictionary.get('preventAutoInstall')
         uses_vpp = dictionary.get('usesVPP')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(scope,
                    manifest_url,
                    bundle_id,
                    prevent_auto_install,
-                   uses_vpp,
-                   dictionary)
+                   uses_vpp)
 
 

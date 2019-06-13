@@ -38,8 +38,7 @@ class ProvisionNetworkClientsModel(object):
                  mac=None,
                  name=None,
                  device_policy=None,
-                 group_policy_id=None,
-                 additional_properties = {}):
+                 group_policy_id=None):
         """Constructor for the ProvisionNetworkClientsModel class"""
 
         # Initialize members of the class
@@ -47,9 +46,6 @@ class ProvisionNetworkClientsModel(object):
         self.name = name
         self.device_policy = device_policy
         self.group_policy_id = group_policy_id
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -75,16 +71,10 @@ class ProvisionNetworkClientsModel(object):
         device_policy = dictionary.get('devicePolicy')
         group_policy_id = dictionary.get('groupPolicyId')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(mac,
                    name,
                    device_policy,
-                   group_policy_id,
-                   dictionary)
+                   group_policy_id)
 
 

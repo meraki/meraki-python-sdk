@@ -31,16 +31,12 @@ class UpdateNetworkL3FirewallRulesModel(object):
 
     def __init__(self,
                  rules=None,
-                 syslog_default_rule=None,
-                 additional_properties = {}):
+                 syslog_default_rule=None):
         """Constructor for the UpdateNetworkL3FirewallRulesModel class"""
 
         # Initialize members of the class
         self.rules = rules
         self.syslog_default_rule = syslog_default_rule
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -68,14 +64,8 @@ class UpdateNetworkL3FirewallRulesModel(object):
                 rules.append(meraki.models.rule_model.RuleModel.from_dictionary(structure))
         syslog_default_rule = dictionary.get('syslogDefaultRule')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(rules,
-                   syslog_default_rule,
-                   dictionary)
+                   syslog_default_rule)
 
 

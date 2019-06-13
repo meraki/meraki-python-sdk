@@ -32,17 +32,13 @@ class DhcpOptionModel(object):
     def __init__(self,
                  code=None,
                  mtype=None,
-                 value=None,
-                 additional_properties = {}):
+                 value=None):
         """Constructor for the DhcpOptionModel class"""
 
         # Initialize members of the class
         self.code = code
         self.mtype = mtype
         self.value = value
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -67,15 +63,9 @@ class DhcpOptionModel(object):
         mtype = dictionary.get('type')
         value = dictionary.get('value')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(code,
                    mtype,
-                   value,
-                   dictionary)
+                   value)
 
 

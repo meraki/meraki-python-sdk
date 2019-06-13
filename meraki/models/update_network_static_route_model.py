@@ -41,8 +41,7 @@ class UpdateNetworkStaticRouteModel(object):
                  gateway_ip=None,
                  enabled=None,
                  fixed_ip_assignments=None,
-                 reserved_ip_ranges=None,
-                 additional_properties = {}):
+                 reserved_ip_ranges=None):
         """Constructor for the UpdateNetworkStaticRouteModel class"""
 
         # Initialize members of the class
@@ -52,9 +51,6 @@ class UpdateNetworkStaticRouteModel(object):
         self.enabled = enabled
         self.fixed_ip_assignments = fixed_ip_assignments
         self.reserved_ip_ranges = reserved_ip_ranges
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -82,18 +78,12 @@ class UpdateNetworkStaticRouteModel(object):
         fixed_ip_assignments = dictionary.get('fixedIpAssignments')
         reserved_ip_ranges = dictionary.get('reservedIpRanges')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(name,
                    subnet,
                    gateway_ip,
                    enabled,
                    fixed_ip_assignments,
-                   reserved_ip_ranges,
-                   dictionary)
+                   reserved_ip_ranges)
 
 

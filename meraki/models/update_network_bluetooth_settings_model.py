@@ -45,8 +45,7 @@ class UpdateNetworkBluetoothSettingsModel(object):
                  uuid=None,
                  major_minor_assignment_mode=None,
                  major=None,
-                 minor=None,
-                 additional_properties = {}):
+                 minor=None):
         """Constructor for the UpdateNetworkBluetoothSettingsModel class"""
 
         # Initialize members of the class
@@ -56,9 +55,6 @@ class UpdateNetworkBluetoothSettingsModel(object):
         self.major_minor_assignment_mode = major_minor_assignment_mode
         self.major = major
         self.minor = minor
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -86,18 +82,12 @@ class UpdateNetworkBluetoothSettingsModel(object):
         major = dictionary.get('major')
         minor = dictionary.get('minor')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(scanning_enabled,
                    advertising_enabled,
                    uuid,
                    major_minor_assignment_mode,
                    major,
-                   minor,
-                   dictionary)
+                   minor)
 
 

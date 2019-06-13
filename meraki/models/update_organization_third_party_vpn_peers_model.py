@@ -25,15 +25,11 @@ class UpdateOrganizationThirdPartyVPNPeersModel(object):
     }
 
     def __init__(self,
-                 peers=None,
-                 additional_properties = {}):
+                 peers=None):
         """Constructor for the UpdateOrganizationThirdPartyVPNPeersModel class"""
 
         # Initialize members of the class
         self.peers = peers
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -60,13 +56,7 @@ class UpdateOrganizationThirdPartyVPNPeersModel(object):
             for structure in dictionary.get('peers'):
                 peers.append(meraki.models.peer_model.PeerModel.from_dictionary(structure))
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
-        return cls(peers,
-                   dictionary)
+        return cls(peers)
 
 

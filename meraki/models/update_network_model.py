@@ -50,8 +50,7 @@ class UpdateNetworkModel(object):
                  time_zone=None,
                  tags=None,
                  disable_my_meraki_com=None,
-                 disable_remote_status_page=None,
-                 additional_properties = {}):
+                 disable_remote_status_page=None):
         """Constructor for the UpdateNetworkModel class"""
 
         # Initialize members of the class
@@ -60,9 +59,6 @@ class UpdateNetworkModel(object):
         self.tags = tags
         self.disable_my_meraki_com = disable_my_meraki_com
         self.disable_remote_status_page = disable_remote_status_page
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -89,17 +85,11 @@ class UpdateNetworkModel(object):
         disable_my_meraki_com = dictionary.get('disableMyMerakiCom')
         disable_remote_status_page = dictionary.get('disableRemoteStatusPage')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(name,
                    time_zone,
                    tags,
                    disable_my_meraki_com,
-                   disable_remote_status_page,
-                   dictionary)
+                   disable_remote_status_page)
 
 

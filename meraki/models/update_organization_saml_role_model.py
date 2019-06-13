@@ -38,8 +38,7 @@ class UpdateOrganizationSamlRoleModel(object):
                  role=None,
                  org_access=None,
                  tags=None,
-                 networks=None,
-                 additional_properties = {}):
+                 networks=None):
         """Constructor for the UpdateOrganizationSamlRoleModel class"""
 
         # Initialize members of the class
@@ -47,9 +46,6 @@ class UpdateOrganizationSamlRoleModel(object):
         self.org_access = org_access
         self.tags = tags
         self.networks = networks
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -83,16 +79,10 @@ class UpdateOrganizationSamlRoleModel(object):
             for structure in dictionary.get('networks'):
                 networks.append(meraki.models.network2_model.Network2Model.from_dictionary(structure))
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(role,
                    org_access,
                    tags,
-                   networks,
-                   dictionary)
+                   networks)
 
 

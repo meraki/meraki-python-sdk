@@ -15,8 +15,8 @@ class UpdateNetworkSwitchSettingsModel(object):
     TODO: type model description here.
 
     Attributes:
-        use_combined_power (bool): The behavior of secondary power supplies on
-            supported devices ("redundant", "combined")
+        use_combined_power (bool): The use Combined Power as the default
+            behavior of secondary power supplies on supported devices.
         power_exceptions (list of PowerExceptionModel): Exceptions on a per
             switch basis to "useCombinedPower"
 
@@ -30,16 +30,12 @@ class UpdateNetworkSwitchSettingsModel(object):
 
     def __init__(self,
                  use_combined_power=None,
-                 power_exceptions=None,
-                 additional_properties = {}):
+                 power_exceptions=None):
         """Constructor for the UpdateNetworkSwitchSettingsModel class"""
 
         # Initialize members of the class
         self.use_combined_power = use_combined_power
         self.power_exceptions = power_exceptions
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -67,14 +63,8 @@ class UpdateNetworkSwitchSettingsModel(object):
             for structure in dictionary.get('powerExceptions'):
                 power_exceptions.append(meraki.models.power_exception_model.PowerExceptionModel.from_dictionary(structure))
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(use_combined_power,
-                   power_exceptions,
-                   dictionary)
+                   power_exceptions)
 
 

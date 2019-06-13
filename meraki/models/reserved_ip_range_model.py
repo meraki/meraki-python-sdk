@@ -30,17 +30,13 @@ class ReservedIpRangeModel(object):
     def __init__(self,
                  start=None,
                  end=None,
-                 comment=None,
-                 additional_properties = {}):
+                 comment=None):
         """Constructor for the ReservedIpRangeModel class"""
 
         # Initialize members of the class
         self.start = start
         self.end = end
         self.comment = comment
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -65,15 +61,9 @@ class ReservedIpRangeModel(object):
         end = dictionary.get('end')
         comment = dictionary.get('comment')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(start,
                    end,
-                   comment,
-                   dictionary)
+                   comment)
 
 

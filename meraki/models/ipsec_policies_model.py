@@ -61,8 +61,7 @@ class IpsecPoliciesModel(object):
                  child_cipher_algo=None,
                  child_auth_algo=None,
                  child_pfs_group=None,
-                 child_lifetime=None,
-                 additional_properties = {}):
+                 child_lifetime=None):
         """Constructor for the IpsecPoliciesModel class"""
 
         # Initialize members of the class
@@ -74,9 +73,6 @@ class IpsecPoliciesModel(object):
         self.child_auth_algo = child_auth_algo
         self.child_pfs_group = child_pfs_group
         self.child_lifetime = child_lifetime
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -106,11 +102,6 @@ class IpsecPoliciesModel(object):
         child_pfs_group = dictionary.get('childPfsGroup')
         child_lifetime = dictionary.get('childLifetime')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(ike_cipher_algo,
                    ike_auth_algo,
@@ -119,7 +110,6 @@ class IpsecPoliciesModel(object):
                    child_cipher_algo,
                    child_auth_algo,
                    child_pfs_group,
-                   child_lifetime,
-                   dictionary)
+                   child_lifetime)
 
 

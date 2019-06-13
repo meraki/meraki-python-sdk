@@ -64,8 +64,7 @@ class UpdateDeviceSwitchPortModel(object):
                  rstp_enabled=None,
                  stp_guard=None,
                  access_policy_number=None,
-                 link_negotiation=None,
-                 additional_properties = {}):
+                 link_negotiation=None):
         """Constructor for the UpdateDeviceSwitchPortModel class"""
 
         # Initialize members of the class
@@ -82,9 +81,6 @@ class UpdateDeviceSwitchPortModel(object):
         self.stp_guard = stp_guard
         self.access_policy_number = access_policy_number
         self.link_negotiation = link_negotiation
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -119,11 +115,6 @@ class UpdateDeviceSwitchPortModel(object):
         access_policy_number = dictionary.get('accessPolicyNumber')
         link_negotiation = dictionary.get('linkNegotiation')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(name,
                    tags,
@@ -137,7 +128,6 @@ class UpdateDeviceSwitchPortModel(object):
                    rstp_enabled,
                    stp_guard,
                    access_policy_number,
-                   link_negotiation,
-                   dictionary)
+                   link_negotiation)
 
 

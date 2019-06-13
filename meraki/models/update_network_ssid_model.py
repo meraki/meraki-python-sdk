@@ -19,75 +19,74 @@ class UpdateNetworkSsidModel(object):
     Attributes:
         name (string): The name of an SSID
         enabled (bool): Whether or not an SSID is enabled
-        auth_mode (string): The association control method for the SSID
-            ('open', 'psk', 'open-with-radius', '8021x-meraki',
+        auth_mode (AuthModeEnum): The association control method for the SSID
+            ('open', 'psk', 'open-with-radius', '8021x-meraki' or
             '8021x-radius')
-        encryption_mode (string): The psk encryption mode for the SSID ('wpa',
-            'wep', 'wpa-eap')
+        encryption_mode (EncryptionModeEnum): The psk encryption mode for the
+            SSID ('wpa', 'wep' or 'wpa-eap')
         psk (string): The passkey for the SSID. This param is only valid if
             the authMode is 'psk'
-        wpa_encryption_mode (string): The types of WPA encryption. ('WPA1 and
-            WPA2', 'WPA2 only')
-        splash_page (string): The type of splash page for the SSID ('None',
-            'Click-through splash page', 'Billing', 'Password-protected with
-            Meraki RADIUS', 'Password-protected with custom RADIUS',
-            'Password-protected with Active Directory', 'Password-protected
-            with LDAP', 'SMS authentication', 'Systems Manager Sentry',
-            'Facebook Wi-Fi', 'Google OAuth', 'Sponsored guest'). This
-            attribute is not supported for template children.
+        wpa_encryption_mode (WpaEncryptionModeEnum): The types of WPA
+            encryption. ('WPA1 and WPA2' or 'WPA2 only')
+        splash_page (SplashPageEnum): The type of splash page for the SSID
+            ('None', 'Click-through splash page', 'Billing',
+            'Password-protected with Meraki RADIUS', 'Password-protected with
+            custom RADIUS', 'Password-protected with Active Directory',
+            'Password-protected with LDAP', 'SMS authentication', 'Systems
+            Manager Sentry', 'Facebook Wi-Fi', 'Google OAuth' or 'Sponsored
+            guest'). This attribute is not supported for template children.
         radius_servers (list of RadiusServerModel): The RADIUS 802.1x servers
             to be used for authentication. This param is only valid if the
             authMode is 'open-with-radius' or '8021x-radius'
-        radius_coa_enabled (string): If true, Meraki devices will act as a
+        radius_coa_enabled (bool): If true, Meraki devices will act as a
             RADIUS Dynamic Authorization Server and will respond to RADIUS
             Change-of-Authorization and Disconnect messages sent by the RADIUS
             server.
-        radius_failover_policy (string): This policy determines how
-            authentication requests should be handled in the event that all of
-            the configured RADIUS servers are unreachable ('Deny access',
-            'Allow access')
-        radius_load_balancing_policy (string): This policy determines which
-            RADIUS server will be contacted first in an authentication attempt
-            and the ordering of any necessary retry attempts ('Strict priority
-            order', 'Round robin')
-        radius_accounting_enabled (string): Whether or not RADIUS accounting
-            is enabled. This param is only valid if the authMode is
+        radius_failover_policy (RadiusFailoverPolicyEnum): This policy
+            determines how authentication requests should be handled in the
+            event that all of the configured RADIUS servers are unreachable
+            ('Deny access' or 'Allow access')
+        radius_load_balancing_policy (RadiusLoadBalancingPolicyEnum): This
+            policy determines which RADIUS server will be contacted first in
+            an authentication attempt and the ordering of any necessary retry
+            attempts ('Strict priority order' or 'Round robin')
+        radius_accounting_enabled (bool): Whether or not RADIUS accounting is
+            enabled. This param is only valid if the authMode is
             'open-with-radius' or '8021x-radius'
         radius_accounting_servers (list of RadiusAccountingServerModel): The
             RADIUS accounting 802.1x servers to be used for authentication.
             This param is only valid if the authMode is 'open-with-radius' or
             '8021x-radius' and radiusAccountingEnabled is 'true'
-        ip_assignment_mode (string): The client IP assignment mode ('NAT
-            mode', 'Bridge mode', 'Layer 3 roaming', 'Layer 3 roaming with a
-            concentrator', 'VPN')
-        use_vlan_tagging (string): Direct trafic to use specific VLANs. This
+        ip_assignment_mode (IpAssignmentModeEnum): The client IP assignment
+            mode ('NAT mode', 'Bridge mode', 'Layer 3 roaming', 'Layer 3
+            roaming with a concentrator' or 'VPN')
+        use_vlan_tagging (bool): Direct trafic to use specific VLANs. This
             param is only valid with 'Bridge mode' and 'Layer 3 roaming'
         concentrator_network_id (string): The concentrator to use for 'Layer 3
             roaming with a concentrator' or 'VPN'.
-        vlan_id (string): The VLAN ID used for VLAN tagging. This param is
-            only valid with 'Layer 3 roaming with a concentrator' and 'VPN'
-        default_vlan_id (string): The default VLAN ID used for 'all other
-            APs'. This param is only valid with 'Bridge mode' and 'Layer 3
-            roaming'
+        vlan_id (int): The VLAN ID used for VLAN tagging. This param is only
+            valid with 'Layer 3 roaming with a concentrator' and 'VPN'
+        default_vlan_id (int): The default VLAN ID used for 'all other APs'.
+            This param is only valid with 'Bridge mode' and 'Layer 3 roaming'
         ap_tags_and_vlan_ids (list of ApTagsAndVlanIdModel): The list of tags
             and VLAN IDs used for VLAN tagging. This param is only valid with
             'Bridge mode', 'Layer 3 roaming'
-        walled_garden_enabled (string): Allow access to a configurable list of
+        walled_garden_enabled (bool): Allow access to a configurable list of
             IP ranges, which users may access prior to sign-on.
         walled_garden_ranges (string): Specify your walled garden by entering
             space-separated addresses, ranges using CIDR notation, domain
             names, and domain wildcards (e.g. 192.168.1.1/24 192.168.37.10/32
             www.yahoo.com *.google.com). Meraki's splash page is automatically
             included in your walled garden.
-        min_bitrate (string): The minimum bitrate in Mbps. (1, 2, 5.5, 6, 9,
-            11, 12, 18, 24, 36, 48, 54)
-        band_selection (string): The client-serving radio frequencies. (Dual
-            band operation, 5 GHz band only, Dual band operation with Band
-            Steering)
-        per_client_bandwidth_limit_up (string): The upload bandwidth limit in
+        min_bitrate (float): The minimum bitrate in Mbps. ('1', '2', '5.5',
+            '6', '9', '11', '12', '18', '24', '36', '48' or '54')
+        band_selection (BandSelectionEnum): The client-serving radio
+            frequencies. ('Dual band operation', '5 GHz band only' or 'Dual
+            band operation with Band Steering')
+        per_client_bandwidth_limit_up (int): The upload bandwidth limit in
             Kbps. (0 represents no limit.)
-        per_client_bandwidth_limit_down (string): The download bandwidth limit
-            in Kbps. (0 represents no limit.)
+        per_client_bandwidth_limit_down (int): The download bandwidth limit in
+            Kbps. (0 represents no limit.)
 
     """
 
@@ -145,8 +144,7 @@ class UpdateNetworkSsidModel(object):
                  min_bitrate=None,
                  band_selection=None,
                  per_client_bandwidth_limit_up=None,
-                 per_client_bandwidth_limit_down=None,
-                 additional_properties = {}):
+                 per_client_bandwidth_limit_down=None):
         """Constructor for the UpdateNetworkSsidModel class"""
 
         # Initialize members of the class
@@ -175,9 +173,6 @@ class UpdateNetworkSsidModel(object):
         self.band_selection = band_selection
         self.per_client_bandwidth_limit_up = per_client_bandwidth_limit_up
         self.per_client_bandwidth_limit_down = per_client_bandwidth_limit_down
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -236,11 +231,6 @@ class UpdateNetworkSsidModel(object):
         per_client_bandwidth_limit_up = dictionary.get('perClientBandwidthLimitUp')
         per_client_bandwidth_limit_down = dictionary.get('perClientBandwidthLimitDown')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(name,
                    enabled,
@@ -266,7 +256,6 @@ class UpdateNetworkSsidModel(object):
                    min_bitrate,
                    band_selection,
                    per_client_bandwidth_limit_up,
-                   per_client_bandwidth_limit_down,
-                   dictionary)
+                   per_client_bandwidth_limit_down)
 
 

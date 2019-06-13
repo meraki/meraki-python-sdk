@@ -33,16 +33,12 @@ class BindNetworkModel(object):
 
     def __init__(self,
                  config_template_id=None,
-                 auto_bind=None,
-                 additional_properties = {}):
+                 auto_bind=None):
         """Constructor for the BindNetworkModel class"""
 
         # Initialize members of the class
         self.config_template_id = config_template_id
         self.auto_bind = auto_bind
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -66,14 +62,8 @@ class BindNetworkModel(object):
         config_template_id = dictionary.get('configTemplateId')
         auto_bind = dictionary.get('autoBind')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(config_template_id,
-                   auto_bind,
-                   dictionary)
+                   auto_bind)
 
 
