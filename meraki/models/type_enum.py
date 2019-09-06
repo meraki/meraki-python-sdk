@@ -10,8 +10,8 @@ class TypeEnum(object):
 
     """Implementation of the 'Type' enum.
 
-    Type of the L7 rule. One of: 'application', 'applicationCategory', 'host',
-    'port', 'ipRange'
+    The type of definition. Can be one of 'application',
+    'applicationCategory', 'host', 'port', 'ipRange' or 'localNet'.
 
     Attributes:
         APPLICATION: TODO: type description here.
@@ -19,6 +19,7 @@ class TypeEnum(object):
         HOST: TODO: type description here.
         PORT: TODO: type description here.
         IPRANGE: TODO: type description here.
+        LOCALNET: TODO: type description here.
 
     """
 
@@ -31,4 +32,6 @@ class TypeEnum(object):
     PORT = 'port'
 
     IPRANGE = 'ipRange'
+
+    LOCALNET = 'localNet'
 

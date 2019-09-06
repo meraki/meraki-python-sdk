@@ -14,9 +14,8 @@ class DefinitionModel(object):
     TODO: type model description here.
 
     Attributes:
-        mtype (Type1Enum): The type of definition. Can be one of
-            'application', 'applicationCategory', 'host', 'port', 'ipRange' or
-            'localNet'.
+        mtype (TypeEnum): The type of definition. Can be one of 'application',
+            'applicationCategory', 'host', 'port', 'ipRange' or 'localNet'.
         value (string): If "type" is 'host', 'port', 'ipRange' or 'localNet',
             then "value" must be a string, matching either     a hostname
             (e.g. "somesite.com"), a port (e.g. 8080), or an IP range

@@ -6,7 +6,7 @@
     This file was automatically generated for meraki by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-import meraki.models.rule5_model
+import meraki.models.rule1_model
 
 class BonjourForwardingModel(object):
 
@@ -16,9 +16,9 @@ class BonjourForwardingModel(object):
     a wireless configuration.
 
     Attributes:
-        settings (Settings3Enum): How Bonjour rules are applied. Can be
+        settings (Settings6Enum): How Bonjour rules are applied. Can be
             'network default', 'ignore' or 'custom'.
-        rules (list of Rule5Model): A list of the Bonjour forwarding rules for
+        rules (list of Rule1Model): A list of the Bonjour forwarding rules for
             your group policy. If 'settings' is set to 'custom', at least one
             rule must be specified.
 
@@ -63,7 +63,7 @@ class BonjourForwardingModel(object):
         if dictionary.get('rules') != None:
             rules = list()
             for structure in dictionary.get('rules'):
-                rules.append(meraki.models.rule5_model.Rule5Model.from_dictionary(structure))
+                rules.append(meraki.models.rule1_model.Rule1Model.from_dictionary(structure))
 
         # Return an object of this model
         return cls(settings,

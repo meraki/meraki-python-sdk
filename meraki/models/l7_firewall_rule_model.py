@@ -14,9 +14,9 @@ class L7FirewallRuleModel(object):
     TODO: type model description here.
 
     Attributes:
-        policy (Policy1Enum): The policy applied to matching traffic. Must be
+        policy (PolicyEnum): The policy applied to matching traffic. Must be
             'deny'.
-        mtype (Type2Enum): Type of the L7 Rule. Must be 'application',
+        mtype (Type1Enum): Type of the L7 Rule. Must be 'application',
             'applicationCategory', 'host', 'port' or 'ipRange'
         value (string): The 'value' of what you want to block. If 'type' is
             'host', 'port' or 'ipRange', 'value' must be a string matching

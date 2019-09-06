@@ -16,24 +16,14 @@ class DevicesController(BaseController):
     """A Controller to access Endpoints in the meraki API."""
 
 
-    def blink_network_device_leds(self,
-                                  options=dict()):
-        """Does a POST request to /networks/{networkId}/devices/{serial}/blinkLeds.
+    def get_network_devices(self,
+                            network_id):
+        """Does a GET request to /networks/{networkId}/devices.
 
-        Blink the LEDs on a device
+        List the devices in a network
 
         Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    network_id -- string -- TODO: type description here.
-                        Example: 
-                    serial -- string -- TODO: type description here. Example:
-                                            blink_network_device_leds -- BlinkNetworkDeviceLedsModel
-                        -- TODO: type description here. Example: 
+            network_id (string): TODO: type description here. Example: 
 
         Returns:
             mixed: Response from the API. Successful operation
@@ -47,71 +37,12 @@ class DevicesController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(network_id=options.get("network_id"),
-                                 serial=options.get("serial"))
+        self.validate_parameters(network_id=network_id)
 
         # Prepare query URL
-        _url_path = '/networks/{networkId}/devices/{serial}/blinkLeds'
+        _url_path = '/networks/{networkId}/devices'
         _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'networkId': options.get('network_id', None),
-            'serial': options.get('serial', None)
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.post(_query_url, headers=_headers, parameters=APIHelper.json_serialize(options.get('blink_network_device_leds')))
-        CustomHeaderAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body)
-
-    def reboot_network_device(self,
-                              options=dict()):
-        """Does a POST request to /networks/{networkId}/devices/{serial}/reboot.
-
-        Reboot a device
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    network_id -- string -- TODO: type description here.
-                        Example: 
-                    serial -- string -- TODO: type description here. Example:
-                        
-        Returns:
-            mixed: Response from the API. Successful operation
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Validate required parameters
-        self.validate_parameters(network_id=options.get("network_id"),
-                                 serial=options.get("serial"))
-
-        # Prepare query URL
-        _url_path = '/networks/{networkId}/devices/{serial}/reboot'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'networkId': options.get('network_id', None),
-            'serial': options.get('serial', None)
+            'networkId': network_id
         })
         _query_builder = Configuration.base_uri
         _query_builder += _url_path
@@ -123,63 +54,7 @@ class DevicesController(BaseController):
         }
 
         # Prepare and execute request
-        _request = self.http_client.post(_query_url, headers=_headers)
-        CustomHeaderAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body)
-
-    def remove_network_device(self,
-                              options=dict()):
-        """Does a POST request to /networks/{networkId}/devices/{serial}/remove.
-
-        Remove a single device
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    network_id -- string -- TODO: type description here.
-                        Example: 
-                    serial -- string -- TODO: type description here. Example:
-                        
-        Returns:
-            mixed: Response from the API. Successful operation
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Validate required parameters
-        self.validate_parameters(network_id=options.get("network_id"),
-                                 serial=options.get("serial"))
-
-        # Prepare query URL
-        _url_path = '/networks/{networkId}/devices/{serial}/remove'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'networkId': options.get('network_id', None),
-            'serial': options.get('serial', None)
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.post(_query_url, headers=_headers)
+        _request = self.http_client.get(_query_url, headers=_headers)
         CustomHeaderAuth.apply(_request)
         _context = self.execute_request(_request)
         self.validate_response(_context)
@@ -206,7 +81,7 @@ class DevicesController(BaseController):
                         type description here. Example: 
 
         Returns:
-            mixed: Response from the API. Successful operation
+            void: Response from the API. Successful operation
 
         Raises:
             APIException: When an error occurs while fetching the data from
@@ -231,7 +106,6 @@ class DevicesController(BaseController):
 
         # Prepare headers
         _headers = {
-            'accept': 'application/json',
             'content-type': 'application/json; charset=utf-8'
         }
 
@@ -240,123 +114,6 @@ class DevicesController(BaseController):
         CustomHeaderAuth.apply(_request)
         _context = self.execute_request(_request)
         self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body)
-
-    def get_network_device_uplink(self,
-                                  options=dict()):
-        """Does a GET request to /networks/{networkId}/devices/{serial}/uplink.
-
-        Return the uplink information for a device.
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    network_id -- string -- TODO: type description here.
-                        Example: 
-                    serial -- string -- TODO: type description here. Example:
-                        
-        Returns:
-            mixed: Response from the API. Successful operation
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Validate required parameters
-        self.validate_parameters(network_id=options.get("network_id"),
-                                 serial=options.get("serial"))
-
-        # Prepare query URL
-        _url_path = '/networks/{networkId}/devices/{serial}/uplink'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'networkId': options.get('network_id', None),
-            'serial': options.get('serial', None)
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
-        CustomHeaderAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body)
-
-    def get_network_device_performance(self,
-                                       options=dict()):
-        """Does a GET request to /networks/{networkId}/devices/{serial}/performance.
-
-        Return the performance score for a single device. Only primary MX
-        devices supported. If no data is available, a 204 error code is
-        returned.
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    network_id -- string -- TODO: type description here.
-                        Example: 
-                    serial -- string -- TODO: type description here. Example:
-                        
-        Returns:
-            mixed: Response from the API. Successful operation
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Validate required parameters
-        self.validate_parameters(network_id=options.get("network_id"),
-                                 serial=options.get("serial"))
-
-        # Prepare query URL
-        _url_path = '/networks/{networkId}/devices/{serial}/performance'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'networkId': options.get('network_id', None),
-            'serial': options.get('serial', None)
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
-        CustomHeaderAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body)
 
     def get_network_device(self,
                            options=dict()):
@@ -395,52 +152,6 @@ class DevicesController(BaseController):
         _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'networkId': options.get('network_id', None),
             'serial': options.get('serial', None)
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
-        CustomHeaderAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body)
-
-    def get_network_devices(self,
-                            network_id):
-        """Does a GET request to /networks/{networkId}/devices.
-
-        List the devices in a network
-
-        Args:
-            network_id (string): TODO: type description here. Example: 
-
-        Returns:
-            mixed: Response from the API. Successful operation
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Validate required parameters
-        self.validate_parameters(network_id=network_id)
-
-        # Prepare query URL
-        _url_path = '/networks/{networkId}/devices'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'networkId': network_id
         })
         _query_builder = Configuration.base_uri
         _query_builder += _url_path
@@ -519,11 +230,11 @@ class DevicesController(BaseController):
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body)
 
-    def get_organization_devices(self,
-                                 options=dict()):
-        """Does a GET request to /organizations/{organizationId}/devices.
+    def blink_network_device_leds(self,
+                                  options=dict()):
+        """Does a POST request to /networks/{networkId}/devices/{serial}/blinkLeds.
 
-        List the devices in an organization
+        Blink the LEDs on a device
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -532,23 +243,11 @@ class DevicesController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    organization_id -- string -- TODO: type description here.
+                    network_id -- string -- TODO: type description here.
                         Example: 
-                    per_page -- int -- The number of entries per page
-                        returned. Acceptable range is 3 - 1000. Default is
-                        1000.
-                    starting_after -- string -- A token used by the server to
-                        indicate the start of the page. Often this is a
-                        timestamp or an ID but it is not limited to those.
-                        This parameter should not be defined by client
-                        applications. The link for the first, last, prev, or
-                        next page in the HTTP Link header should define it.
-                    ending_before -- string -- A token used by the server to
-                        indicate the end of the page. Often this is a
-                        timestamp or an ID but it is not limited to those.
-                        This parameter should not be defined by client
-                        applications. The link for the first, last, prev, or
-                        next page in the HTTP Link header should define it.
+                    serial -- string -- TODO: type description here. Example:
+                                            blink_network_device_leds -- BlinkNetworkDeviceLedsModel
+                        -- TODO: type description here. Example: 
 
         Returns:
             mixed: Response from the API. Successful operation
@@ -562,31 +261,27 @@ class DevicesController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(organization_id=options.get("organization_id"))
+        self.validate_parameters(network_id=options.get("network_id"),
+                                 serial=options.get("serial"))
 
         # Prepare query URL
-        _url_path = '/organizations/{organizationId}/devices'
+        _url_path = '/networks/{networkId}/devices/{serial}/blinkLeds'
         _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'organizationId': options.get('organization_id', None)
+            'networkId': options.get('network_id', None),
+            'serial': options.get('serial', None)
         })
         _query_builder = Configuration.base_uri
         _query_builder += _url_path
-        _query_parameters = {
-            'perPage': options.get('per_page', None),
-            'startingAfter': options.get('starting_after', None),
-            'endingBefore': options.get('ending_before', None)
-        }
-        _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
-            _query_parameters, Configuration.array_serialization)
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers
         _headers = {
-            'accept': 'application/json'
+            'accept': 'application/json',
+            'content-type': 'application/json; charset=utf-8'
         }
 
         # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
+        _request = self.http_client.post(_query_url, headers=_headers, parameters=APIHelper.json_serialize(options.get('blink_network_device_leds')))
         CustomHeaderAuth.apply(_request)
         _context = self.execute_request(_request)
         self.validate_response(_context)
@@ -610,7 +305,7 @@ class DevicesController(BaseController):
                     network_id -- string -- TODO: type description here.
                         Example: 
                     serial -- string -- TODO: type description here. Example:
-                                            timespan -- string -- The timespan for which LLDP and CDP
+                                            timespan -- int -- The timespan for which LLDP and CDP
                         information will be fetched. Must be in seconds and
                         less than or equal to a month (2592000 seconds). LLDP
                         and CDP information is sent to the Meraki dashboard
@@ -733,6 +428,299 @@ class DevicesController(BaseController):
             'timespan': options.get('timespan', None),
             'resolution': options.get('resolution', None),
             'uplink': options.get('uplink', None)
+        }
+        _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
+            _query_parameters, Configuration.array_serialization)
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.get(_query_url, headers=_headers)
+        CustomHeaderAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body)
+
+    def get_network_device_performance(self,
+                                       options=dict()):
+        """Does a GET request to /networks/{networkId}/devices/{serial}/performance.
+
+        Return the performance score for a single device. Only primary MX
+        devices supported. If no data is available, a 204 error code is
+        returned.
+
+        Args:
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    network_id -- string -- TODO: type description here.
+                        Example: 
+                    serial -- string -- TODO: type description here. Example:
+                        
+        Returns:
+            mixed: Response from the API. Successful operation
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Validate required parameters
+        self.validate_parameters(network_id=options.get("network_id"),
+                                 serial=options.get("serial"))
+
+        # Prepare query URL
+        _url_path = '/networks/{networkId}/devices/{serial}/performance'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'networkId': options.get('network_id', None),
+            'serial': options.get('serial', None)
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.get(_query_url, headers=_headers)
+        CustomHeaderAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body)
+
+    def reboot_network_device(self,
+                              options=dict()):
+        """Does a POST request to /networks/{networkId}/devices/{serial}/reboot.
+
+        Reboot a device
+
+        Args:
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    network_id -- string -- TODO: type description here.
+                        Example: 
+                    serial -- string -- TODO: type description here. Example:
+                        
+        Returns:
+            mixed: Response from the API. Successful operation
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Validate required parameters
+        self.validate_parameters(network_id=options.get("network_id"),
+                                 serial=options.get("serial"))
+
+        # Prepare query URL
+        _url_path = '/networks/{networkId}/devices/{serial}/reboot'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'networkId': options.get('network_id', None),
+            'serial': options.get('serial', None)
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.post(_query_url, headers=_headers)
+        CustomHeaderAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body)
+
+    def remove_network_device(self,
+                              options=dict()):
+        """Does a POST request to /networks/{networkId}/devices/{serial}/remove.
+
+        Remove a single device
+
+        Args:
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    network_id -- string -- TODO: type description here.
+                        Example: 
+                    serial -- string -- TODO: type description here. Example:
+                        
+        Returns:
+            void: Response from the API. Successful operation
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Validate required parameters
+        self.validate_parameters(network_id=options.get("network_id"),
+                                 serial=options.get("serial"))
+
+        # Prepare query URL
+        _url_path = '/networks/{networkId}/devices/{serial}/remove'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'networkId': options.get('network_id', None),
+            'serial': options.get('serial', None)
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare and execute request
+        _request = self.http_client.post(_query_url)
+        CustomHeaderAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+    def get_network_device_uplink(self,
+                                  options=dict()):
+        """Does a GET request to /networks/{networkId}/devices/{serial}/uplink.
+
+        Return the uplink information for a device.
+
+        Args:
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    network_id -- string -- TODO: type description here.
+                        Example: 
+                    serial -- string -- TODO: type description here. Example:
+                        
+        Returns:
+            mixed: Response from the API. Successful operation
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Validate required parameters
+        self.validate_parameters(network_id=options.get("network_id"),
+                                 serial=options.get("serial"))
+
+        # Prepare query URL
+        _url_path = '/networks/{networkId}/devices/{serial}/uplink'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'networkId': options.get('network_id', None),
+            'serial': options.get('serial', None)
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.get(_query_url, headers=_headers)
+        CustomHeaderAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body)
+
+    def get_organization_devices(self,
+                                 options=dict()):
+        """Does a GET request to /organizations/{organizationId}/devices.
+
+        List the devices in an organization
+
+        Args:
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    organization_id -- string -- TODO: type description here.
+                        Example: 
+                    per_page -- int -- The number of entries per page
+                        returned. Acceptable range is 3 - 1000. Default is
+                        1000.
+                    starting_after -- string -- A token used by the server to
+                        indicate the start of the page. Often this is a
+                        timestamp or an ID but it is not limited to those.
+                        This parameter should not be defined by client
+                        applications. The link for the first, last, prev, or
+                        next page in the HTTP Link header should define it.
+                    ending_before -- string -- A token used by the server to
+                        indicate the end of the page. Often this is a
+                        timestamp or an ID but it is not limited to those.
+                        This parameter should not be defined by client
+                        applications. The link for the first, last, prev, or
+                        next page in the HTTP Link header should define it.
+
+        Returns:
+            mixed: Response from the API. Successful operation
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Validate required parameters
+        self.validate_parameters(organization_id=options.get("organization_id"))
+
+        # Prepare query URL
+        _url_path = '/organizations/{organizationId}/devices'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'organizationId': options.get('organization_id', None)
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_parameters = {
+            'perPage': options.get('per_page', None),
+            'startingAfter': options.get('starting_after', None),
+            'endingBefore': options.get('ending_before', None)
         }
         _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
             _query_parameters, Configuration.array_serialization)

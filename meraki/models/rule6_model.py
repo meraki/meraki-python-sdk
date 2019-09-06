@@ -54,8 +54,7 @@ class Rule6Model(object):
                  allowed_inbound=None,
                  protocol=None,
                  destination_ports=None,
-                 allowed_ips=None,
-                 additional_properties = {}):
+                 allowed_ips=None):
         """Constructor for the Rule6Model class"""
 
         # Initialize members of the class
@@ -67,9 +66,6 @@ class Rule6Model(object):
         self.protocol = protocol
         self.destination_ports = destination_ports
         self.allowed_ips = allowed_ips
-
-        # Add additional model properties to the instance
-        self.additional_properties = additional_properties
 
 
     @classmethod
@@ -99,11 +95,6 @@ class Rule6Model(object):
         destination_ports = dictionary.get('destinationPorts')
         allowed_ips = dictionary.get('allowedIps')
 
-        # Clean out expected properties from dictionary
-        for key in cls._names.values():
-            if key in dictionary:
-                del dictionary[key]
-
         # Return an object of this model
         return cls(name,
                    public_ip,
@@ -112,7 +103,6 @@ class Rule6Model(object):
                    allowed_inbound,
                    protocol,
                    destination_ports,
-                   allowed_ips,
-                   dictionary)
+                   allowed_ips)
 
 

@@ -16,23 +16,14 @@ class SwitchPortsController(BaseController):
     """A Controller to access Endpoints in the meraki API."""
 
 
-    def update_device_switch_port(self,
-                                  options=dict()):
-        """Does a PUT request to /devices/{serial}/switchPorts/{number}.
+    def get_device_switch_ports(self,
+                                serial):
+        """Does a GET request to /devices/{serial}/switchPorts.
 
-        Update a switch port
+        List the switch ports for a switch
 
         Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    serial -- string -- TODO: type description here. Example:
-                                            number -- string -- TODO: type description here. Example:
-                                            update_device_switch_port -- UpdateDeviceSwitchPortModel
-                        -- TODO: type description here. Example: 
+            serial (string): TODO: type description here. Example: 
 
         Returns:
             mixed: Response from the API. Successful operation
@@ -46,14 +37,12 @@ class SwitchPortsController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(serial=options.get("serial"),
-                                 number=options.get("number"))
+        self.validate_parameters(serial=serial)
 
         # Prepare query URL
-        _url_path = '/devices/{serial}/switchPorts/{number}'
+        _url_path = '/devices/{serial}/switchPorts'
         _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'serial': options.get('serial', None),
-            'number': options.get('number', None)
+            'serial': serial
         })
         _query_builder = Configuration.base_uri
         _query_builder += _url_path
@@ -61,12 +50,11 @@ class SwitchPortsController(BaseController):
 
         # Prepare headers
         _headers = {
-            'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'accept': 'application/json'
         }
 
         # Prepare and execute request
-        _request = self.http_client.put(_query_url, headers=_headers, parameters=APIHelper.json_serialize(options.get('update_device_switch_port')))
+        _request = self.http_client.get(_query_url, headers=_headers)
         CustomHeaderAuth.apply(_request)
         _context = self.execute_request(_request)
         self.validate_response(_context)
@@ -129,14 +117,23 @@ class SwitchPortsController(BaseController):
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body)
 
-    def get_device_switch_ports(self,
-                                serial):
-        """Does a GET request to /devices/{serial}/switchPorts.
+    def update_device_switch_port(self,
+                                  options=dict()):
+        """Does a PUT request to /devices/{serial}/switchPorts/{number}.
 
-        List the switch ports for a switch
+        Update a switch port
 
         Args:
-            serial (string): TODO: type description here. Example: 
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    serial -- string -- TODO: type description here. Example:
+                                            number -- string -- TODO: type description here. Example:
+                                            update_device_switch_port -- UpdateDeviceSwitchPortModel
+                        -- TODO: type description here. Example: 
 
         Returns:
             mixed: Response from the API. Successful operation
@@ -150,12 +147,14 @@ class SwitchPortsController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(serial=serial)
+        self.validate_parameters(serial=options.get("serial"),
+                                 number=options.get("number"))
 
         # Prepare query URL
-        _url_path = '/devices/{serial}/switchPorts'
+        _url_path = '/devices/{serial}/switchPorts/{number}'
         _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'serial': serial
+            'serial': options.get('serial', None),
+            'number': options.get('number', None)
         })
         _query_builder = Configuration.base_uri
         _query_builder += _url_path
@@ -163,11 +162,12 @@ class SwitchPortsController(BaseController):
 
         # Prepare headers
         _headers = {
-            'accept': 'application/json'
+            'accept': 'application/json',
+            'content-type': 'application/json; charset=utf-8'
         }
 
         # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
+        _request = self.http_client.put(_query_url, headers=_headers, parameters=APIHelper.json_serialize(options.get('update_device_switch_port')))
         CustomHeaderAuth.apply(_request)
         _context = self.execute_request(_request)
         self.validate_response(_context)

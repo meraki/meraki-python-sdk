@@ -15,9 +15,8 @@ class ActionModel(object):
 
     Attributes:
         resource (string): Unique identifier for the resource to be acted on
-        operation (string): The operation to be used. One of "create",
-            "update", "destroy".
-        body (string): The body of the action
+        operation (string): The operation to be used
+        body (object): The body of the action
 
     """
 

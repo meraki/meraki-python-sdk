@@ -18,7 +18,7 @@ class SplashLoginAttemptsController(BaseController):
 
     def get_network_splash_login_attempts(self,
                                           options=dict()):
-        """Does a GET request to /networks/{id}/splashLoginAttempts.
+        """Does a GET request to /networks/{networkId}/splashLoginAttempts.
 
         List the splash login attempts for a network
 
@@ -29,15 +29,15 @@ class SplashLoginAttemptsController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    id -- string -- TODO: type description here. Example: 
-                    ssid_number -- string -- Only return the login attempts
-                        for the specified SSID
+                    network_id -- string -- TODO: type description here.
+                        Example: 
+                    ssid_number -- SsidNumberEnum -- Only return the login
+                        attempts for the specified SSID
                     login_identifier -- string -- The username, email, or
                         phone number used during login
-                    timespan -- string -- The timespan, in seconds, for the
-                        login attempts. The period will be from [timespan]
-                        seconds ago until now. The maximum timespan is 3
-                        months
+                    timespan -- int -- The timespan, in seconds, for the login
+                        attempts. The period will be from [timespan] seconds
+                        ago until now. The maximum timespan is 3 months
 
         Returns:
             mixed: Response from the API. Successful operation
@@ -51,12 +51,12 @@ class SplashLoginAttemptsController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(id=options.get("id"))
+        self.validate_parameters(network_id=options.get("network_id"))
 
         # Prepare query URL
-        _url_path = '/networks/{id}/splashLoginAttempts'
+        _url_path = '/networks/{networkId}/splashLoginAttempts'
         _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'id': options.get('id', None)
+            'networkId': options.get('network_id', None)
         })
         _query_builder = Configuration.base_uri
         _query_builder += _url_path

@@ -23,7 +23,8 @@ class UpdateNetworkSecurityIntrusionSettingsModel(object):
             none currently saved
         protected_networks (ProtectedNetworksModel): Set the included/excluded
             networks from the intrusion engine (optional - omitting will leave
-            current config unchanged)
+            current config unchanged). This is available only in 'passthrough'
+            mode
 
     """
 

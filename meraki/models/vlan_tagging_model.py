@@ -15,7 +15,7 @@ class VlanTaggingModel(object):
     network has a wireless configuration.
 
     Attributes:
-        settings (Settings2Enum): How VLAN tagging is applied. Can be 'network
+        settings (Settings5Enum): How VLAN tagging is applied. Can be 'network
             default', 'ignore' or 'custom'.
         vlan_id (string): The ID of the vlan you want to tag. This only
             applies if 'settings' is set to 'custom'.

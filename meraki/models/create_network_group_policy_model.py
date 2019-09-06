@@ -9,6 +9,7 @@
 import meraki.models.scheduling_model
 import meraki.models.bandwidth_model
 import meraki.models.firewall_and_traffic_shaping_model
+import meraki.models.content_filtering_model
 import meraki.models.vlan_tagging_model
 import meraki.models.bonjour_forwarding_model
 
@@ -26,6 +27,8 @@ class CreateNetworkGroupPolicyModel(object):
             to your group policy.
         firewall_and_traffic_shaping (FirewallAndTrafficShapingModel): The
             firewall and traffic shaping rules and settings for your policy.
+        content_filtering (ContentFilteringModel): The content filtering
+            settings for your group policy
         splash_auth_settings (SplashAuthSettingsEnum): Whether clients bound
             to your policy will bypass splash authorization or behave
             according to the network's rules. Can be one of 'network default'
@@ -46,6 +49,7 @@ class CreateNetworkGroupPolicyModel(object):
         "scheduling":'scheduling',
         "bandwidth":'bandwidth',
         "firewall_and_traffic_shaping":'firewallAndTrafficShaping',
+        "content_filtering":'contentFiltering',
         "splash_auth_settings":'splashAuthSettings',
         "vlan_tagging":'vlanTagging',
         "bonjour_forwarding":'bonjourForwarding'
@@ -56,6 +60,7 @@ class CreateNetworkGroupPolicyModel(object):
                  scheduling=None,
                  bandwidth=None,
                  firewall_and_traffic_shaping=None,
+                 content_filtering=None,
                  splash_auth_settings=None,
                  vlan_tagging=None,
                  bonjour_forwarding=None):
@@ -66,6 +71,7 @@ class CreateNetworkGroupPolicyModel(object):
         self.scheduling = scheduling
         self.bandwidth = bandwidth
         self.firewall_and_traffic_shaping = firewall_and_traffic_shaping
+        self.content_filtering = content_filtering
         self.splash_auth_settings = splash_auth_settings
         self.vlan_tagging = vlan_tagging
         self.bonjour_forwarding = bonjour_forwarding
@@ -93,6 +99,7 @@ class CreateNetworkGroupPolicyModel(object):
         scheduling = meraki.models.scheduling_model.SchedulingModel.from_dictionary(dictionary.get('scheduling')) if dictionary.get('scheduling') else None
         bandwidth = meraki.models.bandwidth_model.BandwidthModel.from_dictionary(dictionary.get('bandwidth')) if dictionary.get('bandwidth') else None
         firewall_and_traffic_shaping = meraki.models.firewall_and_traffic_shaping_model.FirewallAndTrafficShapingModel.from_dictionary(dictionary.get('firewallAndTrafficShaping')) if dictionary.get('firewallAndTrafficShaping') else None
+        content_filtering = meraki.models.content_filtering_model.ContentFilteringModel.from_dictionary(dictionary.get('contentFiltering')) if dictionary.get('contentFiltering') else None
         splash_auth_settings = dictionary.get('splashAuthSettings')
         vlan_tagging = meraki.models.vlan_tagging_model.VlanTaggingModel.from_dictionary(dictionary.get('vlanTagging')) if dictionary.get('vlanTagging') else None
         bonjour_forwarding = meraki.models.bonjour_forwarding_model.BonjourForwardingModel.from_dictionary(dictionary.get('bonjourForwarding')) if dictionary.get('bonjourForwarding') else None
@@ -102,6 +109,7 @@ class CreateNetworkGroupPolicyModel(object):
                    scheduling,
                    bandwidth,
                    firewall_and_traffic_shaping,
+                   content_filtering,
                    splash_auth_settings,
                    vlan_tagging,
                    bonjour_forwarding)

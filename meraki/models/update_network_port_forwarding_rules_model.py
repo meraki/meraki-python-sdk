@@ -6,7 +6,7 @@
     This file was automatically generated for meraki by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-import meraki.models.rule11_model
+import meraki.models.rule7_model
 
 class UpdateNetworkPortForwardingRulesModel(object):
 
@@ -15,7 +15,7 @@ class UpdateNetworkPortForwardingRulesModel(object):
     TODO: type model description here.
 
     Attributes:
-        rules (list of Rule11Model): An array of port forwarding params
+        rules (list of Rule7Model): An array of port forwarding params
 
     """
 
@@ -54,7 +54,7 @@ class UpdateNetworkPortForwardingRulesModel(object):
         if dictionary.get('rules') != None:
             rules = list()
             for structure in dictionary.get('rules'):
-                rules.append(meraki.models.rule11_model.Rule11Model.from_dictionary(structure))
+                rules.append(meraki.models.rule7_model.Rule7Model.from_dictionary(structure))
 
         # Return an object of this model
         return cls(rules)

@@ -6,8 +6,6 @@
     This file was automatically generated for meraki by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-import meraki.models.definition_model
-import meraki.models.per_client_bandwidth_limits_model
 
 class Rule8Model(object):
 
@@ -16,40 +14,41 @@ class Rule8Model(object):
     TODO: type model description here.
 
     Attributes:
-        definitions (list of DefinitionModel): A list of objects describing
-            the definitions of your traffic shaping rule. At least one
-            definition is required.
-        per_client_bandwidth_limits (PerClientBandwidthLimitsModel): An object
-            describing the bandwidth settings for your rule.
-        dscp_tag_value (int): The DSCP tag applied by your rule. null means
-            'Do not change DSCP tag'.     For a list of possible tag values,
-            use the trafficShaping/dscpTaggingOptions endpoint.
-        pcp_tag_value (int): The PCP tag applied by your rule. Can be 0
-            (lowest priority) through 7 (highest priority).     null means 'Do
-            not set PCP tag'.
+        comment (string): Description of the rule (optional)
+        policy (string): 'allow' or 'deny' traffic specified by this rule
+        protocol (string): The type of protocol (must be 'tcp', 'udp', 'icmp'
+            or 'any')
+        dest_port (string): Comma-separated list of destination port(s)
+            (integer in the range 1-65535), or 'any'
+        dest_cidr (string): Comma-separated list of destination IP address(es)
+            (in IP or CIDR notation), fully-qualified domain names (FQDN) or
+            'any'
 
     """
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "definitions":'definitions',
-        "per_client_bandwidth_limits":'perClientBandwidthLimits',
-        "dscp_tag_value":'dscpTagValue',
-        "pcp_tag_value":'pcpTagValue'
+        "policy":'policy',
+        "protocol":'protocol',
+        "dest_cidr":'destCidr',
+        "comment":'comment',
+        "dest_port":'destPort'
     }
 
     def __init__(self,
-                 definitions=None,
-                 per_client_bandwidth_limits=None,
-                 dscp_tag_value=None,
-                 pcp_tag_value=None):
+                 policy=None,
+                 protocol=None,
+                 dest_cidr=None,
+                 comment=None,
+                 dest_port=None):
         """Constructor for the Rule8Model class"""
 
         # Initialize members of the class
-        self.definitions = definitions
-        self.per_client_bandwidth_limits = per_client_bandwidth_limits
-        self.dscp_tag_value = dscp_tag_value
-        self.pcp_tag_value = pcp_tag_value
+        self.comment = comment
+        self.policy = policy
+        self.protocol = protocol
+        self.dest_port = dest_port
+        self.dest_cidr = dest_cidr
 
 
     @classmethod
@@ -70,19 +69,17 @@ class Rule8Model(object):
             return None
 
         # Extract variables from the dictionary
-        definitions = None
-        if dictionary.get('definitions') != None:
-            definitions = list()
-            for structure in dictionary.get('definitions'):
-                definitions.append(meraki.models.definition_model.DefinitionModel.from_dictionary(structure))
-        per_client_bandwidth_limits = meraki.models.per_client_bandwidth_limits_model.PerClientBandwidthLimitsModel.from_dictionary(dictionary.get('perClientBandwidthLimits')) if dictionary.get('perClientBandwidthLimits') else None
-        dscp_tag_value = dictionary.get('dscpTagValue')
-        pcp_tag_value = dictionary.get('pcpTagValue')
+        policy = dictionary.get('policy')
+        protocol = dictionary.get('protocol')
+        dest_cidr = dictionary.get('destCidr')
+        comment = dictionary.get('comment')
+        dest_port = dictionary.get('destPort')
 
         # Return an object of this model
-        return cls(definitions,
-                   per_client_bandwidth_limits,
-                   dscp_tag_value,
-                   pcp_tag_value)
+        return cls(policy,
+                   protocol,
+                   dest_cidr,
+                   comment,
+                   dest_port)
 
 

@@ -87,6 +87,9 @@ class UpdateNetworkSsidModel(object):
             Kbps. (0 represents no limit.)
         per_client_bandwidth_limit_down (int): The download bandwidth limit in
             Kbps. (0 represents no limit.)
+        lan_isolation_enabled (bool): Boolean indicating whether Layer 2 LAN
+            isolation should be enabled or disabled. Only configurable on
+            SSIDs in bridge mode.
 
     """
 
@@ -116,7 +119,8 @@ class UpdateNetworkSsidModel(object):
         "min_bitrate":'minBitrate',
         "band_selection":'bandSelection',
         "per_client_bandwidth_limit_up":'perClientBandwidthLimitUp',
-        "per_client_bandwidth_limit_down":'perClientBandwidthLimitDown'
+        "per_client_bandwidth_limit_down":'perClientBandwidthLimitDown',
+        "lan_isolation_enabled":'lanIsolationEnabled'
     }
 
     def __init__(self,
@@ -144,7 +148,8 @@ class UpdateNetworkSsidModel(object):
                  min_bitrate=None,
                  band_selection=None,
                  per_client_bandwidth_limit_up=None,
-                 per_client_bandwidth_limit_down=None):
+                 per_client_bandwidth_limit_down=None,
+                 lan_isolation_enabled=None):
         """Constructor for the UpdateNetworkSsidModel class"""
 
         # Initialize members of the class
@@ -173,6 +178,7 @@ class UpdateNetworkSsidModel(object):
         self.band_selection = band_selection
         self.per_client_bandwidth_limit_up = per_client_bandwidth_limit_up
         self.per_client_bandwidth_limit_down = per_client_bandwidth_limit_down
+        self.lan_isolation_enabled = lan_isolation_enabled
 
 
     @classmethod
@@ -230,6 +236,7 @@ class UpdateNetworkSsidModel(object):
         band_selection = dictionary.get('bandSelection')
         per_client_bandwidth_limit_up = dictionary.get('perClientBandwidthLimitUp')
         per_client_bandwidth_limit_down = dictionary.get('perClientBandwidthLimitDown')
+        lan_isolation_enabled = dictionary.get('lanIsolationEnabled')
 
         # Return an object of this model
         return cls(name,
@@ -256,6 +263,7 @@ class UpdateNetworkSsidModel(object):
                    min_bitrate,
                    band_selection,
                    per_client_bandwidth_limit_up,
-                   per_client_bandwidth_limit_down)
+                   per_client_bandwidth_limit_down,
+                   lan_isolation_enabled)
 
 

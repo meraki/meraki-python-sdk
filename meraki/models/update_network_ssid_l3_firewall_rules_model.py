@@ -6,7 +6,7 @@
     This file was automatically generated for meraki by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-import meraki.models.rule4_model
+import meraki.models.rule8_model
 
 class UpdateNetworkSsidL3FirewallRulesModel(object):
 
@@ -15,7 +15,7 @@ class UpdateNetworkSsidL3FirewallRulesModel(object):
     TODO: type model description here.
 
     Attributes:
-        rules (list of Rule4Model): An ordered array of the firewall rules for
+        rules (list of Rule8Model): An ordered array of the firewall rules for
             this SSID (not including the local LAN access rule or the default
             rule)
         allow_lan_access (bool): Allow wireless client access to local LAN
@@ -62,7 +62,7 @@ class UpdateNetworkSsidL3FirewallRulesModel(object):
         if dictionary.get('rules') != None:
             rules = list()
             for structure in dictionary.get('rules'):
-                rules.append(meraki.models.rule4_model.Rule4Model.from_dictionary(structure))
+                rules.append(meraki.models.rule8_model.Rule8Model.from_dictionary(structure))
         allow_lan_access = dictionary.get('allowLanAccess')
 
         # Return an object of this model

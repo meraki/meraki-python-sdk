@@ -10,8 +10,8 @@ class Type1Enum(object):
 
     """Implementation of the 'Type1' enum.
 
-    The type of definition. Can be one of 'application',
-    'applicationCategory', 'host', 'port', 'ipRange' or 'localNet'.
+    Type of the L7 Rule. Must be 'application', 'applicationCategory', 'host',
+    'port' or 'ipRange'
 
     Attributes:
         APPLICATION: TODO: type description here.
@@ -19,7 +19,6 @@ class Type1Enum(object):
         HOST: TODO: type description here.
         PORT: TODO: type description here.
         IPRANGE: TODO: type description here.
-        LOCALNET: TODO: type description here.
 
     """
 
@@ -32,6 +31,4 @@ class Type1Enum(object):
     PORT = 'port'
 
     IPRANGE = 'ipRange'
-
-    LOCALNET = 'localNet'
 

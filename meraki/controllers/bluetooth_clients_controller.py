@@ -46,9 +46,9 @@ class BluetoothClientsController(BaseController):
                         This parameter should not be defined by client
                         applications. The link for the first, last, prev, or
                         next page in the HTTP Link header should define it.
-                    timespan -- string -- The timespan, in seconds, used to
-                        look back from now for bluetooth clients
-                    include_connectivity_history -- string -- Include the
+                    timespan -- int -- The timespan, in seconds, used to look
+                        back from now for bluetooth clients
+                    include_connectivity_history -- bool -- Include the
                         connectivity history for this client
 
         Returns:
@@ -115,11 +115,11 @@ class BluetoothClientsController(BaseController):
                         Example: 
                     bluetooth_client_id -- string -- TODO: type description
                         here. Example: 
-                    include_connectivity_history -- string -- Include the
+                    include_connectivity_history -- bool -- Include the
                         connectivity history for this client
-                    connectivity_history_timespan -- string -- The timespan,
-                        in seconds, for the connectivityHistory data. By
-                        default 1 day, 86400, will be used.
+                    connectivity_history_timespan -- int -- The timespan, in
+                        seconds, for the connectivityHistory data. By default
+                        1 day, 86400, will be used.
 
         Returns:
             mixed: Response from the API. Successful operation

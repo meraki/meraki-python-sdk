@@ -10,19 +10,19 @@ class Settings2Enum(object):
 
     """Implementation of the 'Settings2' enum.
 
-    How VLAN tagging is applied. Can be 'network default', 'ignore' or
-    'custom'.
+    How URL patterns are applied. Can be 'network default', 'append' or
+    'override'.
 
     Attributes:
         ENUM_NETWORK DEFAULT: TODO: type description here.
-        IGNORE: TODO: type description here.
-        CUSTOM: TODO: type description here.
+        APPEND: TODO: type description here.
+        OVERRIDE: TODO: type description here.
 
     """
 
     ENUM_NETWORK_DEFAULT = 'network default'
 
-    IGNORE = 'ignore'
+    APPEND = 'append'
 
-    CUSTOM = 'custom'
+    OVERRIDE = 'override'
 

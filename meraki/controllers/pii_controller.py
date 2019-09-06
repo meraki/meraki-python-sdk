@@ -16,166 +16,6 @@ class PIIController(BaseController):
     """A Controller to access Endpoints in the meraki API."""
 
 
-    def get_network_pii_sm_owners_for_key(self,
-                                          options=dict()):
-        """Does a GET request to /networks/{networkId}/pii/smOwnersForKey.
-
-        Given a piece of Personally Identifiable Information (PII), return the
-        Systems Manager owner ID(s) associated with that identifier. These
-        owner IDs can be used with the Systems Manager API endpoints to
-        retrieve owner details. Exactly one identifier will be accepted.
-        ## ALTERNATE PATH
-        ```
-        /organizations/{organizationId}/pii/smOwnersForKey
-        ```
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    network_id -- string -- TODO: type description here.
-                        Example: 
-                    username -- string -- The username of a Systems Manager
-                        user
-                    email -- string -- The email of a network user account or
-                        a Systems Manager device
-                    mac -- string -- The MAC of a network client device or a
-                        Systems Manager device
-                    serial -- string -- The serial of a Systems Manager
-                        device
-                    imei -- string -- The IMEI of a Systems Manager device
-                    bluetooth_mac -- string -- The MAC of a Bluetooth client
-
-        Returns:
-            mixed: Response from the API. Successful operation
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Validate required parameters
-        self.validate_parameters(network_id=options.get("network_id"))
-
-        # Prepare query URL
-        _url_path = '/networks/{networkId}/pii/smOwnersForKey'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'networkId': options.get('network_id', None)
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_parameters = {
-            'username': options.get('username', None),
-            'email': options.get('email', None),
-            'mac': options.get('mac', None),
-            'serial': options.get('serial', None),
-            'imei': options.get('imei', None),
-            'bluetoothMac': options.get('bluetooth_mac', None)
-        }
-        _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
-            _query_parameters, Configuration.array_serialization)
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
-        CustomHeaderAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body)
-
-    def get_network_pii_sm_devices_for_key(self,
-                                           options=dict()):
-        """Does a GET request to /networks/{networkId}/pii/smDevicesForKey.
-
-        Given a piece of Personally Identifiable Information (PII), return the
-        Systems Manager device ID(s) associated with that identifier. These
-        device IDs can be used with the Systems Manager API endpoints to
-        retrieve device details. Exactly one identifier will be accepted.
-        ## ALTERNATE PATH
-        ```
-        /organizations/{organizationId}/pii/smDevicesForKey
-        ```
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    network_id -- string -- TODO: type description here.
-                        Example: 
-                    username -- string -- The username of a Systems Manager
-                        user
-                    email -- string -- The email of a network user account or
-                        a Systems Manager device
-                    mac -- string -- The MAC of a network client device or a
-                        Systems Manager device
-                    serial -- string -- The serial of a Systems Manager
-                        device
-                    imei -- string -- The IMEI of a Systems Manager device
-                    bluetooth_mac -- string -- The MAC of a Bluetooth client
-
-        Returns:
-            mixed: Response from the API. Successful operation
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Validate required parameters
-        self.validate_parameters(network_id=options.get("network_id"))
-
-        # Prepare query URL
-        _url_path = '/networks/{networkId}/pii/smDevicesForKey'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'networkId': options.get('network_id', None)
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_parameters = {
-            'username': options.get('username', None),
-            'email': options.get('email', None),
-            'mac': options.get('mac', None),
-            'serial': options.get('serial', None),
-            'imei': options.get('imei', None),
-            'bluetoothMac': options.get('bluetooth_mac', None)
-        }
-        _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
-            _query_parameters, Configuration.array_serialization)
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
-        CustomHeaderAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body)
-
     def get_network_pii_pii_keys(self,
                                  options=dict()):
         """Does a GET request to /networks/{networkId}/pii/piiKeys.
@@ -257,80 +97,18 @@ class PIIController(BaseController):
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body)
 
-    def delete_network_pii_request(self,
-                                   options=dict()):
-        """Does a DELETE request to /networks/{networkId}/pii/requests/{requestId}.
+    def get_network_pii_requests(self,
+                                 network_id):
+        """Does a GET request to /networks/{networkId}/pii/requests.
 
-        Delete a restrict processing PII request
+        List the PII requests for this network or organization
         ## ALTERNATE PATH
         ```
-        /organizations/{organizationId}/pii/requests/{requestId}
+        /organizations/{organizationId}/pii/requests
         ```
 
         Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    network_id -- string -- TODO: type description here.
-                        Example: 
-                    request_id -- string -- TODO: type description here.
-                        Example: 
-
-        Returns:
-            void: Response from the API. Successful operation
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Validate required parameters
-        self.validate_parameters(network_id=options.get("network_id"),
-                                 request_id=options.get("request_id"))
-
-        # Prepare query URL
-        _url_path = '/networks/{networkId}/pii/requests/{requestId}'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'networkId': options.get('network_id', None),
-            'requestId': options.get('request_id', None)
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare and execute request
-        _request = self.http_client.delete(_query_url)
-        CustomHeaderAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-    def get_network_pii_request(self,
-                                options=dict()):
-        """Does a GET request to /networks/{networkId}/pii/requests/{requestId}.
-
-        Return a PII request
-        ## ALTERNATE PATH
-        ```
-        /organizations/{organizationId}/pii/requests/{requestId}
-        ```
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    network_id -- string -- TODO: type description here.
-                        Example: 
-                    request_id -- string -- TODO: type description here.
-                        Example: 
+            network_id (string): TODO: type description here. Example: 
 
         Returns:
             mixed: Response from the API. Successful operation
@@ -344,14 +122,12 @@ class PIIController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(network_id=options.get("network_id"),
-                                 request_id=options.get("request_id"))
+        self.validate_parameters(network_id=network_id)
 
         # Prepare query URL
-        _url_path = '/networks/{networkId}/pii/requests/{requestId}'
+        _url_path = '/networks/{networkId}/pii/requests'
         _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'networkId': options.get('network_id', None),
-            'requestId': options.get('request_id', None)
+            'networkId': network_id
         })
         _query_builder = Configuration.base_uri
         _query_builder += _url_path
@@ -431,18 +207,27 @@ class PIIController(BaseController):
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body)
 
-    def get_network_pii_requests(self,
-                                 network_id):
-        """Does a GET request to /networks/{networkId}/pii/requests.
+    def get_network_pii_request(self,
+                                options=dict()):
+        """Does a GET request to /networks/{networkId}/pii/requests/{requestId}.
 
-        List the PII requests for this network or organization
+        Return a PII request
         ## ALTERNATE PATH
         ```
-        /organizations/{organizationId}/pii/requests
+        /organizations/{organizationId}/pii/requests/{requestId}
         ```
 
         Args:
-            network_id (string): TODO: type description here. Example: 
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    network_id -- string -- TODO: type description here.
+                        Example: 
+                    request_id -- string -- TODO: type description here.
+                        Example: 
 
         Returns:
             mixed: Response from the API. Successful operation
@@ -456,15 +241,230 @@ class PIIController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(network_id=network_id)
+        self.validate_parameters(network_id=options.get("network_id"),
+                                 request_id=options.get("request_id"))
 
         # Prepare query URL
-        _url_path = '/networks/{networkId}/pii/requests'
+        _url_path = '/networks/{networkId}/pii/requests/{requestId}'
         _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'networkId': network_id
+            'networkId': options.get('network_id', None),
+            'requestId': options.get('request_id', None)
         })
         _query_builder = Configuration.base_uri
         _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.get(_query_url, headers=_headers)
+        CustomHeaderAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body)
+
+    def delete_network_pii_request(self,
+                                   options=dict()):
+        """Does a DELETE request to /networks/{networkId}/pii/requests/{requestId}.
+
+        Delete a restrict processing PII request
+        ## ALTERNATE PATH
+        ```
+        /organizations/{organizationId}/pii/requests/{requestId}
+        ```
+
+        Args:
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    network_id -- string -- TODO: type description here.
+                        Example: 
+                    request_id -- string -- TODO: type description here.
+                        Example: 
+
+        Returns:
+            void: Response from the API. Successful operation
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Validate required parameters
+        self.validate_parameters(network_id=options.get("network_id"),
+                                 request_id=options.get("request_id"))
+
+        # Prepare query URL
+        _url_path = '/networks/{networkId}/pii/requests/{requestId}'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'networkId': options.get('network_id', None),
+            'requestId': options.get('request_id', None)
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare and execute request
+        _request = self.http_client.delete(_query_url)
+        CustomHeaderAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+    def get_network_pii_sm_devices_for_key(self,
+                                           options=dict()):
+        """Does a GET request to /networks/{networkId}/pii/smDevicesForKey.
+
+        Given a piece of Personally Identifiable Information (PII), return the
+        Systems Manager device ID(s) associated with that identifier. These
+        device IDs can be used with the Systems Manager API endpoints to
+        retrieve device details. Exactly one identifier will be accepted.
+        ## ALTERNATE PATH
+        ```
+        /organizations/{organizationId}/pii/smDevicesForKey
+        ```
+
+        Args:
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    network_id -- string -- TODO: type description here.
+                        Example: 
+                    username -- string -- The username of a Systems Manager
+                        user
+                    email -- string -- The email of a network user account or
+                        a Systems Manager device
+                    mac -- string -- The MAC of a network client device or a
+                        Systems Manager device
+                    serial -- string -- The serial of a Systems Manager
+                        device
+                    imei -- string -- The IMEI of a Systems Manager device
+                    bluetooth_mac -- string -- The MAC of a Bluetooth client
+
+        Returns:
+            mixed: Response from the API. Successful operation
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Validate required parameters
+        self.validate_parameters(network_id=options.get("network_id"))
+
+        # Prepare query URL
+        _url_path = '/networks/{networkId}/pii/smDevicesForKey'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'networkId': options.get('network_id', None)
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_parameters = {
+            'username': options.get('username', None),
+            'email': options.get('email', None),
+            'mac': options.get('mac', None),
+            'serial': options.get('serial', None),
+            'imei': options.get('imei', None),
+            'bluetoothMac': options.get('bluetooth_mac', None)
+        }
+        _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
+            _query_parameters, Configuration.array_serialization)
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare headers
+        _headers = {
+            'accept': 'application/json'
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.get(_query_url, headers=_headers)
+        CustomHeaderAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return APIHelper.json_deserialize(_context.response.raw_body)
+
+    def get_network_pii_sm_owners_for_key(self,
+                                          options=dict()):
+        """Does a GET request to /networks/{networkId}/pii/smOwnersForKey.
+
+        Given a piece of Personally Identifiable Information (PII), return the
+        Systems Manager owner ID(s) associated with that identifier. These
+        owner IDs can be used with the Systems Manager API endpoints to
+        retrieve owner details. Exactly one identifier will be accepted.
+        ## ALTERNATE PATH
+        ```
+        /organizations/{organizationId}/pii/smOwnersForKey
+        ```
+
+        Args:
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    network_id -- string -- TODO: type description here.
+                        Example: 
+                    username -- string -- The username of a Systems Manager
+                        user
+                    email -- string -- The email of a network user account or
+                        a Systems Manager device
+                    mac -- string -- The MAC of a network client device or a
+                        Systems Manager device
+                    serial -- string -- The serial of a Systems Manager
+                        device
+                    imei -- string -- The IMEI of a Systems Manager device
+                    bluetooth_mac -- string -- The MAC of a Bluetooth client
+
+        Returns:
+            mixed: Response from the API. Successful operation
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Validate required parameters
+        self.validate_parameters(network_id=options.get("network_id"))
+
+        # Prepare query URL
+        _url_path = '/networks/{networkId}/pii/smOwnersForKey'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'networkId': options.get('network_id', None)
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_parameters = {
+            'username': options.get('username', None),
+            'email': options.get('email', None),
+            'mac': options.get('mac', None),
+            'serial': options.get('serial', None),
+            'imei': options.get('imei', None),
+            'bluetoothMac': options.get('bluetooth_mac', None)
+        }
+        _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
+            _query_parameters, Configuration.array_serialization)
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare headers

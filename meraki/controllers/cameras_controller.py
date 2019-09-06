@@ -81,8 +81,8 @@ class CamerasController(BaseController):
                                       options=dict()):
         """Does a GET request to /networks/{networkId}/cameras/{serial}/videoLink.
 
-        Returns video link for the specified camera. If a timestamp supplied,
-        it links to that time.
+        Returns video link to the specified camera. If a timestamp is
+        supplied, it links to that timestamp.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -94,9 +94,10 @@ class CamerasController(BaseController):
                     network_id -- string -- TODO: type description here.
                         Example: 
                     serial -- string -- TODO: type description here. Example:
-                                            timestamp -- string -- The video link will start at this
-                        timestamp. The timestamp is in UNIX Epoch time
-                        (milliseconds).
+                                            timestamp -- string -- [optional] The video link will
+                        start at this timestamp. The timestamp is in UNIX
+                        Epoch time (milliseconds). If no timestamp is
+                        specified, we will assume current time.
 
         Returns:
             mixed: Response from the API. Successful operation

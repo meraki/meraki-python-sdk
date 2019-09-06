@@ -6,6 +6,7 @@
     This file was automatically generated for meraki by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
+import meraki.models.vendor_config_model
 
 class CreateNetworkSmProfileClarityModel(object):
 
@@ -20,17 +21,13 @@ class CreateNetworkSmProfileClarityModel(object):
             assigned
         plugin_bundle_id (string): The bundle ID of the application, defaults
             to com.cisco.ciscosecurity.app
-        filter_browsers (string): Whether or not to enable browser traffic
+        filter_browsers (bool): Whether or not to enable browser traffic
             filtering (one of true, false). Default true.
-        filter_sockets (string): Whether or not to enable socket traffic
+        filter_sockets (bool): Whether or not to enable socket traffic
             filtering (one of true, false). Default true.
-        vendor_config (string): The specific VendorConfig to be passed to the
-            filtering framework, as JSON. VendorConfig should be an array of
-            objects, as: [ { "key": "some_key", type: "some_type", "value":
-            "some_value" }, ... ]  type is one of manual_string, manual_int,
-            manual_boolean, manual_choice, manual_multiselect, manual_list,
-            auto_username, auto_email, auto_mac_address, auto_serial_number,
-            auto_notes, auto_name
+        vendor_config (list of VendorConfigModel): The specific VendorConfig
+            to be passed to the filtering framework, in the form of an array
+            of objects (as JSON).
 
     """
 
@@ -38,19 +35,19 @@ class CreateNetworkSmProfileClarityModel(object):
     _names = {
         "name":'name',
         "scope":'scope',
+        "vendor_config":'VendorConfig',
         "plugin_bundle_id":'PluginBundleID',
         "filter_browsers":'FilterBrowsers',
-        "filter_sockets":'FilterSockets',
-        "vendor_config":'VendorConfig'
+        "filter_sockets":'FilterSockets'
     }
 
     def __init__(self,
                  name=None,
                  scope=None,
+                 vendor_config=None,
                  plugin_bundle_id=None,
                  filter_browsers=None,
-                 filter_sockets=None,
-                 vendor_config=None):
+                 filter_sockets=None):
         """Constructor for the CreateNetworkSmProfileClarityModel class"""
 
         # Initialize members of the class
@@ -82,17 +79,21 @@ class CreateNetworkSmProfileClarityModel(object):
         # Extract variables from the dictionary
         name = dictionary.get('name')
         scope = dictionary.get('scope')
+        vendor_config = None
+        if dictionary.get('VendorConfig') != None:
+            vendor_config = list()
+            for structure in dictionary.get('VendorConfig'):
+                vendor_config.append(meraki.models.vendor_config_model.VendorConfigModel.from_dictionary(structure))
         plugin_bundle_id = dictionary.get('PluginBundleID')
         filter_browsers = dictionary.get('FilterBrowsers')
         filter_sockets = dictionary.get('FilterSockets')
-        vendor_config = dictionary.get('VendorConfig')
 
         # Return an object of this model
         return cls(name,
                    scope,
+                   vendor_config,
                    plugin_bundle_id,
                    filter_browsers,
-                   filter_sockets,
-                   vendor_config)
+                   filter_sockets)
 
 

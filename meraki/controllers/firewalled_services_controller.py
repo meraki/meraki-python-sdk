@@ -16,26 +16,14 @@ class FirewalledServicesController(BaseController):
     """A Controller to access Endpoints in the meraki API."""
 
 
-    def update_network_firewalled_service(self,
-                                          options=dict()):
-        """Does a PUT request to /networks/{networkId}/firewalledServices/{service}.
+    def get_network_firewalled_services(self,
+                                        network_id):
+        """Does a GET request to /networks/{networkId}/firewalledServices.
 
-        Updates the accessibility settings for the given service ('ICMP',
-        'web', or 'SNMP')
+        List the appliance services and their accessibility rules
 
         Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    network_id -- string -- TODO: type description here.
-                        Example: 
-                    service -- string -- TODO: type description here. Example:
-                                            update_network_firewalled_service --
-                        UpdateNetworkFirewalledServiceModel -- TODO: type
-                        description here. Example: 
+            network_id (string): TODO: type description here. Example: 
 
         Returns:
             mixed: Response from the API. Successful operation
@@ -49,14 +37,12 @@ class FirewalledServicesController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(network_id=options.get("network_id"),
-                                 service=options.get("service"))
+        self.validate_parameters(network_id=network_id)
 
         # Prepare query URL
-        _url_path = '/networks/{networkId}/firewalledServices/{service}'
+        _url_path = '/networks/{networkId}/firewalledServices'
         _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'networkId': options.get('network_id', None),
-            'service': options.get('service', None)
+            'networkId': network_id
         })
         _query_builder = Configuration.base_uri
         _query_builder += _url_path
@@ -64,12 +50,11 @@ class FirewalledServicesController(BaseController):
 
         # Prepare headers
         _headers = {
-            'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
+            'accept': 'application/json'
         }
 
         # Prepare and execute request
-        _request = self.http_client.put(_query_url, headers=_headers, parameters=APIHelper.json_serialize(options.get('update_network_firewalled_service')))
+        _request = self.http_client.get(_query_url, headers=_headers)
         CustomHeaderAuth.apply(_request)
         _context = self.execute_request(_request)
         self.validate_response(_context)
@@ -134,14 +119,26 @@ class FirewalledServicesController(BaseController):
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body)
 
-    def get_network_firewalled_services(self,
-                                        network_id):
-        """Does a GET request to /networks/{networkId}/firewalledServices.
+    def update_network_firewalled_service(self,
+                                          options=dict()):
+        """Does a PUT request to /networks/{networkId}/firewalledServices/{service}.
 
-        List the appliance services and their accessibility rules
+        Updates the accessibility settings for the given service ('ICMP',
+        'web', or 'SNMP')
 
         Args:
-            network_id (string): TODO: type description here. Example: 
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    network_id -- string -- TODO: type description here.
+                        Example: 
+                    service -- string -- TODO: type description here. Example:
+                                            update_network_firewalled_service --
+                        UpdateNetworkFirewalledServiceModel -- TODO: type
+                        description here. Example: 
 
         Returns:
             mixed: Response from the API. Successful operation
@@ -155,12 +152,15 @@ class FirewalledServicesController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(network_id=network_id)
+        self.validate_parameters(network_id=options.get("network_id"),
+                                 service=options.get("service"),
+                                 update_network_firewalled_service=options.get("update_network_firewalled_service"))
 
         # Prepare query URL
-        _url_path = '/networks/{networkId}/firewalledServices'
+        _url_path = '/networks/{networkId}/firewalledServices/{service}'
         _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'networkId': network_id
+            'networkId': options.get('network_id', None),
+            'service': options.get('service', None)
         })
         _query_builder = Configuration.base_uri
         _query_builder += _url_path
@@ -168,11 +168,12 @@ class FirewalledServicesController(BaseController):
 
         # Prepare headers
         _headers = {
-            'accept': 'application/json'
+            'accept': 'application/json',
+            'content-type': 'application/json; charset=utf-8'
         }
 
         # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
+        _request = self.http_client.put(_query_url, headers=_headers, parameters=APIHelper.json_serialize(options.get('update_network_firewalled_service')))
         CustomHeaderAuth.apply(_request)
         _context = self.execute_request(_request)
         self.validate_response(_context)

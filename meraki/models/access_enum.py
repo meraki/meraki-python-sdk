@@ -10,19 +10,22 @@ class AccessEnum(object):
 
     """Implementation of the 'Access' enum.
 
-    The type of SNMP access. Can be one of 'none' (disabled), 'community'
-    (V1/V2c), or 'users' (V3).
+    A string indicating the rule for which IPs are allowed to use the
+    specified service. Acceptable values are "blocked" (no remote IPs can
+    access the service), "restricted" (only whitelisted IPs can access the
+    service), and "unrestriced" (any remote IP can access the service). This
+    field is required
 
     Attributes:
-        NONE: TODO: type description here.
-        COMMUNITY: TODO: type description here.
-        USERS: TODO: type description here.
+        BLOCKED: TODO: type description here.
+        RESTRICTED: TODO: type description here.
+        UNRESTRICTED: TODO: type description here.
 
     """
 
-    NONE = 'none'
+    BLOCKED = 'blocked'
 
-    COMMUNITY = 'community'
+    RESTRICTED = 'restricted'
 
-    USERS = 'users'
+    UNRESTRICTED = 'unrestricted'
 

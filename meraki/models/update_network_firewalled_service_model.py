@@ -14,7 +14,7 @@ class UpdateNetworkFirewalledServiceModel(object):
     TODO: type model description here.
 
     Attributes:
-        access (string): A string indicating the rule for which IPs are
+        access (AccessEnum): A string indicating the rule for which IPs are
             allowed to use the specified service. Acceptable values are
             "blocked" (no remote IPs can access the service), "restricted"
             (only whitelisted IPs can access the service), and "unrestriced"

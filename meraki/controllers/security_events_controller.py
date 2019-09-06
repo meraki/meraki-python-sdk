@@ -16,11 +16,13 @@ class SecurityEventsController(BaseController):
     """A Controller to access Endpoints in the meraki API."""
 
 
-    def get_organization_security_events(self,
-                                         options=dict()):
-        """Does a GET request to /organizations/{organizationId}/securityEvents.
+    def get_network_client_security_events(self,
+                                           options=dict()):
+        """Does a GET request to /networks/{networkId}/clients/{clientId}/securityEvents.
 
-        List the security events for an organization
+        List the security events for a client. Clients can be identified by a
+        client key or either the MAC or IP depending on whether the network
+        uses Track-by-IP.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -29,17 +31,19 @@ class SecurityEventsController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    organization_id -- string -- TODO: type description here.
+                    network_id -- string -- TODO: type description here.
+                        Example: 
+                    client_id -- string -- TODO: type description here.
                         Example: 
                     t_0 -- string -- The beginning of the timespan for the
-                        data. The maximum lookback period is 365 days from
+                        data. The maximum lookback period is 791 days from
                         today.
                     t_1 -- string -- The end of the timespan for the data. t1
-                        can be a maximum of 365 days after t0.
+                        can be a maximum of 791 days after t0.
                     timespan -- int -- The timespan for which the information
                         will be fetched. If specifying timespan, do not
                         specify parameters t0 and t1. The value must be in
-                        seconds and be less than or equal to 365 days. The
+                        seconds and be less than or equal to 791 days. The
                         default is 31 days.
                     per_page -- int -- The number of entries per page
                         returned. Acceptable range is 3 - 1000. Default is
@@ -69,12 +73,14 @@ class SecurityEventsController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(organization_id=options.get("organization_id"))
+        self.validate_parameters(network_id=options.get("network_id"),
+                                 client_id=options.get("client_id"))
 
         # Prepare query URL
-        _url_path = '/organizations/{organizationId}/securityEvents'
+        _url_path = '/networks/{networkId}/clients/{clientId}/securityEvents'
         _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'organizationId': options.get('organization_id', None)
+            'networkId': options.get('network_id', None),
+            'clientId': options.get('client_id', None)
         })
         _query_builder = Configuration.base_uri
         _query_builder += _url_path
@@ -192,13 +198,11 @@ class SecurityEventsController(BaseController):
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body)
 
-    def get_network_client_security_events(self,
-                                           options=dict()):
-        """Does a GET request to /networks/{networkId}/clients/{clientId}/securityEvents.
+    def get_organization_security_events(self,
+                                         options=dict()):
+        """Does a GET request to /organizations/{organizationId}/securityEvents.
 
-        List the security events for a client. Clients can be identified by a
-        client key or either the MAC or IP depending on whether the network
-        uses Track-by-IP.
+        List the security events for an organization
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -207,19 +211,17 @@ class SecurityEventsController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    network_id -- string -- TODO: type description here.
-                        Example: 
-                    client_id -- string -- TODO: type description here.
+                    organization_id -- string -- TODO: type description here.
                         Example: 
                     t_0 -- string -- The beginning of the timespan for the
-                        data. The maximum lookback period is 791 days from
+                        data. The maximum lookback period is 365 days from
                         today.
                     t_1 -- string -- The end of the timespan for the data. t1
-                        can be a maximum of 791 days after t0.
+                        can be a maximum of 365 days after t0.
                     timespan -- int -- The timespan for which the information
                         will be fetched. If specifying timespan, do not
                         specify parameters t0 and t1. The value must be in
-                        seconds and be less than or equal to 791 days. The
+                        seconds and be less than or equal to 365 days. The
                         default is 31 days.
                     per_page -- int -- The number of entries per page
                         returned. Acceptable range is 3 - 1000. Default is
@@ -249,14 +251,12 @@ class SecurityEventsController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(network_id=options.get("network_id"),
-                                 client_id=options.get("client_id"))
+        self.validate_parameters(organization_id=options.get("organization_id"))
 
         # Prepare query URL
-        _url_path = '/networks/{networkId}/clients/{clientId}/securityEvents'
+        _url_path = '/organizations/{organizationId}/securityEvents'
         _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'networkId': options.get('network_id', None),
-            'clientId': options.get('client_id', None)
+            'organizationId': options.get('organization_id', None)
         })
         _query_builder = Configuration.base_uri
         _query_builder += _url_path

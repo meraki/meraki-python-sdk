@@ -15,7 +15,7 @@ class UpdateNetworkSnmpSettingsModel(object):
     TODO: type model description here.
 
     Attributes:
-        access (AccessEnum): The type of SNMP access. Can be one of 'none'
+        access (Access1Enum): The type of SNMP access. Can be one of 'none'
             (disabled), 'community' (V1/V2c), or 'users' (V3).
         community_string (string): The SNMP community string. Only relevant if
             'access' is set to 'community'.

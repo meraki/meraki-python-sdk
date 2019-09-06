@@ -12,7 +12,8 @@ class ProtectedNetworksModel(object):
     """Implementation of the 'ProtectedNetworks' model.
 
     Set the included/excluded networks from the intrusion engine (optional -
-    omitting will leave current config unchanged)
+    omitting will leave current config unchanged). This is available only in
+    'passthrough' mode
 
     Attributes:
         use_default (bool): true/false whether to use special IPv4 addresses:

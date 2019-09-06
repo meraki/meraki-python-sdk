@@ -6,7 +6,7 @@
     This file was automatically generated for meraki by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-import meraki.models.rule8_model
+import meraki.models.rule9_model
 
 class UpdateNetworkSsidTrafficShapingModel(object):
 
@@ -22,7 +22,7 @@ class UpdateNetworkSsidTrafficShapingModel(object):
             rules, which can     be seen on your network's traffic shaping
             page. Note that default rules     count against the rule limit of
             8.
-        rules (list of Rule8Model): An array of traffic shaping rules. Rules
+        rules (list of Rule9Model): An array of traffic shaping rules. Rules
             are applied in the order that     they are specified in. An empty
             list (or null) means no rules. Note that     you are allowed a
             maximum of 8 rules.
@@ -72,7 +72,7 @@ class UpdateNetworkSsidTrafficShapingModel(object):
         if dictionary.get('rules') != None:
             rules = list()
             for structure in dictionary.get('rules'):
-                rules.append(meraki.models.rule8_model.Rule8Model.from_dictionary(structure))
+                rules.append(meraki.models.rule9_model.Rule9Model.from_dictionary(structure))
 
         # Return an object of this model
         return cls(traffic_shaping_enabled,

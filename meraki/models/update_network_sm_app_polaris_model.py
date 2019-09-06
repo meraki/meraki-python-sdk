@@ -14,13 +14,13 @@ class UpdateNetworkSmAppPolarisModel(object):
     TODO: type model description here.
 
     Attributes:
-        scope (string): The scope (one of all, none, automatic, withAny,
-            withAll, withoutAny, or withoutAll) and a set of tags of the
-            devices to be assigned
-        prevent_auto_install (string): Whether or not SM should auto-install
-            this app (one of true or false). False by default.
-        uses_vpp (string): Whether or not the app should use VPP by device
-            assignment (one of true or false). False by default.
+        scope (string): optional: The scope (one of all, none, automatic,
+            withAny, withAll, withoutAny, or withoutAll) and a set of tags of
+            the devices to be assigned
+        prevent_auto_install (bool): optional: Whether or not SM should
+            auto-install this app (one of true or false)
+        uses_vpp (bool): optional: Whether or not the app should use VPP by
+            device assignment (one of true or false)
 
     """
 

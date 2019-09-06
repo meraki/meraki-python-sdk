@@ -21,9 +21,9 @@ class CreateNetworkSmAppPolarisModel(object):
             manifestUrl and bundleId must be provided)
         bundle_id (string): The bundleId of the Polaris app (one of
             manifestUrl and bundleId must be provided)
-        prevent_auto_install (string): (optional) Whether or not SM should
+        prevent_auto_install (bool): (optional) Whether or not SM should
             auto-install this app (one of true or false). False by default.
-        uses_vpp (string): (optional) Whether or not the app should use VPP by
+        uses_vpp (bool): (optional) Whether or not the app should use VPP by
             device assignment (one of true or false). False by default.
 
     """
