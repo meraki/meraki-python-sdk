@@ -618,12 +618,12 @@ class OrganizationsController(BaseController):
                         can be a maximum of 5 minutes after t0. The latest
                         possible time that t1 can be is 2 minutes into the
                         past.
-                    timespan -- int -- The timespan for which the information
-                        will be fetched. If specifying timespan, do not
-                        specify parameters t0 and t1. The value must be in
-                        seconds and be less than or equal to 5 minutes. The
+                    timespan -- float -- The timespan for which the
+                        information will be fetched. If specifying timespan,
+                        do not specify parameters t0 and t1. The value must be
+                        in seconds and be less than or equal to 5 minutes. The
                         default is 5 minutes.
-                    uplink -- string -- Optional filter for a specific WAN
+                    uplink -- UplinkEnum -- Optional filter for a specific WAN
                         uplink. Valid uplinks are wan1, wan2, cellular.
                         Default will return all uplinks.
                     ip -- string -- Optional filter for a specific destination
@@ -651,8 +651,8 @@ class OrganizationsController(BaseController):
         _query_builder = Configuration.base_uri
         _query_builder += _url_path
         _query_parameters = {
-            't0': options.get('t0', None),
-            't1': options.get('t1', None),
+            't0': options.get('t_0', None),
+            't1': options.get('t_1', None),
             'timespan': options.get('timespan', None),
             'uplink': options.get('uplink', None),
             'ip': options.get('ip', None)

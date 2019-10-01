@@ -21,14 +21,14 @@ class UpdateNetworkVlanModel(object):
         appliance_ip (string): The local IP of the appliance on the VLAN
         vpn_nat_subnet (string): The translated VPN subnet if VPN and VPN
             subnet translation are enabled on the VLAN
-        dhcp_handling (string): The appliance's handling of DHCP requests on
-            this VLAN. One of: "Run a DHCP server", "Relay DHCP to another
-            server", or "Do not respond to DHCP requests"
+        dhcp_handling (DhcpHandlingEnum): The appliance's handling of DHCP
+            requests on this VLAN. One of: 'Run a DHCP server', 'Relay DHCP to
+            another server' or 'Do not respond to DHCP requests'
         dhcp_relay_server_ips (list of string): The IPs of the DHCP servers
             that DHCP requests should be relayed to
-        dhcp_lease_time (string): The term of DHCP leases if the appliance is
-            running a DHCP server on this VLAN. One of: "30 minutes", "1
-            hour", "4 hours", "12 hours", "1 day", "1 week".
+        dhcp_lease_time (DhcpLeaseTimeEnum): The term of DHCP leases if the
+            appliance is running a DHCP server on this VLAN. One of: '30
+            minutes', '1 hour', '4 hours', '12 hours', '1 day' or '1 week'
         dhcp_boot_options_enabled (bool): Use DHCP boot options specified in
             other properties
         dhcp_boot_next_server (string): DHCP boot option to direct boot

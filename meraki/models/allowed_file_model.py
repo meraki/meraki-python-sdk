@@ -21,17 +21,17 @@ class AllowedFileModel(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "sha256":'sha256',
+        "sha_256":'sha256',
         "comment":'comment'
     }
 
     def __init__(self,
-                 sha256=None,
+                 sha_256=None,
                  comment=None):
         """Constructor for the AllowedFileModel class"""
 
         # Initialize members of the class
-        self.sha256 = sha256
+        self.sha_256 = sha_256
         self.comment = comment
 
 
@@ -53,11 +53,11 @@ class AllowedFileModel(object):
             return None
 
         # Extract variables from the dictionary
-        sha256 = dictionary.get('sha256')
+        sha_256 = dictionary.get('sha256')
         comment = dictionary.get('comment')
 
         # Return an object of this model
-        return cls(sha256,
+        return cls(sha_256,
                    comment)
 
 

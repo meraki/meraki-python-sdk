@@ -6,8 +6,8 @@
     This file was automatically generated for meraki by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-import meraki.models.wan1_model
-import meraki.models.wan2_model
+import meraki.models.wan_1_model
+import meraki.models.wan_2_model
 
 class UpdateNetworkDeviceManagementInterfaceSettingsModel(object):
 
@@ -23,18 +23,18 @@ class UpdateNetworkDeviceManagementInterfaceSettingsModel(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "wan1":'wan1',
-        "wan2":'wan2'
+        "wan_1":'wan1',
+        "wan_2":'wan2'
     }
 
     def __init__(self,
-                 wan1=None,
-                 wan2=None):
+                 wan_1=None,
+                 wan_2=None):
         """Constructor for the UpdateNetworkDeviceManagementInterfaceSettingsModel class"""
 
         # Initialize members of the class
-        self.wan1 = wan1
-        self.wan2 = wan2
+        self.wan_1 = wan_1
+        self.wan_2 = wan_2
 
 
     @classmethod
@@ -55,11 +55,11 @@ class UpdateNetworkDeviceManagementInterfaceSettingsModel(object):
             return None
 
         # Extract variables from the dictionary
-        wan1 = meraki.models.wan1_model.Wan1Model.from_dictionary(dictionary.get('wan1')) if dictionary.get('wan1') else None
-        wan2 = meraki.models.wan2_model.Wan2Model.from_dictionary(dictionary.get('wan2')) if dictionary.get('wan2') else None
+        wan_1 = meraki.models.wan_1_model.Wan1Model.from_dictionary(dictionary.get('wan1')) if dictionary.get('wan1') else None
+        wan_2 = meraki.models.wan_2_model.Wan2Model.from_dictionary(dictionary.get('wan2')) if dictionary.get('wan2') else None
 
         # Return an object of this model
-        return cls(wan1,
-                   wan2)
+        return cls(wan_1,
+                   wan_2)
 
 

@@ -16,7 +16,8 @@ class UpdateNetworkSiteToSiteVpnModel(object):
     TODO: type model description here.
 
     Attributes:
-        mode (string): The site-to-site VPN mode: hub, spoke, or none
+        mode (ModeEnum): The site-to-site VPN mode. Can be one of 'none',
+            'spoke' or 'hub'
         hubs (list of HubModel): The list of VPN hubs, in order of preference.
             In spoke mode, at least 1 hub is required.
         subnets (list of SubnetModel): The list of subnets and their VPN

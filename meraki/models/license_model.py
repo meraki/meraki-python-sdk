@@ -15,7 +15,7 @@ class LicenseModel(object):
 
     Attributes:
         key (string): The key of the license
-        mode (Mode1Enum): Either 'renew' or 'addDevices'. 'addDevices' will
+        mode (Mode2Enum): Either 'renew' or 'addDevices'. 'addDevices' will
             increase the license limit, while 'renew' will extend the amount
             of time until expiration. Please see <a target='_blank'
             href='https://documentation.meraki.com/zGeneral_Administration/Lice

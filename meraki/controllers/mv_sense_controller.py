@@ -81,10 +81,10 @@ class MVSenseController(BaseController):
                         today.
                     t_1 -- string -- The end of the timespan for the data. t1
                         can be a maximum of 7 days after t0.
-                    timespan -- int -- The timespan for which the information
-                        will be fetched. If specifying timespan, do not
-                        specify parameters t0 and t1. The value must be in
-                        seconds and be less than or equal to 7 days. The
+                    timespan -- float -- The timespan for which the
+                        information will be fetched. If specifying timespan,
+                        do not specify parameters t0 and t1. The value must be
+                        in seconds and be less than or equal to 7 days. The
                         default is 1 hour.
                     object_type -- ObjectTypeEnum -- [optional] The object
                         type for which analytics will be retrieved. The
@@ -113,8 +113,8 @@ class MVSenseController(BaseController):
         _query_builder = Configuration.base_uri
         _query_builder += _url_path
         _query_parameters = {
-            't0': options.get('t0', None),
-            't1': options.get('t1', None),
+            't0': options.get('t_0', None),
+            't1': options.get('t_1', None),
             'timespan': options.get('timespan', None),
             'objectType': options.get('object_type', None)
         }
@@ -263,10 +263,10 @@ class MVSenseController(BaseController):
                         today.
                     t_1 -- string -- The end of the timespan for the data. t1
                         can be a maximum of 14 hours after t0.
-                    timespan -- int -- The timespan for which the information
-                        will be fetched. If specifying timespan, do not
-                        specify parameters t0 and t1. The value must be in
-                        seconds and be less than or equal to 14 hours. The
+                    timespan -- float -- The timespan for which the
+                        information will be fetched. If specifying timespan,
+                        do not specify parameters t0 and t1. The value must be
+                        in seconds and be less than or equal to 14 hours. The
                         default is 1 hour.
                     resolution -- int -- The time resolution in seconds for
                         returned data. The valid resolutions are: 60. The
@@ -300,8 +300,8 @@ class MVSenseController(BaseController):
         _query_builder = Configuration.base_uri
         _query_builder += _url_path
         _query_parameters = {
-            't0': options.get('t0', None),
-            't1': options.get('t1', None),
+            't0': options.get('t_0', None),
+            't1': options.get('t_1', None),
             'timespan': options.get('timespan', None),
             'resolution': options.get('resolution', None),
             'objectType': options.get('object_type', None)

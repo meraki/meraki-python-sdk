@@ -18,18 +18,19 @@ from meraki.controllers.clients_controller import ClientsController
 from meraki.controllers.config_templates_controller import ConfigTemplatesController
 from meraki.controllers.content_filtering_categories_controller import ContentFilteringCategoriesController
 from meraki.controllers.content_filtering_rules_controller import ContentFilteringRulesController
+from meraki.controllers.dashboard_branding_policies_controller import DashboardBrandingPoliciesController
 from meraki.controllers.devices_controller import DevicesController
 from meraki.controllers.firewalled_services_controller import FirewalledServicesController
 from meraki.controllers.group_policies_controller import GroupPoliciesController
 from meraki.controllers.http_servers_controller import HTTPServersController
 from meraki.controllers.intrusion_settings_controller import IntrusionSettingsController
-from meraki.controllers.mrl3_firewall_controller import MRL3FirewallController
+from meraki.controllers.mrl_3_firewall_controller import MRL3FirewallController
 from meraki.controllers.mv_sense_controller import MVSenseController
-from meraki.controllers.mx11_nat_rules_controller import MX11NATRulesController
-from meraki.controllers.mx1_many_nat_rules_controller import MX1ManyNATRulesController
-from meraki.controllers.mxl3_firewall_controller import MXL3FirewallController
-from meraki.controllers.mxl7_application_categories_controller import MXL7ApplicationCategoriesController
-from meraki.controllers.mxl7_firewall_controller import MXL7FirewallController
+from meraki.controllers.mx_11_nat_rules_controller import MX11NATRulesController
+from meraki.controllers.mx_1_many_nat_rules_controller import MX1ManyNATRulesController
+from meraki.controllers.mxl_3_firewall_controller import MXL3FirewallController
+from meraki.controllers.mxl_7_application_categories_controller import MXL7ApplicationCategoriesController
+from meraki.controllers.mxl_7_firewall_controller import MXL7FirewallController
 from meraki.controllers.mxvlan_ports_controller import MXVLANPortsController
 from meraki.controllers.mxvpn_firewall_controller import MXVPNFirewallController
 from meraki.controllers.mx_cellular_firewall_controller import MXCellularFirewallController
@@ -112,6 +113,10 @@ class MerakiClient(object):
         return ContentFilteringRulesController()
 
     @lazy_property
+    def dashboard_branding_policies(self):
+        return DashboardBrandingPoliciesController()
+
+    @lazy_property
     def devices(self):
         return DevicesController()
 
@@ -132,7 +137,7 @@ class MerakiClient(object):
         return IntrusionSettingsController()
 
     @lazy_property
-    def mr_l3_firewall(self):
+    def mr_l_3_firewall(self):
         return MRL3FirewallController()
 
     @lazy_property
@@ -148,15 +153,15 @@ class MerakiClient(object):
         return MX1ManyNATRulesController()
 
     @lazy_property
-    def mx_l3_firewall(self):
+    def mx_l_3_firewall(self):
         return MXL3FirewallController()
 
     @lazy_property
-    def mx_l7_application_categories(self):
+    def mx_l_7_application_categories(self):
         return MXL7ApplicationCategoriesController()
 
     @lazy_property
-    def mx_l7_firewall(self):
+    def mx_l_7_firewall(self):
         return MXL7FirewallController()
 
     @lazy_property

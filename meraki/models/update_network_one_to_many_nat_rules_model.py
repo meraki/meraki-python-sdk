@@ -6,7 +6,7 @@
     This file was automatically generated for meraki by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-import meraki.models.rule5_model
+import meraki.models.rule_5_model
 
 class UpdateNetworkOneToManyNatRulesModel(object):
 
@@ -54,7 +54,7 @@ class UpdateNetworkOneToManyNatRulesModel(object):
         if dictionary.get('rules') != None:
             rules = list()
             for structure in dictionary.get('rules'):
-                rules.append(meraki.models.rule5_model.Rule5Model.from_dictionary(structure))
+                rules.append(meraki.models.rule_5_model.Rule5Model.from_dictionary(structure))
 
         # Return an object of this model
         return cls(rules)

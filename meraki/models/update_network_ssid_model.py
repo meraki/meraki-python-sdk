@@ -17,13 +17,17 @@ class UpdateNetworkSsidModel(object):
     TODO: type model description here.
 
     Attributes:
-        name (string): The name of an SSID
-        enabled (bool): Whether or not an SSID is enabled
+        name (string): The name of the SSID
+        enabled (bool): Whether or not the SSID is enabled
         auth_mode (AuthModeEnum): The association control method for the SSID
             ('open', 'psk', 'open-with-radius', '8021x-meraki' or
             '8021x-radius')
+        enterprise_admin_access (EnterpriseAdminAccessEnum): Whether or not an
+            SSID is accessible by 'enterprise' administrators ('access
+            disabled' or 'access enabled')
         encryption_mode (EncryptionModeEnum): The psk encryption mode for the
-            SSID ('wpa', 'wep' or 'wpa-eap')
+            SSID ('wep' or 'wpa'). This param is only valid if the authMode is
+            'psk'
         psk (string): The passkey for the SSID. This param is only valid if
             the authMode is 'psk'
         wpa_encryption_mode (WpaEncryptionModeEnum): The types of WPA
@@ -57,20 +61,29 @@ class UpdateNetworkSsidModel(object):
             RADIUS accounting 802.1x servers to be used for authentication.
             This param is only valid if the authMode is 'open-with-radius' or
             '8021x-radius' and radiusAccountingEnabled is 'true'
-        ip_assignment_mode (IpAssignmentModeEnum): The client IP assignment
-            mode ('NAT mode', 'Bridge mode', 'Layer 3 roaming', 'Layer 3
-            roaming with a concentrator' or 'VPN')
-        use_vlan_tagging (bool): Direct trafic to use specific VLANs. This
-            param is only valid with 'Bridge mode' and 'Layer 3 roaming'
-        concentrator_network_id (string): The concentrator to use for 'Layer 3
-            roaming with a concentrator' or 'VPN'.
+        radius_attribute_for_group_policies (string): Specify the RADIUS
+            attribute used to look up group policies ('Filter-Id',
+            'Reply-Message', 'Airespace-ACL-Name' or 'Aruba-User-Role').
+            Access points must receive this attribute in the RADIUS
+            Access-Accept message
+        ip_assignment_mode (string): The client IP assignment mode ('NAT
+            mode', 'Bridge mode', 'Layer 3 roaming', 'Layer 3 roaming with a
+            concentrator' or 'VPN')
+        use_vlan_tagging (bool): Whether or not traffic should be directed to
+            use specific VLANs. This param is only valid if the
+            ipAssignmentMode is 'Bridge mode' or 'Layer 3 roaming'
+        concentrator_network_id (string): The concentrator to use when the
+            ipAssignmentMode is 'Layer 3 roaming with a concentrator' or
+            'VPN'.
         vlan_id (int): The VLAN ID used for VLAN tagging. This param is only
-            valid with 'Layer 3 roaming with a concentrator' and 'VPN'
+            valid when the ipAssignmentMode is 'Layer 3 roaming with a
+            concentrator' or 'VPN'
         default_vlan_id (int): The default VLAN ID used for 'all other APs'.
-            This param is only valid with 'Bridge mode' and 'Layer 3 roaming'
+            This param is only valid when the ipAssignmentMode is 'Bridge
+            mode' or 'Layer 3 roaming'
         ap_tags_and_vlan_ids (list of ApTagsAndVlanIdModel): The list of tags
-            and VLAN IDs used for VLAN tagging. This param is only valid with
-            'Bridge mode', 'Layer 3 roaming'
+            and VLAN IDs used for VLAN tagging. This param is only valid when
+            the ipAssignmentMode is 'Bridge mode' or 'Layer 3 roaming'
         walled_garden_enabled (bool): Allow access to a configurable list of
             IP ranges, which users may access prior to sign-on.
         walled_garden_ranges (string): Specify your walled garden by entering
@@ -78,18 +91,20 @@ class UpdateNetworkSsidModel(object):
             names, and domain wildcards (e.g. 192.168.1.1/24 192.168.37.10/32
             www.yahoo.com *.google.com). Meraki's splash page is automatically
             included in your walled garden.
+        radius_override (bool): If true, the RADIUS response can override VLAN
+            tag. This is not valid when ipAssignmentMode is 'NAT mode'.
         min_bitrate (float): The minimum bitrate in Mbps. ('1', '2', '5.5',
             '6', '9', '11', '12', '18', '24', '36', '48' or '54')
-        band_selection (BandSelectionEnum): The client-serving radio
-            frequencies. ('Dual band operation', '5 GHz band only' or 'Dual
-            band operation with Band Steering')
+        band_selection (string): The client-serving radio frequencies. ('Dual
+            band operation', '5 GHz band only' or 'Dual band operation with
+            Band Steering')
         per_client_bandwidth_limit_up (int): The upload bandwidth limit in
             Kbps. (0 represents no limit.)
         per_client_bandwidth_limit_down (int): The download bandwidth limit in
             Kbps. (0 represents no limit.)
         lan_isolation_enabled (bool): Boolean indicating whether Layer 2 LAN
-            isolation should be enabled or disabled. Only configurable on
-            SSIDs in bridge mode.
+            isolation should be enabled or disabled. Only configurable when
+            ipAssignmentMode is 'Bridge mode'.
 
     """
 
@@ -98,6 +113,7 @@ class UpdateNetworkSsidModel(object):
         "name":'name',
         "enabled":'enabled',
         "auth_mode":'authMode',
+        "enterprise_admin_access":'enterpriseAdminAccess',
         "encryption_mode":'encryptionMode',
         "psk":'psk',
         "wpa_encryption_mode":'wpaEncryptionMode',
@@ -108,6 +124,7 @@ class UpdateNetworkSsidModel(object):
         "radius_load_balancing_policy":'radiusLoadBalancingPolicy',
         "radius_accounting_enabled":'radiusAccountingEnabled',
         "radius_accounting_servers":'radiusAccountingServers',
+        "radius_attribute_for_group_policies":'radiusAttributeForGroupPolicies',
         "ip_assignment_mode":'ipAssignmentMode',
         "use_vlan_tagging":'useVlanTagging',
         "concentrator_network_id":'concentratorNetworkId',
@@ -116,6 +133,7 @@ class UpdateNetworkSsidModel(object):
         "ap_tags_and_vlan_ids":'apTagsAndVlanIds',
         "walled_garden_enabled":'walledGardenEnabled',
         "walled_garden_ranges":'walledGardenRanges',
+        "radius_override":'radiusOverride',
         "min_bitrate":'minBitrate',
         "band_selection":'bandSelection',
         "per_client_bandwidth_limit_up":'perClientBandwidthLimitUp',
@@ -127,6 +145,7 @@ class UpdateNetworkSsidModel(object):
                  name=None,
                  enabled=None,
                  auth_mode=None,
+                 enterprise_admin_access=None,
                  encryption_mode=None,
                  psk=None,
                  wpa_encryption_mode=None,
@@ -137,6 +156,7 @@ class UpdateNetworkSsidModel(object):
                  radius_load_balancing_policy=None,
                  radius_accounting_enabled=None,
                  radius_accounting_servers=None,
+                 radius_attribute_for_group_policies=None,
                  ip_assignment_mode=None,
                  use_vlan_tagging=None,
                  concentrator_network_id=None,
@@ -145,6 +165,7 @@ class UpdateNetworkSsidModel(object):
                  ap_tags_and_vlan_ids=None,
                  walled_garden_enabled=None,
                  walled_garden_ranges=None,
+                 radius_override=None,
                  min_bitrate=None,
                  band_selection=None,
                  per_client_bandwidth_limit_up=None,
@@ -156,6 +177,7 @@ class UpdateNetworkSsidModel(object):
         self.name = name
         self.enabled = enabled
         self.auth_mode = auth_mode
+        self.enterprise_admin_access = enterprise_admin_access
         self.encryption_mode = encryption_mode
         self.psk = psk
         self.wpa_encryption_mode = wpa_encryption_mode
@@ -166,6 +188,7 @@ class UpdateNetworkSsidModel(object):
         self.radius_load_balancing_policy = radius_load_balancing_policy
         self.radius_accounting_enabled = radius_accounting_enabled
         self.radius_accounting_servers = radius_accounting_servers
+        self.radius_attribute_for_group_policies = radius_attribute_for_group_policies
         self.ip_assignment_mode = ip_assignment_mode
         self.use_vlan_tagging = use_vlan_tagging
         self.concentrator_network_id = concentrator_network_id
@@ -174,6 +197,7 @@ class UpdateNetworkSsidModel(object):
         self.ap_tags_and_vlan_ids = ap_tags_and_vlan_ids
         self.walled_garden_enabled = walled_garden_enabled
         self.walled_garden_ranges = walled_garden_ranges
+        self.radius_override = radius_override
         self.min_bitrate = min_bitrate
         self.band_selection = band_selection
         self.per_client_bandwidth_limit_up = per_client_bandwidth_limit_up
@@ -202,6 +226,7 @@ class UpdateNetworkSsidModel(object):
         name = dictionary.get('name')
         enabled = dictionary.get('enabled')
         auth_mode = dictionary.get('authMode')
+        enterprise_admin_access = dictionary.get('enterpriseAdminAccess')
         encryption_mode = dictionary.get('encryptionMode')
         psk = dictionary.get('psk')
         wpa_encryption_mode = dictionary.get('wpaEncryptionMode')
@@ -220,6 +245,7 @@ class UpdateNetworkSsidModel(object):
             radius_accounting_servers = list()
             for structure in dictionary.get('radiusAccountingServers'):
                 radius_accounting_servers.append(meraki.models.radius_accounting_server_model.RadiusAccountingServerModel.from_dictionary(structure))
+        radius_attribute_for_group_policies = dictionary.get('radiusAttributeForGroupPolicies')
         ip_assignment_mode = dictionary.get('ipAssignmentMode')
         use_vlan_tagging = dictionary.get('useVlanTagging')
         concentrator_network_id = dictionary.get('concentratorNetworkId')
@@ -232,6 +258,7 @@ class UpdateNetworkSsidModel(object):
                 ap_tags_and_vlan_ids.append(meraki.models.ap_tags_and_vlan_id_model.ApTagsAndVlanIdModel.from_dictionary(structure))
         walled_garden_enabled = dictionary.get('walledGardenEnabled')
         walled_garden_ranges = dictionary.get('walledGardenRanges')
+        radius_override = dictionary.get('radiusOverride')
         min_bitrate = dictionary.get('minBitrate')
         band_selection = dictionary.get('bandSelection')
         per_client_bandwidth_limit_up = dictionary.get('perClientBandwidthLimitUp')
@@ -242,6 +269,7 @@ class UpdateNetworkSsidModel(object):
         return cls(name,
                    enabled,
                    auth_mode,
+                   enterprise_admin_access,
                    encryption_mode,
                    psk,
                    wpa_encryption_mode,
@@ -252,6 +280,7 @@ class UpdateNetworkSsidModel(object):
                    radius_load_balancing_policy,
                    radius_accounting_enabled,
                    radius_accounting_servers,
+                   radius_attribute_for_group_policies,
                    ip_assignment_mode,
                    use_vlan_tagging,
                    concentrator_network_id,
@@ -260,6 +289,7 @@ class UpdateNetworkSsidModel(object):
                    ap_tags_and_vlan_ids,
                    walled_garden_enabled,
                    walled_garden_ranges,
+                   radius_override,
                    min_bitrate,
                    band_selection,
                    per_client_bandwidth_limit_up,

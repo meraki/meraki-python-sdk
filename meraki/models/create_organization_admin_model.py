@@ -19,8 +19,9 @@ class CreateOrganizationAdminModel(object):
         email (string): The email of the dashboard administrator. This
             attribute can not be updated.
         name (string): The name of the dashboard administrator
-        org_access (string): The privilege of the dashboard administrator on
-            the organization (full, read-only, none)
+        org_access (OrgAccessEnum): The privilege of the dashboard
+            administrator on the organization. Can be one of 'full',
+            'read-only', 'enterprise' or 'none'
         tags (list of TagModel): The list of tags that the dashboard
             administrator has privileges on
         networks (list of NetworkModel): The list of networks that the

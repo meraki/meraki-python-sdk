@@ -182,6 +182,7 @@ client = MerakiClient(x_cisco_meraki_api_key)
 * [ConfigTemplatesController](#config_templates_controller)
 * [ContentFilteringCategoriesController](#content_filtering_categories_controller)
 * [ContentFilteringRulesController](#content_filtering_rules_controller)
+* [DashboardBrandingPoliciesController](#dashboard_branding_policies_controller)
 * [DevicesController](#devices_controller)
 * [FirewalledServicesController](#firewalled_services_controller)
 * [GroupPoliciesController](#group_policies_controller)
@@ -275,16 +276,16 @@ collect = {}
 organization_id = 'organizationId'
 collect['organization_id'] = organization_id
 
-t0 = 't0'
-collect['t0'] = t0
+t_0 = 't0'
+collect['t_0'] = t_0
 
-t1 = 't1'
-collect['t1'] = t1
+t_1 = 't1'
+collect['t_1'] = t_1
 
-timespan = 184
+timespan = 14.103135375354
 collect['timespan'] = timespan
 
-per_page = 184
+per_page = 14
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -302,7 +303,7 @@ collect['path'] = path
 method = 'method'
 collect['method'] = method
 
-response_code = 184
+response_code = 14
 collect['response_code'] = response_code
 
 
@@ -742,10 +743,11 @@ def get_network_bluetooth_clients(self,
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | networkId |  ``` Required ```  | TODO: Add a parameter description |
+| t0 |  ``` Optional ```  | The beginning of the timespan for the data. The maximum lookback period is 7 days from today. |
+| timespan |  ``` Optional ```  | The timespan for which the information will be fetched. If specifying timespan, do not specify parameter t0. The value must be in seconds and be less than or equal to 7 days. The default is 1 day. |
 | perPage |  ``` Optional ```  | The number of entries per page returned. Acceptable range is 5 - 1000. Default is 10. |
 | startingAfter |  ``` Optional ```  | A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it. |
 | endingBefore |  ``` Optional ```  | A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it. |
-| timespan |  ``` Optional ```  | The timespan, in seconds, used to look back from now for bluetooth clients |
 | includeConnectivityHistory |  ``` Optional ```  | Include the connectivity history for this client |
 
 
@@ -758,7 +760,13 @@ collect = {}
 network_id = 'networkId'
 collect['network_id'] = network_id
 
-per_page = 184
+t_0 = 't0'
+collect['t_0'] = t_0
+
+timespan = 14.103135375354
+collect['timespan'] = timespan
+
+per_page = 14
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -767,10 +775,7 @@ collect['starting_after'] = starting_after
 ending_before = 'endingBefore'
 collect['ending_before'] = ending_before
 
-timespan = 184
-collect['timespan'] = timespan
-
-include_connectivity_history = True
+include_connectivity_history = False
 collect['include_connectivity_history'] = include_connectivity_history
 
 
@@ -810,10 +815,10 @@ collect['network_id'] = network_id
 bluetooth_client_id = 'bluetoothClientId'
 collect['bluetooth_client_id'] = bluetooth_client_id
 
-include_connectivity_history = True
+include_connectivity_history = False
 collect['include_connectivity_history'] = include_connectivity_history
 
-connectivity_history_timespan = 184
+connectivity_history_timespan = 14
 collect['connectivity_history_timespan'] = connectivity_history_timespan
 
 
@@ -951,10 +956,10 @@ collect = {}
 serial = 'serial'
 collect['serial'] = serial
 
-t0 = 't0'
-collect['t0'] = t0
+t_0 = 't0'
+collect['t_0'] = t_0
 
-timespan = 184
+timespan = 14.103135375354
 collect['timespan'] = timespan
 
 
@@ -993,13 +998,13 @@ collect = {}
 network_id = 'networkId'
 collect['network_id'] = network_id
 
-t0 = 't0'
-collect['t0'] = t0
+t_0 = 't0'
+collect['t_0'] = t_0
 
-timespan = 184
+timespan = 227.379962148787
 collect['timespan'] = timespan
 
-per_page = 184
+per_page = 227
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -1116,7 +1121,7 @@ collect['network_id'] = network_id
 client_id = 'clientId'
 collect['client_id'] = client_id
 
-per_page = 184
+per_page = 227
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -1164,16 +1169,16 @@ collect['network_id'] = network_id
 client_id = 'clientId'
 collect['client_id'] = client_id
 
-t0 = 't0'
-collect['t0'] = t0
+t_0 = 't0'
+collect['t_0'] = t_0
 
-t1 = 't1'
-collect['t1'] = t1
+t_1 = 't1'
+collect['t_1'] = t_1
 
-timespan = 184
+timespan = 227.379962148787
 collect['timespan'] = timespan
 
-resolution = 184
+resolution = 227
 collect['resolution'] = resolution
 
 
@@ -1362,7 +1367,7 @@ collect['network_id'] = network_id
 client_id = 'clientId'
 collect['client_id'] = client_id
 
-per_page = 21
+per_page = 227
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -1601,6 +1606,251 @@ result = content_filtering_rules_controller.update_network_content_filtering(col
 
 [Back to List of Controllers](#list_of_controllers)
 
+## <a name="dashboard_branding_policies_controller"></a>![Class: ](https://apidocs.io/img/class.png ".DashboardBrandingPoliciesController") DashboardBrandingPoliciesController
+
+### Get controller instance
+
+An instance of the ``` DashboardBrandingPoliciesController ``` class can be accessed from the API Client.
+
+```python
+ dashboard_branding_policies_controller = client.dashboard_branding_policies
+```
+
+### <a name="get_organization_branding_policies"></a>![Method: ](https://apidocs.io/img/method.png ".DashboardBrandingPoliciesController.get_organization_branding_policies") get_organization_branding_policies
+
+> List the branding policies of an organization
+
+```python
+def get_organization_branding_policies(self,
+                                           organization_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| organizationId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+organization_id = 'organizationId'
+
+result = dashboard_branding_policies_controller.get_organization_branding_policies(organization_id)
+
+```
+
+
+### <a name="create_organization_branding_policy"></a>![Method: ](https://apidocs.io/img/method.png ".DashboardBrandingPoliciesController.create_organization_branding_policy") create_organization_branding_policy
+
+> Add a new branding policy to an organization
+
+```python
+def create_organization_branding_policy(self,
+                                            options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| organizationId |  ``` Required ```  | TODO: Add a parameter description |
+| createOrganizationBrandingPolicy |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+organization_id = 'organizationId'
+collect['organization_id'] = organization_id
+
+create_organization_branding_policy = CreateOrganizationBrandingPolicyModel()
+collect['create_organization_branding_policy'] = create_organization_branding_policy
+
+
+result = dashboard_branding_policies_controller.create_organization_branding_policy(collect)
+
+```
+
+
+### <a name="get_organization_branding_policies_priorities"></a>![Method: ](https://apidocs.io/img/method.png ".DashboardBrandingPoliciesController.get_organization_branding_policies_priorities") get_organization_branding_policies_priorities
+
+> Return the branding policy IDs of an organization in priority order. IDs are ordered in ascending order of priority (IDs later in the array have higher priority).
+
+```python
+def get_organization_branding_policies_priorities(self,
+                                                      organization_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| organizationId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+organization_id = 'organizationId'
+
+result = dashboard_branding_policies_controller.get_organization_branding_policies_priorities(organization_id)
+
+```
+
+
+### <a name="update_organization_branding_policies_priorities"></a>![Method: ](https://apidocs.io/img/method.png ".DashboardBrandingPoliciesController.update_organization_branding_policies_priorities") update_organization_branding_policies_priorities
+
+> Update the priority ordering of an organization's branding policies.
+
+```python
+def update_organization_branding_policies_priorities(self,
+                                                         options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| organizationId |  ``` Required ```  | TODO: Add a parameter description |
+| updateOrganizationBrandingPoliciesPriorities |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+organization_id = 'organizationId'
+collect['organization_id'] = organization_id
+
+update_organization_branding_policies_priorities = UpdateOrganizationBrandingPoliciesPrioritiesModel()
+collect['update_organization_branding_policies_priorities'] = update_organization_branding_policies_priorities
+
+
+result = dashboard_branding_policies_controller.update_organization_branding_policies_priorities(collect)
+
+```
+
+
+### <a name="get_organization_branding_policy"></a>![Method: ](https://apidocs.io/img/method.png ".DashboardBrandingPoliciesController.get_organization_branding_policy") get_organization_branding_policy
+
+> Return a branding policy
+
+```python
+def get_organization_branding_policy(self,
+                                         options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| organizationId |  ``` Required ```  | TODO: Add a parameter description |
+| brandingPolicyId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+organization_id = 'organizationId'
+collect['organization_id'] = organization_id
+
+branding_policy_id = 'brandingPolicyId'
+collect['branding_policy_id'] = branding_policy_id
+
+
+result = dashboard_branding_policies_controller.get_organization_branding_policy(collect)
+
+```
+
+
+### <a name="update_organization_branding_policy"></a>![Method: ](https://apidocs.io/img/method.png ".DashboardBrandingPoliciesController.update_organization_branding_policy") update_organization_branding_policy
+
+> Update a branding policy
+
+```python
+def update_organization_branding_policy(self,
+                                            options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| organizationId |  ``` Required ```  | TODO: Add a parameter description |
+| brandingPolicyId |  ``` Required ```  | TODO: Add a parameter description |
+| updateOrganizationBrandingPolicy |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+organization_id = 'organizationId'
+collect['organization_id'] = organization_id
+
+branding_policy_id = 'brandingPolicyId'
+collect['branding_policy_id'] = branding_policy_id
+
+update_organization_branding_policy = UpdateOrganizationBrandingPolicyModel()
+collect['update_organization_branding_policy'] = update_organization_branding_policy
+
+
+result = dashboard_branding_policies_controller.update_organization_branding_policy(collect)
+
+```
+
+
+### <a name="delete_organization_branding_policy"></a>![Method: ](https://apidocs.io/img/method.png ".DashboardBrandingPoliciesController.delete_organization_branding_policy") delete_organization_branding_policy
+
+> Delete a branding policy
+
+```python
+def delete_organization_branding_policy(self,
+                                            options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| organizationId |  ``` Required ```  | TODO: Add a parameter description |
+| brandingPolicyId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+organization_id = 'organizationId'
+collect['organization_id'] = organization_id
+
+branding_policy_id = 'brandingPolicyId'
+collect['branding_policy_id'] = branding_policy_id
+
+
+dashboard_branding_policies_controller.delete_organization_branding_policy(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
 ## <a name="devices_controller"></a>![Class: ](https://apidocs.io/img/class.png ".DevicesController") DevicesController
 
 ### Get controller instance
@@ -1816,7 +2066,7 @@ collect['network_id'] = network_id
 serial = 'serial'
 collect['serial'] = serial
 
-timespan = 21
+timespan = 227
 collect['timespan'] = timespan
 
 
@@ -1863,19 +2113,19 @@ collect['serial'] = serial
 ip = 'ip'
 collect['ip'] = ip
 
-t0 = 't0'
-collect['t0'] = t0
+t_0 = 't0'
+collect['t_0'] = t_0
 
-t1 = 't1'
-collect['t1'] = t1
+t_1 = 't1'
+collect['t_1'] = t_1
 
-timespan = 21
+timespan = 227.379962148787
 collect['timespan'] = timespan
 
-resolution = 21
+resolution = 227
 collect['resolution'] = resolution
 
-uplink = 'uplink'
+uplink = UplinkEnum.WAN1
 collect['uplink'] = uplink
 
 
@@ -2052,7 +2302,7 @@ collect = {}
 organization_id = 'organizationId'
 collect['organization_id'] = organization_id
 
-per_page = 21
+per_page = 227
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -2761,16 +3011,16 @@ result = intrusion_settings_controller.update_organization_security_intrusion_se
 An instance of the ``` MRL3FirewallController ``` class can be accessed from the API Client.
 
 ```python
- mr_l3_firewall_controller = client.mr_l3_firewall
+ mr_l_3_firewall_controller = client.mr_l_3_firewall
 ```
 
-### <a name="get_network_ssid_l3_firewall_rules"></a>![Method: ](https://apidocs.io/img/method.png ".MRL3FirewallController.get_network_ssid_l3_firewall_rules") get_network_ssid_l3_firewall_rules
+### <a name="get_network_ssid_l_3_firewall_rules"></a>![Method: ](https://apidocs.io/img/method.png ".MRL3FirewallController.get_network_ssid_l_3_firewall_rules") get_network_ssid_l_3_firewall_rules
 
 > Return the L3 firewall rules for an SSID on an MR network
 
 ```python
-def get_network_ssid_l3_firewall_rules(self,
-                                           options=dict())
+def get_network_ssid_l_3_firewall_rules(self,
+                                            options=dict())
 ```
 
 #### Parameters
@@ -2794,18 +3044,18 @@ number = 'number'
 collect['number'] = number
 
 
-result = mr_l3_firewall_controller.get_network_ssid_l3_firewall_rules(collect)
+result = mr_l_3_firewall_controller.get_network_ssid_l_3_firewall_rules(collect)
 
 ```
 
 
-### <a name="update_network_ssid_l3_firewall_rules"></a>![Method: ](https://apidocs.io/img/method.png ".MRL3FirewallController.update_network_ssid_l3_firewall_rules") update_network_ssid_l3_firewall_rules
+### <a name="update_network_ssid_l_3_firewall_rules"></a>![Method: ](https://apidocs.io/img/method.png ".MRL3FirewallController.update_network_ssid_l_3_firewall_rules") update_network_ssid_l_3_firewall_rules
 
 > Update the L3 firewall rules of an SSID on an MR network
 
 ```python
-def update_network_ssid_l3_firewall_rules(self,
-                                              options=dict())
+def update_network_ssid_l_3_firewall_rules(self,
+                                               options=dict())
 ```
 
 #### Parameters
@@ -2829,11 +3079,11 @@ collect['network_id'] = network_id
 number = 'number'
 collect['number'] = number
 
-update_network_ssid_l3_firewall_rules = UpdateNetworkSsidL3FirewallRulesModel()
-collect['update_network_ssid_l3_firewall_rules'] = update_network_ssid_l3_firewall_rules
+update_network_ssid_l_3_firewall_rules = UpdateNetworkSsidL3FirewallRulesModel()
+collect['update_network_ssid_l_3_firewall_rules'] = update_network_ssid_l_3_firewall_rules
 
 
-result = mr_l3_firewall_controller.update_network_ssid_l3_firewall_rules(collect)
+result = mr_l_3_firewall_controller.update_network_ssid_l_3_firewall_rules(collect)
 
 ```
 
@@ -2906,13 +3156,13 @@ collect = {}
 serial = 'serial'
 collect['serial'] = serial
 
-t0 = 't0'
-collect['t0'] = t0
+t_0 = 't0'
+collect['t_0'] = t_0
 
-t1 = 't1'
-collect['t1'] = t1
+t_1 = 't1'
+collect['t_1'] = t_1
 
-timespan = 21
+timespan = 63.8752440404497
 collect['timespan'] = timespan
 
 object_type = ObjectTypeEnum.PERSON
@@ -3020,16 +3270,16 @@ collect['serial'] = serial
 zone_id = 'zoneId'
 collect['zone_id'] = zone_id
 
-t0 = 't0'
-collect['t0'] = t0
+t_0 = 't0'
+collect['t_0'] = t_0
 
-t1 = 't1'
-collect['t1'] = t1
+t_1 = 't1'
+collect['t_1'] = t_1
 
-timespan = 21
+timespan = 63.8752440404497
 collect['timespan'] = timespan
 
-resolution = 21
+resolution = 63
 collect['resolution'] = resolution
 
 object_type = ObjectTypeEnum.PERSON
@@ -3075,7 +3325,7 @@ def get_network_one_to_one_nat_rules(self,
 ```python
 network_id = 'networkId'
 
-result = mx11_nat_rules_controller.get_network_one_to_one_nat_rules(network_id)
+result = mx_11_nat_rules_controller.get_network_one_to_one_nat_rules(network_id)
 
 ```
 
@@ -3110,7 +3360,7 @@ update_network_one_to_one_nat_rules = UpdateNetworkOneToOneNatRulesModel()
 collect['update_network_one_to_one_nat_rules'] = update_network_one_to_one_nat_rules
 
 
-result = mx11_nat_rules_controller.update_network_one_to_one_nat_rules(collect)
+result = mx_11_nat_rules_controller.update_network_one_to_one_nat_rules(collect)
 
 ```
 
@@ -3149,7 +3399,7 @@ def get_network_one_to_many_nat_rules(self,
 ```python
 network_id = 'networkId'
 
-result = mx1_many_nat_rules_controller.get_network_one_to_many_nat_rules(network_id)
+result = mx_1_many_nat_rules_controller.get_network_one_to_many_nat_rules(network_id)
 
 ```
 
@@ -3184,7 +3434,7 @@ update_network_one_to_many_nat_rules = UpdateNetworkOneToManyNatRulesModel()
 collect['update_network_one_to_many_nat_rules'] = update_network_one_to_many_nat_rules
 
 
-result = mx1_many_nat_rules_controller.update_network_one_to_many_nat_rules(collect)
+result = mx_1_many_nat_rules_controller.update_network_one_to_many_nat_rules(collect)
 
 ```
 
@@ -3198,16 +3448,16 @@ result = mx1_many_nat_rules_controller.update_network_one_to_many_nat_rules(coll
 An instance of the ``` MXL3FirewallController ``` class can be accessed from the API Client.
 
 ```python
- mx_l3_firewall_controller = client.mx_l3_firewall
+ mx_l_3_firewall_controller = client.mx_l_3_firewall
 ```
 
-### <a name="get_network_l3_firewall_rules"></a>![Method: ](https://apidocs.io/img/method.png ".MXL3FirewallController.get_network_l3_firewall_rules") get_network_l3_firewall_rules
+### <a name="get_network_l_3_firewall_rules"></a>![Method: ](https://apidocs.io/img/method.png ".MXL3FirewallController.get_network_l_3_firewall_rules") get_network_l_3_firewall_rules
 
 > Return the L3 firewall rules for an MX network
 
 ```python
-def get_network_l3_firewall_rules(self,
-                                      network_id)
+def get_network_l_3_firewall_rules(self,
+                                       network_id)
 ```
 
 #### Parameters
@@ -3223,18 +3473,18 @@ def get_network_l3_firewall_rules(self,
 ```python
 network_id = 'networkId'
 
-result = mx_l3_firewall_controller.get_network_l3_firewall_rules(network_id)
+result = mx_l_3_firewall_controller.get_network_l_3_firewall_rules(network_id)
 
 ```
 
 
-### <a name="update_network_l3_firewall_rules"></a>![Method: ](https://apidocs.io/img/method.png ".MXL3FirewallController.update_network_l3_firewall_rules") update_network_l3_firewall_rules
+### <a name="update_network_l_3_firewall_rules"></a>![Method: ](https://apidocs.io/img/method.png ".MXL3FirewallController.update_network_l_3_firewall_rules") update_network_l_3_firewall_rules
 
 > Update the L3 firewall rules of an MX network
 
 ```python
-def update_network_l3_firewall_rules(self,
-                                         options=dict())
+def update_network_l_3_firewall_rules(self,
+                                          options=dict())
 ```
 
 #### Parameters
@@ -3254,11 +3504,11 @@ collect = {}
 network_id = 'networkId'
 collect['network_id'] = network_id
 
-update_network_l3_firewall_rules = UpdateNetworkL3FirewallRulesModel()
-collect['update_network_l3_firewall_rules'] = update_network_l3_firewall_rules
+update_network_l_3_firewall_rules = UpdateNetworkL3FirewallRulesModel()
+collect['update_network_l_3_firewall_rules'] = update_network_l_3_firewall_rules
 
 
-result = mx_l3_firewall_controller.update_network_l3_firewall_rules(collect)
+result = mx_l_3_firewall_controller.update_network_l_3_firewall_rules(collect)
 
 ```
 
@@ -3272,16 +3522,16 @@ result = mx_l3_firewall_controller.update_network_l3_firewall_rules(collect)
 An instance of the ``` MXL7ApplicationCategoriesController ``` class can be accessed from the API Client.
 
 ```python
- mx_l7_application_categories_controller = client.mx_l7_application_categories
+ mx_l_7_application_categories_controller = client.mx_l_7_application_categories
 ```
 
-### <a name="get_network_l7_firewall_rules_application_categories"></a>![Method: ](https://apidocs.io/img/method.png ".MXL7ApplicationCategoriesController.get_network_l7_firewall_rules_application_categories") get_network_l7_firewall_rules_application_categories
+### <a name="get_network_l_7_firewall_rules_application_categories"></a>![Method: ](https://apidocs.io/img/method.png ".MXL7ApplicationCategoriesController.get_network_l_7_firewall_rules_application_categories") get_network_l_7_firewall_rules_application_categories
 
 > Return the L7 firewall application categories and their associated applications for an MX network
 
 ```python
-def get_network_l7_firewall_rules_application_categories(self,
-                                                             network_id)
+def get_network_l_7_firewall_rules_application_categories(self,
+                                                              network_id)
 ```
 
 #### Parameters
@@ -3297,7 +3547,7 @@ def get_network_l7_firewall_rules_application_categories(self,
 ```python
 network_id = 'networkId'
 
-result = mx_l7_application_categories_controller.get_network_l7_firewall_rules_application_categories(network_id)
+result = mx_l_7_application_categories_controller.get_network_l_7_firewall_rules_application_categories(network_id)
 
 ```
 
@@ -3311,16 +3561,16 @@ result = mx_l7_application_categories_controller.get_network_l7_firewall_rules_a
 An instance of the ``` MXL7FirewallController ``` class can be accessed from the API Client.
 
 ```python
- mx_l7_firewall_controller = client.mx_l7_firewall
+ mx_l_7_firewall_controller = client.mx_l_7_firewall
 ```
 
-### <a name="get_network_l7_firewall_rules"></a>![Method: ](https://apidocs.io/img/method.png ".MXL7FirewallController.get_network_l7_firewall_rules") get_network_l7_firewall_rules
+### <a name="get_network_l_7_firewall_rules"></a>![Method: ](https://apidocs.io/img/method.png ".MXL7FirewallController.get_network_l_7_firewall_rules") get_network_l_7_firewall_rules
 
 > List the MX L7 firewall rules for an MX network
 
 ```python
-def get_network_l7_firewall_rules(self,
-                                      network_id)
+def get_network_l_7_firewall_rules(self,
+                                       network_id)
 ```
 
 #### Parameters
@@ -3336,18 +3586,18 @@ def get_network_l7_firewall_rules(self,
 ```python
 network_id = 'networkId'
 
-result = mx_l7_firewall_controller.get_network_l7_firewall_rules(network_id)
+result = mx_l_7_firewall_controller.get_network_l_7_firewall_rules(network_id)
 
 ```
 
 
-### <a name="update_network_l7_firewall_rules"></a>![Method: ](https://apidocs.io/img/method.png ".MXL7FirewallController.update_network_l7_firewall_rules") update_network_l7_firewall_rules
+### <a name="update_network_l_7_firewall_rules"></a>![Method: ](https://apidocs.io/img/method.png ".MXL7FirewallController.update_network_l_7_firewall_rules") update_network_l_7_firewall_rules
 
 > Update the MX L7 firewall rules for an MX network
 
 ```python
-def update_network_l7_firewall_rules(self,
-                                         options=dict())
+def update_network_l_7_firewall_rules(self,
+                                          options=dict())
 ```
 
 #### Parameters
@@ -3367,11 +3617,11 @@ collect = {}
 network_id = 'networkId'
 collect['network_id'] = network_id
 
-update_network_l7_firewall_rules = UpdateNetworkL7FirewallRulesModel()
-collect['update_network_l7_firewall_rules'] = update_network_l7_firewall_rules
+update_network_l_7_firewall_rules = UpdateNetworkL7FirewallRulesModel()
+collect['update_network_l_7_firewall_rules'] = update_network_l_7_firewall_rules
 
 
-result = mx_l7_firewall_controller.update_network_l7_firewall_rules(collect)
+result = mx_l_7_firewall_controller.update_network_l_7_firewall_rules(collect)
 
 ```
 
@@ -4470,10 +4720,10 @@ collect = {}
 network_id = 'networkId'
 collect['network_id'] = network_id
 
-t0 = 't0'
-collect['t0'] = t0
+t_0 = 't0'
+collect['t_0'] = t_0
 
-timespan = 112
+timespan = 63.8752440404497
 collect['timespan'] = timespan
 
 
@@ -4620,7 +4870,7 @@ def update_network_site_to_site_vpn(self,
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | networkId |  ``` Required ```  | TODO: Add a parameter description |
-| updateNetworkSiteToSiteVpn |  ``` Optional ```  | TODO: Add a parameter description |
+| updateNetworkSiteToSiteVpn |  ``` Required ```  | TODO: Add a parameter description |
 
 
 
@@ -4670,8 +4920,8 @@ result = networks_controller.split_network(network_id)
 
 ### <a name="get_network_traffic"></a>![Method: ](https://apidocs.io/img/method.png ".NetworksController.get_network_traffic") get_network_traffic
 
-> The traffic analysis data for this network.
-> <a href="https://documentation.meraki.com/MR/Monitoring_and_Reporting/Hostname_Visibility">Traffic Analysis with Hostname Visibility</a> must be enabled on the network.
+>     The traffic analysis data for this network.
+>     <a href="https://documentation.meraki.com/MR/Monitoring_and_Reporting/Hostname_Visibility">Traffic Analysis with Hostname Visibility</a> must be enabled on the network.
 > 
 
 ```python
@@ -4684,8 +4934,10 @@ def get_network_traffic(self,
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | networkId |  ``` Required ```  | TODO: Add a parameter description |
-| timespan |  ``` Required ```  | The timespan for the data. Must be an integer representing a duration in seconds between two hours and one month. (Mandatory.) |
-| deviceType |  ``` Optional ```  | Filter the data by device type: combined (default), wireless, switch, appliance. When using combined, for each rule the data will come from the device type with the most usage. |
+| t0 |  ``` Optional ```  | The beginning of the timespan for the data. The maximum lookback period is 30 days from today. |
+| timespan |  ``` Optional ```  | The timespan for which the information will be fetched. If specifying timespan, do not specify parameter t0. The value must be in seconds and be less than or equal to 30 days. |
+| deviceType |  ``` Optional ```  | Filter the data by device type: combined (default), wireless, switch, appliance.
+    When using combined, for each rule the data will come from the device type with the most usage. |
 
 
 
@@ -4697,7 +4949,10 @@ collect = {}
 network_id = 'networkId'
 collect['network_id'] = network_id
 
-timespan = 'timespan'
+t_0 = 't0'
+collect['t_0'] = t_0
+
+timespan = 22.1520708138831
 collect['timespan'] = timespan
 
 device_type = 'deviceType'
@@ -5268,16 +5523,16 @@ collect = {}
 organization_id = 'organizationId'
 collect['organization_id'] = organization_id
 
-t0 = 't0'
-collect['t0'] = t0
+t_0 = 't0'
+collect['t_0'] = t_0
 
-t1 = 't1'
-collect['t1'] = t1
+t_1 = 't1'
+collect['t_1'] = t_1
 
-timespan = 112
+timespan = 22.1520708138831
 collect['timespan'] = timespan
 
-uplink = 'uplink'
+uplink = UplinkEnum.WAN1
 collect['uplink'] = uplink
 
 ip = 'ip'
@@ -5741,7 +5996,7 @@ def get_network_wireless_rf_profiles(self,
 |-----------|------|-------------|
 | networkId |  ``` Required ```  | TODO: Add a parameter description |
 | includeTemplateProfiles |  ``` Optional ```  | If the network is bound to a template, this parameter controls whether or not the non-basic RF profiles defined on the template
-      should be included in the response alongside the non-basic profiles defined on the bound network. Defaults to false. |
+    should be included in the response alongside the non-basic profiles defined on the bound network. Defaults to false. |
 
 
 
@@ -7938,16 +8193,16 @@ collect['network_id'] = network_id
 client_id = 'clientId'
 collect['client_id'] = client_id
 
-t0 = 't0'
-collect['t0'] = t0
+t_0 = 't0'
+collect['t_0'] = t_0
 
-t1 = 't1'
-collect['t1'] = t1
+t_1 = 't1'
+collect['t_1'] = t_1
 
-timespan = 71
+timespan = 113.647352705545
 collect['timespan'] = timespan
 
-per_page = 71
+per_page = 113
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -7993,16 +8248,16 @@ collect = {}
 network_id = 'networkId'
 collect['network_id'] = network_id
 
-t0 = 't0'
-collect['t0'] = t0
+t_0 = 't0'
+collect['t_0'] = t_0
 
-t1 = 't1'
-collect['t1'] = t1
+t_1 = 't1'
+collect['t_1'] = t_1
 
-timespan = 71
+timespan = 113.647352705545
 collect['timespan'] = timespan
 
-per_page = 71
+per_page = 113
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -8048,16 +8303,16 @@ collect = {}
 organization_id = 'organizationId'
 collect['organization_id'] = organization_id
 
-t0 = 't0'
-collect['t0'] = t0
+t_0 = 't0'
+collect['t_0'] = t_0
 
-t1 = 't1'
-collect['t1'] = t1
+t_1 = 't1'
+collect['t_1'] = t_1
 
-timespan = 71
+timespan = 113.647352705545
 collect['timespan'] = timespan
 
-per_page = 71
+per_page = 113
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -8118,7 +8373,7 @@ collect['ssid_number'] = ssid_number
 login_identifier = 'loginIdentifier'
 collect['login_identifier'] = login_identifier
 
-timespan = 71
+timespan = 113
 collect['timespan'] = timespan
 
 
@@ -8778,6 +9033,239 @@ result = switch_settings_controller.update_network_switch_settings(collect)
 ```
 
 
+### <a name="get_network_switch_settings_qos_rules"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchSettingsController.get_network_switch_settings_qos_rules") get_network_switch_settings_qos_rules
+
+> List quality of service rules
+
+```python
+def get_network_switch_settings_qos_rules(self,
+                                              network_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+network_id = 'networkId'
+
+result = switch_settings_controller.get_network_switch_settings_qos_rules(network_id)
+
+```
+
+
+### <a name="create_network_switch_settings_qos_rule"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchSettingsController.create_network_switch_settings_qos_rule") create_network_switch_settings_qos_rule
+
+> Add a quality of service rule
+
+```python
+def create_network_switch_settings_qos_rule(self,
+                                                options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| createNetworkSwitchSettingsQosRule |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+create_network_switch_settings_qos_rule = CreateNetworkSwitchSettingsQosRuleModel()
+collect['create_network_switch_settings_qos_rule'] = create_network_switch_settings_qos_rule
+
+
+result = switch_settings_controller.create_network_switch_settings_qos_rule(collect)
+
+```
+
+
+### <a name="get_network_switch_settings_qos_rules_order"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchSettingsController.get_network_switch_settings_qos_rules_order") get_network_switch_settings_qos_rules_order
+
+> Return the quality of service rule IDs by order in which they will be processed by the switch
+
+```python
+def get_network_switch_settings_qos_rules_order(self,
+                                                    network_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+network_id = 'networkId'
+
+result = switch_settings_controller.get_network_switch_settings_qos_rules_order(network_id)
+
+```
+
+
+### <a name="update_network_switch_settings_qos_rules_order"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchSettingsController.update_network_switch_settings_qos_rules_order") update_network_switch_settings_qos_rules_order
+
+> Update the order in which the rules should be processed by the switch
+
+```python
+def update_network_switch_settings_qos_rules_order(self,
+                                                       options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| updateNetworkSwitchSettingsQosRulesOrder |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+update_network_switch_settings_qos_rules_order = UpdateNetworkSwitchSettingsQosRulesOrderModel()
+collect['update_network_switch_settings_qos_rules_order'] = update_network_switch_settings_qos_rules_order
+
+
+result = switch_settings_controller.update_network_switch_settings_qos_rules_order(collect)
+
+```
+
+
+### <a name="get_network_switch_settings_qos_rule"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchSettingsController.get_network_switch_settings_qos_rule") get_network_switch_settings_qos_rule
+
+> Return a quality of service rule
+
+```python
+def get_network_switch_settings_qos_rule(self,
+                                             options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| qosRuleId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+qos_rule_id = 'qosRuleId'
+collect['qos_rule_id'] = qos_rule_id
+
+
+result = switch_settings_controller.get_network_switch_settings_qos_rule(collect)
+
+```
+
+
+### <a name="delete_network_switch_settings_qos_rule"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchSettingsController.delete_network_switch_settings_qos_rule") delete_network_switch_settings_qos_rule
+
+> Delete a quality of service rule
+
+```python
+def delete_network_switch_settings_qos_rule(self,
+                                                options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| qosRuleId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+qos_rule_id = 'qosRuleId'
+collect['qos_rule_id'] = qos_rule_id
+
+
+switch_settings_controller.delete_network_switch_settings_qos_rule(collect)
+
+```
+
+
+### <a name="update_network_switch_settings_qos_rule"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchSettingsController.update_network_switch_settings_qos_rule") update_network_switch_settings_qos_rule
+
+> Update a quality of service rule
+
+```python
+def update_network_switch_settings_qos_rule(self,
+                                                options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| qosRuleId |  ``` Required ```  | TODO: Add a parameter description |
+| updateNetworkSwitchSettingsQosRule |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+qos_rule_id = 'qosRuleId'
+collect['qos_rule_id'] = qos_rule_id
+
+update_network_switch_settings_qos_rule = UpdateNetworkSwitchSettingsQosRuleModel()
+collect['update_network_switch_settings_qos_rule'] = update_network_switch_settings_qos_rule
+
+
+result = switch_settings_controller.update_network_switch_settings_qos_rule(collect)
+
+```
+
+
 [Back to List of Controllers](#list_of_controllers)
 
 ## <a name="switch_stacks_controller"></a>![Class: ](https://apidocs.io/img/class.png ".SwitchStacksController") SwitchStacksController
@@ -8789,45 +9277,6 @@ An instance of the ``` SwitchStacksController ``` class can be accessed from the
 ```python
  switch_stacks_controller = client.switch_stacks
 ```
-
-### <a name="remove_network_switch_stack"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchStacksController.remove_network_switch_stack") remove_network_switch_stack
-
-> Remove a switch from a stack
-
-```python
-def remove_network_switch_stack(self,
-                                    options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| networkID |  ``` Required ```  | TODO: Add a parameter description |
-| switchStackId |  ``` Required ```  | TODO: Add a parameter description |
-| removeNetworkSwitchStack |  ``` Required ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-network_id = 'networkID'
-collect['network_id'] = network_id
-
-switch_stack_id = 'switchStackId'
-collect['switch_stack_id'] = switch_stack_id
-
-remove_network_switch_stack = RemoveNetworkSwitchStackModel()
-collect['remove_network_switch_stack'] = remove_network_switch_stack
-
-
-result = switch_stacks_controller.remove_network_switch_stack(collect)
-
-```
-
 
 ### <a name="get_network_switch_stacks"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchStacksController.get_network_switch_stacks") get_network_switch_stacks
 
@@ -8996,6 +9445,45 @@ collect['add_network_switch_stack'] = add_network_switch_stack
 
 
 result = switch_stacks_controller.add_network_switch_stack(collect)
+
+```
+
+
+### <a name="remove_network_switch_stack"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchStacksController.remove_network_switch_stack") remove_network_switch_stack
+
+> Remove a switch from a stack
+
+```python
+def remove_network_switch_stack(self,
+                                    options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| switchStackId |  ``` Required ```  | TODO: Add a parameter description |
+| removeNetworkSwitchStack |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+switch_stack_id = 'switchStackId'
+collect['switch_stack_id'] = switch_stack_id
+
+remove_network_switch_stack = RemoveNetworkSwitchStackModel()
+collect['remove_network_switch_stack'] = remove_network_switch_stack
+
+
+result = switch_stacks_controller.remove_network_switch_stack(collect)
 
 ```
 
@@ -9713,16 +10201,16 @@ collect = {}
 organization_id = 'organizationId'
 collect['organization_id'] = organization_id
 
-t0 = 't0'
-collect['t0'] = t0
+t_0 = 't0'
+collect['t_0'] = t_0
 
-t1 = 't1'
-collect['t1'] = t1
+t_1 = 't1'
+collect['t_1'] = t_1
 
-timespan = 162
+timespan = 49.6868519273991
 collect['timespan'] = timespan
 
-per_page = 162
+per_page = 49
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -9783,19 +10271,19 @@ collect = {}
 network_id = 'networkId'
 collect['network_id'] = network_id
 
-t0 = 't0'
-collect['t0'] = t0
+t_0 = 't0'
+collect['t_0'] = t_0
 
-t1 = 't1'
-collect['t1'] = t1
+t_1 = 't1'
+collect['t_1'] = t_1
 
-timespan = 162
+timespan = 49.6868519273991
 collect['timespan'] = timespan
 
-ssid = 162
+ssid = 49
 collect['ssid'] = ssid
 
-vlan = 162
+vlan = 49
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -9839,19 +10327,19 @@ collect = {}
 network_id = 'networkId'
 collect['network_id'] = network_id
 
-t0 = 't0'
-collect['t0'] = t0
+t_0 = 't0'
+collect['t_0'] = t_0
 
-t1 = 't1'
-collect['t1'] = t1
+t_1 = 't1'
+collect['t_1'] = t_1
 
-timespan = 162
+timespan = 49.6868519273991
 collect['timespan'] = timespan
 
-ssid = 162
+ssid = 49
 collect['ssid'] = ssid
 
-vlan = 162
+vlan = 49
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -9901,19 +10389,19 @@ collect['network_id'] = network_id
 client_id = 'clientId'
 collect['client_id'] = client_id
 
-t0 = 't0'
-collect['t0'] = t0
+t_0 = 't0'
+collect['t_0'] = t_0
 
-t1 = 't1'
-collect['t1'] = t1
+t_1 = 't1'
+collect['t_1'] = t_1
 
-timespan = 162
+timespan = 49.6868519273991
 collect['timespan'] = timespan
 
-ssid = 162
+ssid = 49
 collect['ssid'] = ssid
 
-vlan = 162
+vlan = 49
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -9961,19 +10449,19 @@ collect['network_id'] = network_id
 client_id = 'clientId'
 collect['client_id'] = client_id
 
-t0 = 't0'
-collect['t0'] = t0
+t_0 = 't0'
+collect['t_0'] = t_0
 
-t1 = 't1'
-collect['t1'] = t1
+t_1 = 't1'
+collect['t_1'] = t_1
 
-timespan = 162
+timespan = 49.6868519273991
 collect['timespan'] = timespan
 
-ssid = 162
+ssid = 49
 collect['ssid'] = ssid
 
-vlan = 162
+vlan = 49
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -10019,19 +10507,19 @@ collect = {}
 network_id = 'networkId'
 collect['network_id'] = network_id
 
-t0 = 't0'
-collect['t0'] = t0
+t_0 = 't0'
+collect['t_0'] = t_0
 
-t1 = 't1'
-collect['t1'] = t1
+t_1 = 't1'
+collect['t_1'] = t_1
 
-timespan = 162
+timespan = 49.6868519273991
 collect['timespan'] = timespan
 
-ssid = 162
+ssid = 49
 collect['ssid'] = ssid
 
-vlan = 162
+vlan = 49
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -10074,19 +10562,19 @@ collect = {}
 network_id = 'networkId'
 collect['network_id'] = network_id
 
-t0 = 't0'
-collect['t0'] = t0
+t_0 = 't0'
+collect['t_0'] = t_0
 
-t1 = 't1'
-collect['t1'] = t1
+t_1 = 't1'
+collect['t_1'] = t_1
 
-timespan = 162
+timespan = 49.6868519273991
 collect['timespan'] = timespan
 
-ssid = 162
+ssid = 49
 collect['ssid'] = ssid
 
-vlan = 162
+vlan = 49
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -10130,19 +10618,19 @@ collect = {}
 network_id = 'networkId'
 collect['network_id'] = network_id
 
-t0 = 't0'
-collect['t0'] = t0
+t_0 = 't0'
+collect['t_0'] = t_0
 
-t1 = 't1'
-collect['t1'] = t1
+t_1 = 't1'
+collect['t_1'] = t_1
 
-timespan = 162
+timespan = 49.6868519273991
 collect['timespan'] = timespan
 
-ssid = 162
+ssid = 49
 collect['ssid'] = ssid
 
-vlan = 162
+vlan = 49
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -10192,19 +10680,19 @@ collect['network_id'] = network_id
 serial = 'serial'
 collect['serial'] = serial
 
-t0 = 't0'
-collect['t0'] = t0
+t_0 = 't0'
+collect['t_0'] = t_0
 
-t1 = 't1'
-collect['t1'] = t1
+t_1 = 't1'
+collect['t_1'] = t_1
 
-timespan = 254
+timespan = 49.6868519273991
 collect['timespan'] = timespan
 
-ssid = 254
+ssid = 49
 collect['ssid'] = ssid
 
-vlan = 254
+vlan = 49
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -10252,19 +10740,19 @@ collect['network_id'] = network_id
 serial = 'serial'
 collect['serial'] = serial
 
-t0 = 't0'
-collect['t0'] = t0
+t_0 = 't0'
+collect['t_0'] = t_0
 
-t1 = 't1'
-collect['t1'] = t1
+t_1 = 't1'
+collect['t_1'] = t_1
 
-timespan = 254
+timespan = 49.6868519273991
 collect['timespan'] = timespan
 
-ssid = 254
+ssid = 49
 collect['ssid'] = ssid
 
-vlan = 254
+vlan = 49
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -10312,19 +10800,19 @@ collect = {}
 network_id = 'networkId'
 collect['network_id'] = network_id
 
-t0 = 't0'
-collect['t0'] = t0
+t_0 = 't0'
+collect['t_0'] = t_0
 
-t1 = 't1'
-collect['t1'] = t1
+t_1 = 't1'
+collect['t_1'] = t_1
 
-timespan = 254
+timespan = 49.6868519273991
 collect['timespan'] = timespan
 
-ssid = 254
+ssid = 49
 collect['ssid'] = ssid
 
-vlan = 254
+vlan = 49
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -10374,19 +10862,19 @@ collect = {}
 network_id = 'networkId'
 collect['network_id'] = network_id
 
-t0 = 't0'
-collect['t0'] = t0
+t_0 = 't0'
+collect['t_0'] = t_0
 
-t1 = 't1'
-collect['t1'] = t1
+t_1 = 't1'
+collect['t_1'] = t_1
 
-timespan = 254
+timespan = 49.6868519273991
 collect['timespan'] = timespan
 
-ssid = 254
+ssid = 49
 collect['ssid'] = ssid
 
-vlan = 254
+vlan = 49
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'

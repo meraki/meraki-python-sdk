@@ -23,14 +23,14 @@ class RadiusServerModel(object):
     # Create a mapping from Model property names to API property names
     _names = {
         "host":'host',
-        "port":'port',
-        "secret":'secret'
+        "secret":'secret',
+        "port":'port'
     }
 
     def __init__(self,
                  host=None,
-                 port=None,
-                 secret=None):
+                 secret=None,
+                 port=None):
         """Constructor for the RadiusServerModel class"""
 
         # Initialize members of the class
@@ -58,12 +58,12 @@ class RadiusServerModel(object):
 
         # Extract variables from the dictionary
         host = dictionary.get('host')
-        port = dictionary.get('port')
         secret = dictionary.get('secret')
+        port = dictionary.get('port')
 
         # Return an object of this model
         return cls(host,
-                   port,
-                   secret)
+                   secret,
+                   port)
 
 

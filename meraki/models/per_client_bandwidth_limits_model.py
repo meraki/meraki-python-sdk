@@ -6,7 +6,7 @@
     This file was automatically generated for meraki by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-import meraki.models.bandwidth_limits1_model
+import meraki.models.bandwidth_limits_1_model
 
 class PerClientBandwidthLimitsModel(object):
 
@@ -59,7 +59,7 @@ class PerClientBandwidthLimitsModel(object):
 
         # Extract variables from the dictionary
         settings = dictionary.get('settings')
-        bandwidth_limits = meraki.models.bandwidth_limits1_model.BandwidthLimits1Model.from_dictionary(dictionary.get('bandwidthLimits')) if dictionary.get('bandwidthLimits') else None
+        bandwidth_limits = meraki.models.bandwidth_limits_1_model.BandwidthLimits1Model.from_dictionary(dictionary.get('bandwidthLimits')) if dictionary.get('bandwidthLimits') else None
 
         # Return an object of this model
         return cls(settings,

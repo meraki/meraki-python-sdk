@@ -6,7 +6,7 @@
     This file was automatically generated for meraki by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-import meraki.models.rule9_model
+import meraki.models.rule_9_model
 
 class UpdateNetworkSsidTrafficShapingModel(object):
 
@@ -72,7 +72,7 @@ class UpdateNetworkSsidTrafficShapingModel(object):
         if dictionary.get('rules') != None:
             rules = list()
             for structure in dictionary.get('rules'):
-                rules.append(meraki.models.rule9_model.Rule9Model.from_dictionary(structure))
+                rules.append(meraki.models.rule_9_model.Rule9Model.from_dictionary(structure))
 
         # Return an object of this model
         return cls(traffic_shaping_enabled,

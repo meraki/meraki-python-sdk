@@ -7,8 +7,8 @@
 """
 
 import meraki.models.traffic_shaping_rule_model
-import meraki.models.l3_firewall_rule_model
-import meraki.models.l7_firewall_rule_model
+import meraki.models.l_3_firewall_rule_model
+import meraki.models.l_7_firewall_rule_model
 
 class FirewallAndTrafficShapingModel(object):
 
@@ -34,22 +34,22 @@ class FirewallAndTrafficShapingModel(object):
     _names = {
         "settings":'settings',
         "traffic_shaping_rules":'trafficShapingRules',
-        "l3_firewall_rules":'l3FirewallRules',
-        "l7_firewall_rules":'l7FirewallRules'
+        "l_3_firewall_rules":'l3FirewallRules',
+        "l_7_firewall_rules":'l7FirewallRules'
     }
 
     def __init__(self,
                  settings=None,
                  traffic_shaping_rules=None,
-                 l3_firewall_rules=None,
-                 l7_firewall_rules=None):
+                 l_3_firewall_rules=None,
+                 l_7_firewall_rules=None):
         """Constructor for the FirewallAndTrafficShapingModel class"""
 
         # Initialize members of the class
         self.settings = settings
         self.traffic_shaping_rules = traffic_shaping_rules
-        self.l3_firewall_rules = l3_firewall_rules
-        self.l7_firewall_rules = l7_firewall_rules
+        self.l_3_firewall_rules = l_3_firewall_rules
+        self.l_7_firewall_rules = l_7_firewall_rules
 
 
     @classmethod
@@ -76,21 +76,21 @@ class FirewallAndTrafficShapingModel(object):
             traffic_shaping_rules = list()
             for structure in dictionary.get('trafficShapingRules'):
                 traffic_shaping_rules.append(meraki.models.traffic_shaping_rule_model.TrafficShapingRuleModel.from_dictionary(structure))
-        l3_firewall_rules = None
+        l_3_firewall_rules = None
         if dictionary.get('l3FirewallRules') != None:
-            l3_firewall_rules = list()
+            l_3_firewall_rules = list()
             for structure in dictionary.get('l3FirewallRules'):
-                l3_firewall_rules.append(meraki.models.l3_firewall_rule_model.L3FirewallRuleModel.from_dictionary(structure))
-        l7_firewall_rules = None
+                l_3_firewall_rules.append(meraki.models.l_3_firewall_rule_model.L3FirewallRuleModel.from_dictionary(structure))
+        l_7_firewall_rules = None
         if dictionary.get('l7FirewallRules') != None:
-            l7_firewall_rules = list()
+            l_7_firewall_rules = list()
             for structure in dictionary.get('l7FirewallRules'):
-                l7_firewall_rules.append(meraki.models.l7_firewall_rule_model.L7FirewallRuleModel.from_dictionary(structure))
+                l_7_firewall_rules.append(meraki.models.l_7_firewall_rule_model.L7FirewallRuleModel.from_dictionary(structure))
 
         # Return an object of this model
         return cls(settings,
                    traffic_shaping_rules,
-                   l3_firewall_rules,
-                   l7_firewall_rules)
+                   l_3_firewall_rules,
+                   l_7_firewall_rules)
 
 

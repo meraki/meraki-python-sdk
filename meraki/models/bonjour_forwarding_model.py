@@ -6,7 +6,7 @@
     This file was automatically generated for meraki by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-import meraki.models.rule1_model
+import meraki.models.rule_1_model
 
 class BonjourForwardingModel(object):
 
@@ -63,7 +63,7 @@ class BonjourForwardingModel(object):
         if dictionary.get('rules') != None:
             rules = list()
             for structure in dictionary.get('rules'):
-                rules.append(meraki.models.rule1_model.Rule1Model.from_dictionary(structure))
+                rules.append(meraki.models.rule_1_model.Rule1Model.from_dictionary(structure))
 
         # Return an object of this model
         return cls(settings,

@@ -15,9 +15,9 @@ class RuleModel(object):
 
     Attributes:
         comment (string): Description of the rule (optional)
-        policy (string): 'allow' or 'deny' traffic specified by this rule
-        protocol (string): The type of protocol (must be 'tcp', 'udp', 'icmp'
-            or 'any')
+        policy (PolicyEnum): 'allow' or 'deny' traffic specified by this rule
+        protocol (ProtocolEnum): The type of protocol (must be 'tcp', 'udp',
+            'icmp' or 'any')
         src_port (string): Comma-separated list of source port(s) (integer in
             the range 1-65535), or 'any'
         src_cidr (string): Comma-separated list of source IP address(es) (in

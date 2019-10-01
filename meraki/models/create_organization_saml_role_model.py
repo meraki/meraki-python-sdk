@@ -6,8 +6,8 @@
     This file was automatically generated for meraki by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-import meraki.models.tag2_model
-import meraki.models.network2_model
+import meraki.models.tag_2_model
+import meraki.models.network_2_model
 
 class CreateOrganizationSamlRoleModel(object):
 
@@ -72,12 +72,12 @@ class CreateOrganizationSamlRoleModel(object):
         if dictionary.get('tags') != None:
             tags = list()
             for structure in dictionary.get('tags'):
-                tags.append(meraki.models.tag2_model.Tag2Model.from_dictionary(structure))
+                tags.append(meraki.models.tag_2_model.Tag2Model.from_dictionary(structure))
         networks = None
         if dictionary.get('networks') != None:
             networks = list()
             for structure in dictionary.get('networks'):
-                networks.append(meraki.models.network2_model.Network2Model.from_dictionary(structure))
+                networks.append(meraki.models.network_2_model.Network2Model.from_dictionary(structure))
 
         # Return an object of this model
         return cls(role,

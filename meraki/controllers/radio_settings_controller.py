@@ -150,7 +150,7 @@ class RadioSettingsController(BaseController):
                     include_template_profiles -- bool -- If the network is
                         bound to a template, this parameter controls whether
                         or not the non-basic RF profiles defined on the
-                        template       should be included in the response
+                        template     should be included in the response
                         alongside the non-basic profiles defined on the bound
                         network. Defaults to false.
 

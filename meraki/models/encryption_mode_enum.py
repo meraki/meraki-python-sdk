@@ -10,18 +10,16 @@ class EncryptionModeEnum(object):
 
     """Implementation of the 'EncryptionMode' enum.
 
-    The psk encryption mode for the SSID ('wpa', 'wep' or 'wpa-eap')
+    The psk encryption mode for the SSID ('wep' or 'wpa'). This param is only
+    valid if the authMode is 'psk'
 
     Attributes:
-        WPA: TODO: type description here.
         WEP: TODO: type description here.
-        WPAEAP: TODO: type description here.
+        WPA: TODO: type description here.
 
     """
 
-    WPA = 'wpa'
-
     WEP = 'wep'
 
-    WPAEAP = 'wpa-eap'
+    WPA = 'wpa'
 

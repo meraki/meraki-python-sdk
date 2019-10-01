@@ -34,32 +34,32 @@ class UpdateOrganizationSnmpModel(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "v2c_enabled":'v2cEnabled',
-        "v3_enabled":'v3Enabled',
-        "v3_auth_mode":'v3AuthMode',
-        "v3_auth_pass":'v3AuthPass',
-        "v3_priv_mode":'v3PrivMode',
-        "v3_priv_pass":'v3PrivPass',
+        "v_2_c_enabled":'v2cEnabled',
+        "v_3_enabled":'v3Enabled',
+        "v_3_auth_mode":'v3AuthMode',
+        "v_3_auth_pass":'v3AuthPass',
+        "v_3_priv_mode":'v3PrivMode',
+        "v_3_priv_pass":'v3PrivPass',
         "peer_ips":'peerIps'
     }
 
     def __init__(self,
-                 v2c_enabled=None,
-                 v3_enabled=None,
-                 v3_auth_mode=None,
-                 v3_auth_pass=None,
-                 v3_priv_mode=None,
-                 v3_priv_pass=None,
+                 v_2_c_enabled=None,
+                 v_3_enabled=None,
+                 v_3_auth_mode=None,
+                 v_3_auth_pass=None,
+                 v_3_priv_mode=None,
+                 v_3_priv_pass=None,
                  peer_ips=None):
         """Constructor for the UpdateOrganizationSnmpModel class"""
 
         # Initialize members of the class
-        self.v2c_enabled = v2c_enabled
-        self.v3_enabled = v3_enabled
-        self.v3_auth_mode = v3_auth_mode
-        self.v3_auth_pass = v3_auth_pass
-        self.v3_priv_mode = v3_priv_mode
-        self.v3_priv_pass = v3_priv_pass
+        self.v_2_c_enabled = v_2_c_enabled
+        self.v_3_enabled = v_3_enabled
+        self.v_3_auth_mode = v_3_auth_mode
+        self.v_3_auth_pass = v_3_auth_pass
+        self.v_3_priv_mode = v_3_priv_mode
+        self.v_3_priv_pass = v_3_priv_pass
         self.peer_ips = peer_ips
 
 
@@ -81,21 +81,21 @@ class UpdateOrganizationSnmpModel(object):
             return None
 
         # Extract variables from the dictionary
-        v2c_enabled = dictionary.get('v2cEnabled')
-        v3_enabled = dictionary.get('v3Enabled')
-        v3_auth_mode = dictionary.get('v3AuthMode')
-        v3_auth_pass = dictionary.get('v3AuthPass')
-        v3_priv_mode = dictionary.get('v3PrivMode')
-        v3_priv_pass = dictionary.get('v3PrivPass')
+        v_2_c_enabled = dictionary.get('v2cEnabled')
+        v_3_enabled = dictionary.get('v3Enabled')
+        v_3_auth_mode = dictionary.get('v3AuthMode')
+        v_3_auth_pass = dictionary.get('v3AuthPass')
+        v_3_priv_mode = dictionary.get('v3PrivMode')
+        v_3_priv_pass = dictionary.get('v3PrivPass')
         peer_ips = dictionary.get('peerIps')
 
         # Return an object of this model
-        return cls(v2c_enabled,
-                   v3_enabled,
-                   v3_auth_mode,
-                   v3_auth_pass,
-                   v3_priv_mode,
-                   v3_priv_pass,
+        return cls(v_2_c_enabled,
+                   v_3_enabled,
+                   v_3_auth_mode,
+                   v_3_auth_pass,
+                   v_3_priv_mode,
+                   v_3_priv_pass,
                    peer_ips)
 
 

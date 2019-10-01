@@ -19,9 +19,9 @@ class UpdateNetworkBluetoothSettingsModel(object):
         advertising_enabled (bool): Whether APs will advertise beacons. (true,
             false)
         uuid (string): The UUID to be used in the beacon identifier.
-        major_minor_assignment_mode (string): The way major and minor number
-            should be assigned to nodes in the network. ('Unique',
-            'Non-unique')
+        major_minor_assignment_mode (MajorMinorAssignmentModeEnum): The way
+            major and minor number should be assigned to nodes in the network.
+            ('Unique', 'Non-unique')
         major (int): The major number to be used in the beacon identifier.
             Only valid in 'Non-unique' mode.
         minor (int): The minor number to be used in the beacon identifier.

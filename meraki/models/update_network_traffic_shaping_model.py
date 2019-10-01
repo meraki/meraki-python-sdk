@@ -6,7 +6,7 @@
     This file was automatically generated for meraki by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-import meraki.models.rule10_model
+import meraki.models.rule_10_model
 
 class UpdateNetworkTrafficShapingModel(object):
 
@@ -66,7 +66,7 @@ class UpdateNetworkTrafficShapingModel(object):
         if dictionary.get('rules') != None:
             rules = list()
             for structure in dictionary.get('rules'):
-                rules.append(meraki.models.rule10_model.Rule10Model.from_dictionary(structure))
+                rules.append(meraki.models.rule_10_model.Rule10Model.from_dictionary(structure))
 
         # Return an object of this model
         return cls(default_rules_enabled,

@@ -10,21 +10,18 @@ class ModeEnum(object):
 
     """Implementation of the 'Mode' enum.
 
-    The traffic analysis mode for the network. Can be one of 'disabled' (do
-    not collect traffic types),
-        'basic' (collect generic traffic categories), or 'detailed' (collect
-        destination hostnames).
+    The site-to-site VPN mode. Can be one of 'none', 'spoke' or 'hub'
 
     Attributes:
-        DISABLED: TODO: type description here.
-        BASIC: TODO: type description here.
-        DETAILED: TODO: type description here.
+        NONE: TODO: type description here.
+        SPOKE: TODO: type description here.
+        HUB: TODO: type description here.
 
     """
 
-    DISABLED = 'disabled'
+    NONE = 'none'
 
-    BASIC = 'basic'
+    SPOKE = 'spoke'
 
-    DETAILED = 'detailed'
+    HUB = 'hub'
 

@@ -16,11 +16,10 @@ class UpdateOrganizationAdminModel(object):
     TODO: type model description here.
 
     Attributes:
-        email (string): The email of the dashboard administrator. This
-            attribute can not be updated.
         name (string): The name of the dashboard administrator
-        org_access (string): The privilege of the dashboard administrator on
-            the organization (full, read-only, none)
+        org_access (OrgAccessEnum): The privilege of the dashboard
+            administrator on the organization. Can be one of 'full',
+            'read-only', 'enterprise' or 'none'
         tags (list of TagModel): The list of tags that the dashboard
             administrator has privileges on
         networks (list of NetworkModel): The list of networks that the
@@ -30,7 +29,6 @@ class UpdateOrganizationAdminModel(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "email":'email',
         "name":'name',
         "org_access":'orgAccess',
         "tags":'tags',
@@ -38,7 +36,6 @@ class UpdateOrganizationAdminModel(object):
     }
 
     def __init__(self,
-                 email=None,
                  name=None,
                  org_access=None,
                  tags=None,
@@ -46,7 +43,6 @@ class UpdateOrganizationAdminModel(object):
         """Constructor for the UpdateOrganizationAdminModel class"""
 
         # Initialize members of the class
-        self.email = email
         self.name = name
         self.org_access = org_access
         self.tags = tags
@@ -71,7 +67,6 @@ class UpdateOrganizationAdminModel(object):
             return None
 
         # Extract variables from the dictionary
-        email = dictionary.get('email')
         name = dictionary.get('name')
         org_access = dictionary.get('orgAccess')
         tags = None
@@ -86,8 +81,7 @@ class UpdateOrganizationAdminModel(object):
                 networks.append(meraki.models.network_model.NetworkModel.from_dictionary(structure))
 
         # Return an object of this model
-        return cls(email,
-                   name,
+        return cls(name,
                    org_access,
                    tags,
                    networks)

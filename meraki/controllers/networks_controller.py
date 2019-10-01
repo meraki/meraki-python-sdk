@@ -221,11 +221,11 @@ class NetworksController(BaseController):
                     t_0 -- string -- The beginning of the timespan for the
                         data. The maximum lookback period is 31 days from
                         today.
-                    timespan -- int -- The timespan for which the information
-                        will be fetched. If specifying timespan, do not
-                        specify parameter t0. The value must be in seconds and
-                        be less than or equal to 31 days. The default is 7
-                        days.
+                    timespan -- float -- The timespan for which the
+                        information will be fetched. If specifying timespan,
+                        do not specify parameter t0. The value must be in
+                        seconds and be less than or equal to 31 days. The
+                        default is 7 days.
 
         Returns:
             mixed: Response from the API. Successful operation
@@ -249,7 +249,7 @@ class NetworksController(BaseController):
         _query_builder = Configuration.base_uri
         _query_builder += _url_path
         _query_parameters = {
-            't0': options.get('t0', None),
+            't0': options.get('t_0', None),
             'timespan': options.get('timespan', None)
         }
         _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
@@ -509,7 +509,8 @@ class NetworksController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(network_id=options.get("network_id"))
+        self.validate_parameters(network_id=options.get("network_id"),
+                                 update_network_site_to_site_vpn=options.get("update_network_site_to_site_vpn"))
 
         # Prepare query URL
         _url_path = '/networks/{networkId}/siteToSiteVpn'
@@ -586,11 +587,11 @@ class NetworksController(BaseController):
                             options=dict()):
         """Does a GET request to /networks/{networkId}/traffic.
 
-        The traffic analysis data for this network.
-        <a
-        href="https://documentation.meraki.com/MR/Monitoring_and_Reporting/Host
-        name_Visibility">Traffic Analysis with Hostname Visibility</a> must be
-        enabled on the network.
+            The traffic analysis data for this network.
+            <a
+            href="https://documentation.meraki.com/MR/Monitoring_and_Reporting/
+            Hostname_Visibility">Traffic Analysis with Hostname Visibility</a>
+            must be enabled on the network.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -601,13 +602,17 @@ class NetworksController(BaseController):
 
                     network_id -- string -- TODO: type description here.
                         Example: 
-                    timespan -- string -- The timespan for the data. Must be
-                        an integer representing a duration in seconds between
-                        two hours and one month. (Mandatory.)
+                    t_0 -- string -- The beginning of the timespan for the
+                        data. The maximum lookback period is 30 days from
+                        today.
+                    timespan -- float -- The timespan for which the
+                        information will be fetched. If specifying timespan,
+                        do not specify parameter t0. The value must be in
+                        seconds and be less than or equal to 30 days.
                     device_type -- string -- Filter the data by device type:
-                        combined (default), wireless, switch, appliance. When
-                        using combined, for each rule the data will come from
-                        the device type with the most usage.
+                        combined (default), wireless, switch, appliance.    
+                        When using combined, for each rule the data will come
+                        from the device type with the most usage.
 
         Returns:
             mixed: Response from the API. Successful operation
@@ -621,8 +626,7 @@ class NetworksController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(network_id=options.get("network_id"),
-                                 timespan=options.get("timespan"))
+        self.validate_parameters(network_id=options.get("network_id"))
 
         # Prepare query URL
         _url_path = '/networks/{networkId}/traffic'
@@ -632,6 +636,7 @@ class NetworksController(BaseController):
         _query_builder = Configuration.base_uri
         _query_builder += _url_path
         _query_parameters = {
+            't0': options.get('t_0', None),
             'timespan': options.get('timespan', None),
             'deviceType': options.get('device_type', None)
         }

@@ -15,10 +15,10 @@ class UpdateNetworkTrafficAnalysisSettingsModel(object):
     TODO: type model description here.
 
     Attributes:
-        mode (ModeEnum): The traffic analysis mode for the network. Can be one
-            of 'disabled' (do not collect traffic types),     'basic' (collect
-            generic traffic categories), or 'detailed' (collect destination
-            hostnames).
+        mode (Mode1Enum): The traffic analysis mode for the network. Can be
+            one of 'disabled' (do not collect traffic types),     'basic'
+            (collect generic traffic categories), or 'detailed' (collect
+            destination hostnames).
         custom_pie_chart_items (list of CustomPieChartItemModel): The list of
             items that make up the custom pie chart for traffic reporting.
 

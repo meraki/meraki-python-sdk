@@ -27,24 +27,24 @@ class UpdateNetworkWarmSpareSettingsModel(object):
         "enabled":'enabled',
         "spare_serial":'spareSerial',
         "uplink_mode":'uplinkMode',
-        "virtual_ip1":'virtualIp1',
-        "virtual_ip2":'virtualIp2'
+        "virtual_ip_1":'virtualIp1',
+        "virtual_ip_2":'virtualIp2'
     }
 
     def __init__(self,
                  enabled=None,
                  spare_serial=None,
                  uplink_mode=None,
-                 virtual_ip1=None,
-                 virtual_ip2=None):
+                 virtual_ip_1=None,
+                 virtual_ip_2=None):
         """Constructor for the UpdateNetworkWarmSpareSettingsModel class"""
 
         # Initialize members of the class
         self.enabled = enabled
         self.spare_serial = spare_serial
         self.uplink_mode = uplink_mode
-        self.virtual_ip1 = virtual_ip1
-        self.virtual_ip2 = virtual_ip2
+        self.virtual_ip_1 = virtual_ip_1
+        self.virtual_ip_2 = virtual_ip_2
 
 
     @classmethod
@@ -68,14 +68,14 @@ class UpdateNetworkWarmSpareSettingsModel(object):
         enabled = dictionary.get('enabled')
         spare_serial = dictionary.get('spareSerial')
         uplink_mode = dictionary.get('uplinkMode')
-        virtual_ip1 = dictionary.get('virtualIp1')
-        virtual_ip2 = dictionary.get('virtualIp2')
+        virtual_ip_1 = dictionary.get('virtualIp1')
+        virtual_ip_2 = dictionary.get('virtualIp2')
 
         # Return an object of this model
         return cls(enabled,
                    spare_serial,
                    uplink_mode,
-                   virtual_ip1,
-                   virtual_ip2)
+                   virtual_ip_1,
+                   virtual_ip_2)
 
 

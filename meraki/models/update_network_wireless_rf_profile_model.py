@@ -6,9 +6,9 @@
     This file was automatically generated for meraki by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-import meraki.models.ap_band_settings1_model
-import meraki.models.two_four_ghz_settings1_model
-import meraki.models.five_ghz_settings1_model
+import meraki.models.ap_band_settings_1_model
+import meraki.models.two_four_ghz_settings_1_model
+import meraki.models.five_ghz_settings_1_model
 
 class UpdateNetworkWirelessRfProfileModel(object):
 
@@ -86,9 +86,9 @@ class UpdateNetworkWirelessRfProfileModel(object):
         client_balancing_enabled = dictionary.get('clientBalancingEnabled')
         min_bitrate_type = dictionary.get('minBitrateType')
         band_selection_type = dictionary.get('bandSelectionType')
-        ap_band_settings = meraki.models.ap_band_settings1_model.ApBandSettings1Model.from_dictionary(dictionary.get('apBandSettings')) if dictionary.get('apBandSettings') else None
-        two_four_ghz_settings = meraki.models.two_four_ghz_settings1_model.TwoFourGhzSettings1Model.from_dictionary(dictionary.get('twoFourGhzSettings')) if dictionary.get('twoFourGhzSettings') else None
-        five_ghz_settings = meraki.models.five_ghz_settings1_model.FiveGhzSettings1Model.from_dictionary(dictionary.get('fiveGhzSettings')) if dictionary.get('fiveGhzSettings') else None
+        ap_band_settings = meraki.models.ap_band_settings_1_model.ApBandSettings1Model.from_dictionary(dictionary.get('apBandSettings')) if dictionary.get('apBandSettings') else None
+        two_four_ghz_settings = meraki.models.two_four_ghz_settings_1_model.TwoFourGhzSettings1Model.from_dictionary(dictionary.get('twoFourGhzSettings')) if dictionary.get('twoFourGhzSettings') else None
+        five_ghz_settings = meraki.models.five_ghz_settings_1_model.FiveGhzSettings1Model.from_dictionary(dictionary.get('fiveGhzSettings')) if dictionary.get('fiveGhzSettings') else None
 
         # Return an object of this model
         return cls(name,

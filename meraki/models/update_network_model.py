@@ -14,7 +14,7 @@ class UpdateNetworkModel(object):
     TODO: type model description here.
 
     Attributes:
-        name (string): The name of the new network
+        name (string): The name of the network
         time_zone (string): The timezone of the network. For a list of allowed
             timezones, please see the 'TZ' column in the table in <a
             target='_blank'

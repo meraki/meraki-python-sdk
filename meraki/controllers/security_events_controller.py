@@ -40,10 +40,10 @@ class SecurityEventsController(BaseController):
                         today.
                     t_1 -- string -- The end of the timespan for the data. t1
                         can be a maximum of 791 days after t0.
-                    timespan -- int -- The timespan for which the information
-                        will be fetched. If specifying timespan, do not
-                        specify parameters t0 and t1. The value must be in
-                        seconds and be less than or equal to 791 days. The
+                    timespan -- float -- The timespan for which the
+                        information will be fetched. If specifying timespan,
+                        do not specify parameters t0 and t1. The value must be
+                        in seconds and be less than or equal to 791 days. The
                         default is 31 days.
                     per_page -- int -- The number of entries per page
                         returned. Acceptable range is 3 - 1000. Default is
@@ -85,8 +85,8 @@ class SecurityEventsController(BaseController):
         _query_builder = Configuration.base_uri
         _query_builder += _url_path
         _query_parameters = {
-            't0': options.get('t0', None),
-            't1': options.get('t1', None),
+            't0': options.get('t_0', None),
+            't1': options.get('t_1', None),
             'timespan': options.get('timespan', None),
             'perPage': options.get('per_page', None),
             'startingAfter': options.get('starting_after', None),
@@ -130,10 +130,10 @@ class SecurityEventsController(BaseController):
                         today.
                     t_1 -- string -- The end of the timespan for the data. t1
                         can be a maximum of 365 days after t0.
-                    timespan -- int -- The timespan for which the information
-                        will be fetched. If specifying timespan, do not
-                        specify parameters t0 and t1. The value must be in
-                        seconds and be less than or equal to 365 days. The
+                    timespan -- float -- The timespan for which the
+                        information will be fetched. If specifying timespan,
+                        do not specify parameters t0 and t1. The value must be
+                        in seconds and be less than or equal to 365 days. The
                         default is 31 days.
                     per_page -- int -- The number of entries per page
                         returned. Acceptable range is 3 - 1000. Default is
@@ -173,8 +173,8 @@ class SecurityEventsController(BaseController):
         _query_builder = Configuration.base_uri
         _query_builder += _url_path
         _query_parameters = {
-            't0': options.get('t0', None),
-            't1': options.get('t1', None),
+            't0': options.get('t_0', None),
+            't1': options.get('t_1', None),
             'timespan': options.get('timespan', None),
             'perPage': options.get('per_page', None),
             'startingAfter': options.get('starting_after', None),
@@ -218,10 +218,10 @@ class SecurityEventsController(BaseController):
                         today.
                     t_1 -- string -- The end of the timespan for the data. t1
                         can be a maximum of 365 days after t0.
-                    timespan -- int -- The timespan for which the information
-                        will be fetched. If specifying timespan, do not
-                        specify parameters t0 and t1. The value must be in
-                        seconds and be less than or equal to 365 days. The
+                    timespan -- float -- The timespan for which the
+                        information will be fetched. If specifying timespan,
+                        do not specify parameters t0 and t1. The value must be
+                        in seconds and be less than or equal to 365 days. The
                         default is 31 days.
                     per_page -- int -- The number of entries per page
                         returned. Acceptable range is 3 - 1000. Default is
@@ -261,8 +261,8 @@ class SecurityEventsController(BaseController):
         _query_builder = Configuration.base_uri
         _query_builder += _url_path
         _query_parameters = {
-            't0': options.get('t0', None),
-            't1': options.get('t1', None),
+            't0': options.get('t_0', None),
+            't1': options.get('t_1', None),
             'timespan': options.get('timespan', None),
             'perPage': options.get('per_page', None),
             'startingAfter': options.get('starting_after', None),

@@ -19,23 +19,27 @@ class UpdateNetworkSwitchSettingsModel(object):
             behavior of secondary power supplies on supported devices.
         power_exceptions (list of PowerExceptionModel): Exceptions on a per
             switch basis to "useCombinedPower"
+        vlan (int): Management VLAN
 
     """
 
     # Create a mapping from Model property names to API property names
     _names = {
         "use_combined_power":'useCombinedPower',
-        "power_exceptions":'powerExceptions'
+        "power_exceptions":'powerExceptions',
+        "vlan":'vlan'
     }
 
     def __init__(self,
                  use_combined_power=None,
-                 power_exceptions=None):
+                 power_exceptions=None,
+                 vlan=None):
         """Constructor for the UpdateNetworkSwitchSettingsModel class"""
 
         # Initialize members of the class
         self.use_combined_power = use_combined_power
         self.power_exceptions = power_exceptions
+        self.vlan = vlan
 
 
     @classmethod
@@ -62,9 +66,11 @@ class UpdateNetworkSwitchSettingsModel(object):
             power_exceptions = list()
             for structure in dictionary.get('powerExceptions'):
                 power_exceptions.append(meraki.models.power_exception_model.PowerExceptionModel.from_dictionary(structure))
+        vlan = dictionary.get('vlan')
 
         # Return an object of this model
         return cls(use_combined_power,
-                   power_exceptions)
+                   power_exceptions,
+                   vlan)
 
 
