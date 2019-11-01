@@ -577,7 +577,8 @@ class ClientsController(BaseController):
         """Does a GET request to /networks/{networkId}/clients/{clientId}/splashAuthorizationStatus.
 
         Return the splash authorization for a client, for each SSID they've
-        associated with through splash. Clients can be identified by a client
+        associated with through splash. Only enabled SSIDs with Click-through
+        splash enabled will be included. Clients can be identified by a client
         key or either the MAC or IP depending on whether the network uses
         Track-by-IP.
 

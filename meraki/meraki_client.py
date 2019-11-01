@@ -16,11 +16,14 @@ from meraki.controllers.bluetooth_clients_controller import BluetoothClientsCont
 from meraki.controllers.cameras_controller import CamerasController
 from meraki.controllers.clients_controller import ClientsController
 from meraki.controllers.config_templates_controller import ConfigTemplatesController
+from meraki.controllers.connectivity_monitoring_destinations_controller import ConnectivityMonitoringDestinationsController
 from meraki.controllers.content_filtering_categories_controller import ContentFilteringCategoriesController
 from meraki.controllers.content_filtering_rules_controller import ContentFilteringRulesController
 from meraki.controllers.dashboard_branding_policies_controller import DashboardBrandingPoliciesController
 from meraki.controllers.devices_controller import DevicesController
+from meraki.controllers.events_controller import EventsController
 from meraki.controllers.firewalled_services_controller import FirewalledServicesController
+from meraki.controllers.floorplans_controller import FloorplansController
 from meraki.controllers.group_policies_controller import GroupPoliciesController
 from meraki.controllers.http_servers_controller import HTTPServersController
 from meraki.controllers.intrusion_settings_controller import IntrusionSettingsController
@@ -35,6 +38,7 @@ from meraki.controllers.mxvlan_ports_controller import MXVLANPortsController
 from meraki.controllers.mxvpn_firewall_controller import MXVPNFirewallController
 from meraki.controllers.mx_cellular_firewall_controller import MXCellularFirewallController
 from meraki.controllers.mx_port_forwarding_rules_controller import MXPortForwardingRulesController
+from meraki.controllers.mx_static_routes_controller import MXStaticRoutesController
 from meraki.controllers.mx_warm_spare_settings_controller import MXWarmSpareSettingsController
 from meraki.controllers.malware_settings_controller import MalwareSettingsController
 from meraki.controllers.management_interface_settings_controller import ManagementInterfaceSettingsController
@@ -53,7 +57,6 @@ from meraki.controllers.ssids_controller import SsidsController
 from meraki.controllers.security_events_controller import SecurityEventsController
 from meraki.controllers.splash_login_attempts_controller import SplashLoginAttemptsController
 from meraki.controllers.splash_settings_controller import SplashSettingsController
-from meraki.controllers.static_routes_controller import StaticRoutesController
 from meraki.controllers.switch_port_schedules_controller import SwitchPortSchedulesController
 from meraki.controllers.switch_ports_controller import SwitchPortsController
 from meraki.controllers.switch_profiles_controller import SwitchProfilesController
@@ -66,6 +69,7 @@ from meraki.controllers.uplink_settings_controller import UplinkSettingsControll
 from meraki.controllers.vlans_controller import VlansController
 from meraki.controllers.webhook_logs_controller import WebhookLogsController
 from meraki.controllers.wireless_health_controller import WirelessHealthController
+from meraki.controllers.wireless_settings_controller import WirelessSettingsController
 
 
 class MerakiClient(object):
@@ -105,6 +109,10 @@ class MerakiClient(object):
         return ConfigTemplatesController()
 
     @lazy_property
+    def connectivity_monitoring_destinations(self):
+        return ConnectivityMonitoringDestinationsController()
+
+    @lazy_property
     def content_filtering_categories(self):
         return ContentFilteringCategoriesController()
 
@@ -121,8 +129,16 @@ class MerakiClient(object):
         return DevicesController()
 
     @lazy_property
+    def events(self):
+        return EventsController()
+
+    @lazy_property
     def firewalled_services(self):
         return FirewalledServicesController()
+
+    @lazy_property
+    def floorplans(self):
+        return FloorplansController()
 
     @lazy_property
     def group_policies(self):
@@ -179,6 +195,10 @@ class MerakiClient(object):
     @lazy_property
     def mx_port_forwarding_rules(self):
         return MXPortForwardingRulesController()
+
+    @lazy_property
+    def mx_static_routes(self):
+        return MXStaticRoutesController()
 
     @lazy_property
     def mx_warm_spare_settings(self):
@@ -253,10 +273,6 @@ class MerakiClient(object):
         return SplashSettingsController()
 
     @lazy_property
-    def static_routes(self):
-        return StaticRoutesController()
-
-    @lazy_property
     def switch_port_schedules(self):
         return SwitchPortSchedulesController()
 
@@ -303,6 +319,10 @@ class MerakiClient(object):
     @lazy_property
     def wireless_health(self):
         return WirelessHealthController()
+
+    @lazy_property
+    def wireless_settings(self):
+        return WirelessSettingsController()
 
 
     def __init__(self,

@@ -6,32 +6,31 @@
     This file was automatically generated for meraki by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
+import meraki.models.destination_model
 
-class SsidsModel(object):
+class UpdateNetworkConnectivityMonitoringDestinationsModel(object):
 
-    """Implementation of the 'Ssids' model.
+    """Implementation of the 'updateNetworkConnectivityMonitoringDestinations' model.
 
-    The target SSIDs. Each SSID must be enabled and must have Click-through
-    splash enabled. For each SSID where isAuthorized is true, the expiration
-    time will automatically be set according to the SSID's splash frequency.
+    TODO: type model description here.
 
     Attributes:
-        is_authorized (string): New authorization status for SSID (true,
-            false).
+        destinations (list of DestinationModel): The list of connectivity
+            monitoring destinations
 
     """
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "is_authorized":'isAuthorized'
+        "destinations":'destinations'
     }
 
     def __init__(self,
-                 is_authorized=None):
-        """Constructor for the SsidsModel class"""
+                 destinations=None):
+        """Constructor for the UpdateNetworkConnectivityMonitoringDestinationsModel class"""
 
         # Initialize members of the class
-        self.is_authorized = is_authorized
+        self.destinations = destinations
 
 
     @classmethod
@@ -52,9 +51,13 @@ class SsidsModel(object):
             return None
 
         # Extract variables from the dictionary
-        is_authorized = dictionary.get('isAuthorized')
+        destinations = None
+        if dictionary.get('destinations') != None:
+            destinations = list()
+            for structure in dictionary.get('destinations'):
+                destinations.append(meraki.models.destination_model.DestinationModel.from_dictionary(structure))
 
         # Return an object of this model
-        return cls(is_authorized)
+        return cls(destinations)
 
 

@@ -7,31 +7,32 @@
 """
 
 
-class SsidsModel(object):
+class BottomLeftCornerModel(object):
 
-    """Implementation of the 'Ssids' model.
+    """Implementation of the 'BottomLeftCorner' model.
 
-    The target SSIDs. Each SSID must be enabled and must have Click-through
-    splash enabled. For each SSID where isAuthorized is true, the expiration
-    time will automatically be set according to the SSID's splash frequency.
+    The longitude and latitude of the bottom left corner of your floor plan.
 
     Attributes:
-        is_authorized (string): New authorization status for SSID (true,
-            false).
+        lat (float): Latitude
+        lng (float): Longitude
 
     """
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "is_authorized":'isAuthorized'
+        "lat":'lat',
+        "lng":'lng'
     }
 
     def __init__(self,
-                 is_authorized=None):
-        """Constructor for the SsidsModel class"""
+                 lat=None,
+                 lng=None):
+        """Constructor for the BottomLeftCornerModel class"""
 
         # Initialize members of the class
-        self.is_authorized = is_authorized
+        self.lat = lat
+        self.lng = lng
 
 
     @classmethod
@@ -52,9 +53,11 @@ class SsidsModel(object):
             return None
 
         # Extract variables from the dictionary
-        is_authorized = dictionary.get('isAuthorized')
+        lat = dictionary.get('lat')
+        lng = dictionary.get('lng')
 
         # Return an object of this model
-        return cls(is_authorized)
+        return cls(lat,
+                   lng)
 
 

@@ -180,11 +180,14 @@ client = MerakiClient(x_cisco_meraki_api_key)
 * [CamerasController](#cameras_controller)
 * [ClientsController](#clients_controller)
 * [ConfigTemplatesController](#config_templates_controller)
+* [ConnectivityMonitoringDestinationsController](#connectivity_monitoring_destinations_controller)
 * [ContentFilteringCategoriesController](#content_filtering_categories_controller)
 * [ContentFilteringRulesController](#content_filtering_rules_controller)
 * [DashboardBrandingPoliciesController](#dashboard_branding_policies_controller)
 * [DevicesController](#devices_controller)
+* [EventsController](#events_controller)
 * [FirewalledServicesController](#firewalled_services_controller)
+* [FloorplansController](#floorplans_controller)
 * [GroupPoliciesController](#group_policies_controller)
 * [HTTPServersController](#http_servers_controller)
 * [IntrusionSettingsController](#intrusion_settings_controller)
@@ -199,6 +202,7 @@ client = MerakiClient(x_cisco_meraki_api_key)
 * [MXVPNFirewallController](#mxvpn_firewall_controller)
 * [MXCellularFirewallController](#mx_cellular_firewall_controller)
 * [MXPortForwardingRulesController](#mx_port_forwarding_rules_controller)
+* [MXStaticRoutesController](#mx_static_routes_controller)
 * [MXWarmSpareSettingsController](#mx_warm_spare_settings_controller)
 * [MalwareSettingsController](#malware_settings_controller)
 * [ManagementInterfaceSettingsController](#management_interface_settings_controller)
@@ -217,7 +221,6 @@ client = MerakiClient(x_cisco_meraki_api_key)
 * [SecurityEventsController](#security_events_controller)
 * [SplashLoginAttemptsController](#splash_login_attempts_controller)
 * [SplashSettingsController](#splash_settings_controller)
-* [StaticRoutesController](#static_routes_controller)
 * [SwitchPortSchedulesController](#switch_port_schedules_controller)
 * [SwitchPortsController](#switch_ports_controller)
 * [SwitchProfilesController](#switch_profiles_controller)
@@ -230,6 +233,7 @@ client = MerakiClient(x_cisco_meraki_api_key)
 * [VlansController](#vlans_controller)
 * [WebhookLogsController](#webhook_logs_controller)
 * [WirelessHealthController](#wireless_health_controller)
+* [WirelessSettingsController](#wireless_settings_controller)
 
 ## <a name="api_usage_controller"></a>![Class: ](https://apidocs.io/img/class.png ".APIUsageController") APIUsageController
 
@@ -282,10 +286,10 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 14.103135375354
+timespan = 90.4315426272487
 collect['timespan'] = timespan
 
-per_page = 14
+per_page = 90
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -303,7 +307,7 @@ collect['path'] = path
 method = 'method'
 collect['method'] = method
 
-response_code = 14
+response_code = 90
 collect['response_code'] = response_code
 
 
@@ -763,10 +767,10 @@ collect['network_id'] = network_id
 t_0 = 't0'
 collect['t_0'] = t_0
 
-timespan = 14.103135375354
+timespan = 90.4315426272487
 collect['timespan'] = timespan
 
-per_page = 14
+per_page = 90
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -818,7 +822,7 @@ collect['bluetooth_client_id'] = bluetooth_client_id
 include_connectivity_history = False
 collect['include_connectivity_history'] = include_connectivity_history
 
-connectivity_history_timespan = 14
+connectivity_history_timespan = 90
 collect['connectivity_history_timespan'] = connectivity_history_timespan
 
 
@@ -959,7 +963,7 @@ collect['serial'] = serial
 t_0 = 't0'
 collect['t_0'] = t_0
 
-timespan = 14.103135375354
+timespan = 90.4315426272487
 collect['timespan'] = timespan
 
 
@@ -1001,10 +1005,10 @@ collect['network_id'] = network_id
 t_0 = 't0'
 collect['t_0'] = t_0
 
-timespan = 227.379962148787
+timespan = 90.4315426272487
 collect['timespan'] = timespan
 
-per_page = 227
+per_page = 90
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -1121,7 +1125,7 @@ collect['network_id'] = network_id
 client_id = 'clientId'
 collect['client_id'] = client_id
 
-per_page = 227
+per_page = 90
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -1175,10 +1179,10 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 227.379962148787
+timespan = 90.4315426272487
 collect['timespan'] = timespan
 
-resolution = 227
+resolution = 90
 collect['resolution'] = resolution
 
 
@@ -1263,7 +1267,7 @@ result = clients_controller.update_network_client_policy(collect)
 
 ### <a name="get_network_client_splash_authorization_status"></a>![Method: ](https://apidocs.io/img/method.png ".ClientsController.get_network_client_splash_authorization_status") get_network_client_splash_authorization_status
 
-> Return the splash authorization for a client, for each SSID they've associated with through splash. Clients can be identified by a client key or either the MAC or IP depending on whether the network uses Track-by-IP.
+> Return the splash authorization for a client, for each SSID they've associated with through splash. Only enabled SSIDs with Click-through splash enabled will be included. Clients can be identified by a client key or either the MAC or IP depending on whether the network uses Track-by-IP.
 
 ```python
 def get_network_client_splash_authorization_status(self,
@@ -1367,7 +1371,7 @@ collect['network_id'] = network_id
 client_id = 'clientId'
 collect['client_id'] = client_id
 
-per_page = 227
+per_page = 90
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -1487,6 +1491,80 @@ collect['config_template_id'] = config_template_id
 
 
 config_templates_controller.delete_organization_config_template(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="connectivity_monitoring_destinations_controller"></a>![Class: ](https://apidocs.io/img/class.png ".ConnectivityMonitoringDestinationsController") ConnectivityMonitoringDestinationsController
+
+### Get controller instance
+
+An instance of the ``` ConnectivityMonitoringDestinationsController ``` class can be accessed from the API Client.
+
+```python
+ connectivity_monitoring_destinations_controller = client.connectivity_monitoring_destinations
+```
+
+### <a name="get_network_connectivity_monitoring_destinations"></a>![Method: ](https://apidocs.io/img/method.png ".ConnectivityMonitoringDestinationsController.get_network_connectivity_monitoring_destinations") get_network_connectivity_monitoring_destinations
+
+> Return the connectivity testing destinations for an MX network
+
+```python
+def get_network_connectivity_monitoring_destinations(self,
+                                                         network_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+network_id = 'networkId'
+
+result = connectivity_monitoring_destinations_controller.get_network_connectivity_monitoring_destinations(network_id)
+
+```
+
+
+### <a name="update_network_connectivity_monitoring_destinations"></a>![Method: ](https://apidocs.io/img/method.png ".ConnectivityMonitoringDestinationsController.update_network_connectivity_monitoring_destinations") update_network_connectivity_monitoring_destinations
+
+> Update the connectivity testing destinations for an MX network
+
+```python
+def update_network_connectivity_monitoring_destinations(self,
+                                                            options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| updateNetworkConnectivityMonitoringDestinations |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+update_network_connectivity_monitoring_destinations = UpdateNetworkConnectivityMonitoringDestinationsModel()
+collect['update_network_connectivity_monitoring_destinations'] = update_network_connectivity_monitoring_destinations
+
+
+result = connectivity_monitoring_destinations_controller.update_network_connectivity_monitoring_destinations(collect)
 
 ```
 
@@ -2066,7 +2144,7 @@ collect['network_id'] = network_id
 serial = 'serial'
 collect['serial'] = serial
 
-timespan = 227
+timespan = 181
 collect['timespan'] = timespan
 
 
@@ -2119,10 +2197,10 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 227.379962148787
+timespan = 181.926824518911
 collect['timespan'] = timespan
 
-resolution = 227
+resolution = 181
 collect['resolution'] = resolution
 
 uplink = UplinkEnum.WAN1
@@ -2302,7 +2380,7 @@ collect = {}
 organization_id = 'organizationId'
 collect['organization_id'] = organization_id
 
-per_page = 227
+per_page = 181
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -2313,6 +2391,132 @@ collect['ending_before'] = ending_before
 
 
 result = devices_controller.get_organization_devices(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="events_controller"></a>![Class: ](https://apidocs.io/img/class.png ".EventsController") EventsController
+
+### Get controller instance
+
+An instance of the ``` EventsController ``` class can be accessed from the API Client.
+
+```python
+ events_controller = client.events
+```
+
+### <a name="get_network_events"></a>![Method: ](https://apidocs.io/img/method.png ".EventsController.get_network_events") get_network_events
+
+> List the events for the network
+
+```python
+def get_network_events(self,
+                           options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| productType |  ``` Optional ```  | The product type to fetch events for. This parameter is required for networks with multiple device types. Valid types are wireless, appliance, switch, systemsManager, and camera |
+| includedEventTypes |  ``` Optional ```  ``` Collection ```  | A list of event types. The returned events will be filtered to only include events with these types. |
+| excludedEventTypes |  ``` Optional ```  ``` Collection ```  | A list of event types. The returned events will be filtered to exclude events with these types. |
+| deviceMac |  ``` Optional ```  | The MAC address of the Meraki device which the list of events will be filtered with |
+| deviceSerial |  ``` Optional ```  | The serial of the Meraki device which the list of events will be filtered with |
+| deviceName |  ``` Optional ```  | The name of the Meraki device which the list of events will be filtered with |
+| clientIp |  ``` Optional ```  | The IP of the client which the list of events will be filtered with. Only supported for track-by-IP networks. |
+| clientMac |  ``` Optional ```  | The MAC address of the client which the list of events will be filtered with. Only supported for track-by-MAC networks. |
+| clientName |  ``` Optional ```  | The name, or partial name, of the client which the list of events will be filtered with |
+| smDeviceMac |  ``` Optional ```  | The MAC address of the Systems Manager device which the list of events will be filtered with |
+| smDeviceName |  ``` Optional ```  | The name of the Systems Manager device which the list of events will be filtered with |
+| perPage |  ``` Optional ```  | The number of entries per page returned. Acceptable range is 3 - 1000. Default is 10. |
+| startingAfter |  ``` Optional ```  | A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it. |
+| endingBefore |  ``` Optional ```  | A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it. |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+product_type = 'productType'
+collect['product_type'] = product_type
+
+included_event_types = ['includedEventTypes']
+collect['included_event_types'] = included_event_types
+
+excluded_event_types = ['excludedEventTypes']
+collect['excluded_event_types'] = excluded_event_types
+
+device_mac = 'deviceMac'
+collect['device_mac'] = device_mac
+
+device_serial = 'deviceSerial'
+collect['device_serial'] = device_serial
+
+device_name = 'deviceName'
+collect['device_name'] = device_name
+
+client_ip = 'clientIp'
+collect['client_ip'] = client_ip
+
+client_mac = 'clientMac'
+collect['client_mac'] = client_mac
+
+client_name = 'clientName'
+collect['client_name'] = client_name
+
+sm_device_mac = 'smDeviceMac'
+collect['sm_device_mac'] = sm_device_mac
+
+sm_device_name = 'smDeviceName'
+collect['sm_device_name'] = sm_device_name
+
+per_page = 181
+collect['per_page'] = per_page
+
+starting_after = 'startingAfter'
+collect['starting_after'] = starting_after
+
+ending_before = 'endingBefore'
+collect['ending_before'] = ending_before
+
+
+result = events_controller.get_network_events(collect)
+
+```
+
+
+### <a name="get_network_events_event_types"></a>![Method: ](https://apidocs.io/img/method.png ".EventsController.get_network_events_event_types") get_network_events_event_types
+
+> List the event type to human-readable description
+
+```python
+def get_network_events_event_types(self,
+                                       network_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+network_id = 'networkId'
+
+result = events_controller.get_network_events_event_types(network_id)
 
 ```
 
@@ -2426,6 +2630,189 @@ collect['update_network_firewalled_service'] = update_network_firewalled_service
 
 
 result = firewalled_services_controller.update_network_firewalled_service(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="floorplans_controller"></a>![Class: ](https://apidocs.io/img/class.png ".FloorplansController") FloorplansController
+
+### Get controller instance
+
+An instance of the ``` FloorplansController ``` class can be accessed from the API Client.
+
+```python
+ floorplans_controller = client.floorplans
+```
+
+### <a name="get_network_floor_plans"></a>![Method: ](https://apidocs.io/img/method.png ".FloorplansController.get_network_floor_plans") get_network_floor_plans
+
+> List the floor plans that belong to your network
+
+```python
+def get_network_floor_plans(self,
+                                network_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+network_id = 'networkId'
+
+result = floorplans_controller.get_network_floor_plans(network_id)
+
+```
+
+
+### <a name="create_network_floor_plan"></a>![Method: ](https://apidocs.io/img/method.png ".FloorplansController.create_network_floor_plan") create_network_floor_plan
+
+> Upload a floor plan
+
+```python
+def create_network_floor_plan(self,
+                                  options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| createNetworkFloorPlan |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+create_network_floor_plan = CreateNetworkFloorPlanModel()
+collect['create_network_floor_plan'] = create_network_floor_plan
+
+
+result = floorplans_controller.create_network_floor_plan(collect)
+
+```
+
+
+### <a name="get_network_floor_plan"></a>![Method: ](https://apidocs.io/img/method.png ".FloorplansController.get_network_floor_plan") get_network_floor_plan
+
+> Find a floor plan by ID
+
+```python
+def get_network_floor_plan(self,
+                               options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| floorPlanId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+floor_plan_id = 'floorPlanId'
+collect['floor_plan_id'] = floor_plan_id
+
+
+result = floorplans_controller.get_network_floor_plan(collect)
+
+```
+
+
+### <a name="update_network_floor_plan"></a>![Method: ](https://apidocs.io/img/method.png ".FloorplansController.update_network_floor_plan") update_network_floor_plan
+
+> Update a floor plan's geolocation and other meta data
+
+```python
+def update_network_floor_plan(self,
+                                  options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| floorPlanId |  ``` Required ```  | TODO: Add a parameter description |
+| updateNetworkFloorPlan |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+floor_plan_id = 'floorPlanId'
+collect['floor_plan_id'] = floor_plan_id
+
+update_network_floor_plan = UpdateNetworkFloorPlanModel()
+collect['update_network_floor_plan'] = update_network_floor_plan
+
+
+result = floorplans_controller.update_network_floor_plan(collect)
+
+```
+
+
+### <a name="delete_network_floor_plan"></a>![Method: ](https://apidocs.io/img/method.png ".FloorplansController.delete_network_floor_plan") delete_network_floor_plan
+
+> Destroy a floor plan
+
+```python
+def delete_network_floor_plan(self,
+                                  options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| floorPlanId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+floor_plan_id = 'floorPlanId'
+collect['floor_plan_id'] = floor_plan_id
+
+
+floorplans_controller.delete_network_floor_plan(collect)
 
 ```
 
@@ -3162,7 +3549,7 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 63.8752440404497
+timespan = 140.203651292344
 collect['timespan'] = timespan
 
 object_type = ObjectTypeEnum.PERSON
@@ -3276,10 +3663,10 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 63.8752440404497
+timespan = 140.203651292344
 collect['timespan'] = timespan
 
-resolution = 63
+resolution = 140
 collect['resolution'] = resolution
 
 object_type = ObjectTypeEnum.PERSON
@@ -3963,6 +4350,189 @@ result = mx_port_forwarding_rules_controller.update_network_port_forwarding_rule
 
 [Back to List of Controllers](#list_of_controllers)
 
+## <a name="mx_static_routes_controller"></a>![Class: ](https://apidocs.io/img/class.png ".MXStaticRoutesController") MXStaticRoutesController
+
+### Get controller instance
+
+An instance of the ``` MXStaticRoutesController ``` class can be accessed from the API Client.
+
+```python
+ mx_static_routes_controller = client.mx_static_routes
+```
+
+### <a name="get_network_static_routes"></a>![Method: ](https://apidocs.io/img/method.png ".MXStaticRoutesController.get_network_static_routes") get_network_static_routes
+
+> List the static routes for an MX or teleworker network
+
+```python
+def get_network_static_routes(self,
+                                  network_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+network_id = 'networkId'
+
+result = mx_static_routes_controller.get_network_static_routes(network_id)
+
+```
+
+
+### <a name="create_network_static_route"></a>![Method: ](https://apidocs.io/img/method.png ".MXStaticRoutesController.create_network_static_route") create_network_static_route
+
+> Add a static route for an MX or teleworker network
+
+```python
+def create_network_static_route(self,
+                                    options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| createNetworkStaticRoute |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+create_network_static_route = CreateNetworkStaticRouteModel()
+collect['create_network_static_route'] = create_network_static_route
+
+
+result = mx_static_routes_controller.create_network_static_route(collect)
+
+```
+
+
+### <a name="get_network_static_route"></a>![Method: ](https://apidocs.io/img/method.png ".MXStaticRoutesController.get_network_static_route") get_network_static_route
+
+> Return a static route for an MX or teleworker network
+
+```python
+def get_network_static_route(self,
+                                 options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| srId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+sr_id = 'srId'
+collect['sr_id'] = sr_id
+
+
+result = mx_static_routes_controller.get_network_static_route(collect)
+
+```
+
+
+### <a name="update_network_static_route"></a>![Method: ](https://apidocs.io/img/method.png ".MXStaticRoutesController.update_network_static_route") update_network_static_route
+
+> Update a static route for an MX or teleworker network
+
+```python
+def update_network_static_route(self,
+                                    options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| srId |  ``` Required ```  | TODO: Add a parameter description |
+| updateNetworkStaticRoute |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+sr_id = 'srId'
+collect['sr_id'] = sr_id
+
+update_network_static_route = UpdateNetworkStaticRouteModel()
+collect['update_network_static_route'] = update_network_static_route
+
+
+result = mx_static_routes_controller.update_network_static_route(collect)
+
+```
+
+
+### <a name="delete_network_static_route"></a>![Method: ](https://apidocs.io/img/method.png ".MXStaticRoutesController.delete_network_static_route") delete_network_static_route
+
+> Delete a static route from an MX or teleworker network
+
+```python
+def delete_network_static_route(self,
+                                    options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| srId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+sr_id = 'srId'
+collect['sr_id'] = sr_id
+
+
+mx_static_routes_controller.delete_network_static_route(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
 ## <a name="mx_warm_spare_settings_controller"></a>![Class: ](https://apidocs.io/img/class.png ".MXWarmSpareSettingsController") MXWarmSpareSettingsController
 
 ### Get controller instance
@@ -4334,7 +4904,7 @@ collect = {}
 network_id = 'networkId'
 collect['network_id'] = network_id
 
-with_details = False
+with_details = True
 collect['with_details'] = with_details
 
 
@@ -4408,7 +4978,7 @@ collect['network_id'] = network_id
 target_group_id = 'targetGroupId'
 collect['target_group_id'] = target_group_id
 
-with_details = False
+with_details = True
 collect['with_details'] = with_details
 
 
@@ -4723,7 +5293,7 @@ collect['network_id'] = network_id
 t_0 = 't0'
 collect['t_0'] = t_0
 
-timespan = 63.8752440404497
+timespan = 231.698933184007
 collect['timespan'] = timespan
 
 
@@ -4952,7 +5522,7 @@ collect['network_id'] = network_id
 t_0 = 't0'
 collect['t_0'] = t_0
 
-timespan = 22.1520708138831
+timespan = 68.194215075669
 collect['timespan'] = timespan
 
 device_type = 'deviceType'
@@ -5529,7 +6099,7 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 22.1520708138831
+timespan = 68.194215075669
 collect['timespan'] = timespan
 
 uplink = UplinkEnum.WAN1
@@ -6640,6 +7210,41 @@ result = sm_controller.wipe_network_sm_device(collect)
 ```
 
 
+### <a name="refresh_network_sm_device_details"></a>![Method: ](https://apidocs.io/img/method.png ".SMController.refresh_network_sm_device_details") refresh_network_sm_device_details
+
+> Refresh the details of a device
+
+```python
+def refresh_network_sm_device_details(self,
+                                          options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| deviceId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+device_id = 'deviceId'
+collect['device_id'] = device_id
+
+
+sm_controller.refresh_network_sm_device_details(collect)
+
+```
+
+
 ### <a name="get_network_sm_devices"></a>![Method: ](https://apidocs.io/img/method.png ".SMController.get_network_sm_devices") get_network_sm_devices
 
 > List the devices enrolled in an SM network with various specified fields and filters
@@ -6665,11 +7270,11 @@ def get_network_sm_devices(self,
 | serials |  ``` Optional ```  | Filter devices by serial(s). Multiple serials can be passed in as comma separated values. |
 | ids |  ``` Optional ```  | Filter devices by id(s). Multiple ids can be passed in as comma separated values. |
 | scope |  ``` Optional ```  | Specify a scope (one of all, none, withAny, withAll, withoutAny, or withoutAll) and a set of tags as comma separated values. |
-| batchToken |  ``` Optional ```  | On networks with more than 1000 devices, the device list will be limited to 1000 devices per query.
-    If there are more devices to be seen, a batch token will be returned as a part of the device list. To see the remainder of
-    the devices, pass in the batchToken as a parameter in the next request. Requests made with the batchToken do not require
-    additional parameters as the batchToken includes the parameters passed in with the original request. Additional parameters
-    passed in with the batchToken will be ignored. |
+| batchSize |  ``` Optional ```  | Number of devices to return, 1000 is the default as well as the max. |
+| batchToken |  ``` Optional ```  | If the network has more devices than the batch size, a batch token will be returned
+    as a part of the device list. To see the remainder of the devices, pass in the batchToken as a parameter in the next request.
+    Requests made with the batchToken do not require additional parameters as the batchToken includes the parameters passed in
+    with the original request. Additional parameters passed in with the batchToken will be ignored. |
 
 
 
@@ -6695,6 +7300,9 @@ collect['ids'] = ids
 
 scope = 'scope'
 collect['scope'] = scope
+
+batch_size = 26
+collect['batch_size'] = batch_size
 
 batch_token = 'batchToken'
 collect['batch_token'] = batch_token
@@ -8199,10 +8807,10 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 113.647352705545
+timespan = 117.966323740765
 collect['timespan'] = timespan
 
-per_page = 113
+per_page = 117
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -8254,10 +8862,10 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 113.647352705545
+timespan = 117.966323740765
 collect['timespan'] = timespan
 
-per_page = 113
+per_page = 117
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -8309,10 +8917,10 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 113.647352705545
+timespan = 117.966323740765
 collect['timespan'] = timespan
 
-per_page = 113
+per_page = 117
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -8373,7 +8981,7 @@ collect['ssid_number'] = ssid_number
 login_identifier = 'loginIdentifier'
 collect['login_identifier'] = login_identifier
 
-timespan = 113
+timespan = 117
 collect['timespan'] = timespan
 
 
@@ -8464,189 +9072,6 @@ collect['update_network_ssids_plash_settings'] = update_network_ssids_plash_sett
 
 
 result = splash_settings_controller.update_network_ssids_plash_settings(collect)
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
-
-## <a name="static_routes_controller"></a>![Class: ](https://apidocs.io/img/class.png ".StaticRoutesController") StaticRoutesController
-
-### Get controller instance
-
-An instance of the ``` StaticRoutesController ``` class can be accessed from the API Client.
-
-```python
- static_routes_controller = client.static_routes
-```
-
-### <a name="get_network_static_routes"></a>![Method: ](https://apidocs.io/img/method.png ".StaticRoutesController.get_network_static_routes") get_network_static_routes
-
-> List the static routes for this network
-
-```python
-def get_network_static_routes(self,
-                                  network_id)
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| networkId |  ``` Required ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-network_id = 'networkId'
-
-result = static_routes_controller.get_network_static_routes(network_id)
-
-```
-
-
-### <a name="create_network_static_route"></a>![Method: ](https://apidocs.io/img/method.png ".StaticRoutesController.create_network_static_route") create_network_static_route
-
-> Add a static route
-
-```python
-def create_network_static_route(self,
-                                    options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| networkId |  ``` Required ```  | TODO: Add a parameter description |
-| createNetworkStaticRoute |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-network_id = 'networkId'
-collect['network_id'] = network_id
-
-create_network_static_route = CreateNetworkStaticRouteModel()
-collect['create_network_static_route'] = create_network_static_route
-
-
-result = static_routes_controller.create_network_static_route(collect)
-
-```
-
-
-### <a name="get_network_static_route"></a>![Method: ](https://apidocs.io/img/method.png ".StaticRoutesController.get_network_static_route") get_network_static_route
-
-> Return a static route
-
-```python
-def get_network_static_route(self,
-                                 options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| networkId |  ``` Required ```  | TODO: Add a parameter description |
-| srId |  ``` Required ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-network_id = 'networkId'
-collect['network_id'] = network_id
-
-sr_id = 'srId'
-collect['sr_id'] = sr_id
-
-
-result = static_routes_controller.get_network_static_route(collect)
-
-```
-
-
-### <a name="update_network_static_route"></a>![Method: ](https://apidocs.io/img/method.png ".StaticRoutesController.update_network_static_route") update_network_static_route
-
-> Update a static route
-
-```python
-def update_network_static_route(self,
-                                    options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| networkId |  ``` Required ```  | TODO: Add a parameter description |
-| srId |  ``` Required ```  | TODO: Add a parameter description |
-| updateNetworkStaticRoute |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-network_id = 'networkId'
-collect['network_id'] = network_id
-
-sr_id = 'srId'
-collect['sr_id'] = sr_id
-
-update_network_static_route = UpdateNetworkStaticRouteModel()
-collect['update_network_static_route'] = update_network_static_route
-
-
-result = static_routes_controller.update_network_static_route(collect)
-
-```
-
-
-### <a name="delete_network_static_route"></a>![Method: ](https://apidocs.io/img/method.png ".StaticRoutesController.delete_network_static_route") delete_network_static_route
-
-> Delete a static route from a network
-
-```python
-def delete_network_static_route(self,
-                                    options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| networkId |  ``` Required ```  | TODO: Add a parameter description |
-| srId |  ``` Required ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-network_id = 'networkId'
-collect['network_id'] = network_id
-
-sr_id = 'srId'
-collect['sr_id'] = sr_id
-
-
-static_routes_controller.delete_network_static_route(collect)
 
 ```
 
@@ -9033,6 +9458,68 @@ result = switch_settings_controller.update_network_switch_settings(collect)
 ```
 
 
+### <a name="get_network_switch_settings_mtu"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchSettingsController.get_network_switch_settings_mtu") get_network_switch_settings_mtu
+
+> Return the MTU configuration
+
+```python
+def get_network_switch_settings_mtu(self,
+                                        network_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+network_id = 'networkId'
+
+result = switch_settings_controller.get_network_switch_settings_mtu(network_id)
+
+```
+
+
+### <a name="update_network_switch_settings_mtu"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchSettingsController.update_network_switch_settings_mtu") update_network_switch_settings_mtu
+
+> Update the MTU configuration
+
+```python
+def update_network_switch_settings_mtu(self,
+                                           options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| updateNetworkSwitchSettingsMtu |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+update_network_switch_settings_mtu = UpdateNetworkSwitchSettingsMtuModel()
+collect['update_network_switch_settings_mtu'] = update_network_switch_settings_mtu
+
+
+result = switch_settings_controller.update_network_switch_settings_mtu(collect)
+
+```
+
+
 ### <a name="get_network_switch_settings_qos_rules"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchSettingsController.get_network_switch_settings_qos_rules") get_network_switch_settings_qos_rules
 
 > List quality of service rules
@@ -9262,6 +9749,130 @@ collect['update_network_switch_settings_qos_rule'] = update_network_switch_setti
 
 
 result = switch_settings_controller.update_network_switch_settings_qos_rule(collect)
+
+```
+
+
+### <a name="get_network_switch_settings_storm_control"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchSettingsController.get_network_switch_settings_storm_control") get_network_switch_settings_storm_control
+
+> Return the global enhanced storm control configuration
+
+```python
+def get_network_switch_settings_storm_control(self,
+                                                  network_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+network_id = 'networkId'
+
+result = switch_settings_controller.get_network_switch_settings_storm_control(network_id)
+
+```
+
+
+### <a name="update_network_switch_settings_storm_control"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchSettingsController.update_network_switch_settings_storm_control") update_network_switch_settings_storm_control
+
+> Update the global enhanced storm control configuration
+
+```python
+def update_network_switch_settings_storm_control(self,
+                                                     options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| updateNetworkSwitchSettingsStormControl |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+update_network_switch_settings_storm_control = UpdateNetworkSwitchSettingsStormControlModel()
+collect['update_network_switch_settings_storm_control'] = update_network_switch_settings_storm_control
+
+
+result = switch_settings_controller.update_network_switch_settings_storm_control(collect)
+
+```
+
+
+### <a name="get_network_switch_settings_stp"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchSettingsController.get_network_switch_settings_stp") get_network_switch_settings_stp
+
+> Returns STP settings
+
+```python
+def get_network_switch_settings_stp(self,
+                                        network_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+network_id = 'networkId'
+
+result = switch_settings_controller.get_network_switch_settings_stp(network_id)
+
+```
+
+
+### <a name="update_network_switch_settings_stp"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchSettingsController.update_network_switch_settings_stp") update_network_switch_settings_stp
+
+> Updates STP settings
+
+```python
+def update_network_switch_settings_stp(self,
+                                           options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| updateNetworkSwitchSettingsStp |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+update_network_switch_settings_stp = UpdateNetworkSwitchSettingsStpModel()
+collect['update_network_switch_settings_stp'] = update_network_switch_settings_stp
+
+
+result = switch_settings_controller.update_network_switch_settings_stp(collect)
 
 ```
 
@@ -10207,10 +10818,10 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 49.6868519273991
+timespan = 167.73843240586
 collect['timespan'] = timespan
 
-per_page = 49
+per_page = 167
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -10277,13 +10888,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 49.6868519273991
+timespan = 167.73843240586
 collect['timespan'] = timespan
 
-ssid = 49
+ssid = 167
 collect['ssid'] = ssid
 
-vlan = 49
+vlan = 167
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -10333,13 +10944,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 49.6868519273991
+timespan = 167.73843240586
 collect['timespan'] = timespan
 
-ssid = 49
+ssid = 167
 collect['ssid'] = ssid
 
-vlan = 49
+vlan = 167
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -10395,13 +11006,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 49.6868519273991
+timespan = 167.73843240586
 collect['timespan'] = timespan
 
-ssid = 49
+ssid = 167
 collect['ssid'] = ssid
 
-vlan = 49
+vlan = 167
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -10455,13 +11066,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 49.6868519273991
+timespan = 167.73843240586
 collect['timespan'] = timespan
 
-ssid = 49
+ssid = 167
 collect['ssid'] = ssid
 
-vlan = 49
+vlan = 167
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -10513,13 +11124,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 49.6868519273991
+timespan = 167.73843240586
 collect['timespan'] = timespan
 
-ssid = 49
+ssid = 167
 collect['ssid'] = ssid
 
-vlan = 49
+vlan = 167
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -10568,13 +11179,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 49.6868519273991
+timespan = 167.73843240586
 collect['timespan'] = timespan
 
-ssid = 49
+ssid = 167
 collect['ssid'] = ssid
 
-vlan = 49
+vlan = 167
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -10624,13 +11235,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 49.6868519273991
+timespan = 167.73843240586
 collect['timespan'] = timespan
 
-ssid = 49
+ssid = 167
 collect['ssid'] = ssid
 
-vlan = 49
+vlan = 167
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -10686,13 +11297,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 49.6868519273991
+timespan = 167.73843240586
 collect['timespan'] = timespan
 
-ssid = 49
+ssid = 167
 collect['ssid'] = ssid
 
-vlan = 49
+vlan = 167
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -10746,13 +11357,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 49.6868519273991
+timespan = 167.73843240586
 collect['timespan'] = timespan
 
-ssid = 49
+ssid = 167
 collect['ssid'] = ssid
 
-vlan = 49
+vlan = 167
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -10806,13 +11417,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 49.6868519273991
+timespan = 167.73843240586
 collect['timespan'] = timespan
 
-ssid = 49
+ssid = 167
 collect['ssid'] = ssid
 
-vlan = 49
+vlan = 167
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -10868,13 +11479,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 49.6868519273991
+timespan = 167.73843240586
 collect['timespan'] = timespan
 
-ssid = 49
+ssid = 167
 collect['ssid'] = ssid
 
-vlan = 49
+vlan = 167
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -10885,6 +11496,80 @@ collect['fields'] = fields
 
 
 result = wireless_health_controller.get_network_latency_stats(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="wireless_settings_controller"></a>![Class: ](https://apidocs.io/img/class.png ".WirelessSettingsController") WirelessSettingsController
+
+### Get controller instance
+
+An instance of the ``` WirelessSettingsController ``` class can be accessed from the API Client.
+
+```python
+ wireless_settings_controller = client.wireless_settings
+```
+
+### <a name="get_network_wireless_settings"></a>![Method: ](https://apidocs.io/img/method.png ".WirelessSettingsController.get_network_wireless_settings") get_network_wireless_settings
+
+> Return the wireless settings for a network
+
+```python
+def get_network_wireless_settings(self,
+                                      network_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+network_id = 'networkId'
+
+result = wireless_settings_controller.get_network_wireless_settings(network_id)
+
+```
+
+
+### <a name="update_network_wireless_settings"></a>![Method: ](https://apidocs.io/img/method.png ".WirelessSettingsController.update_network_wireless_settings") update_network_wireless_settings
+
+> Update the wireless settings for a network
+
+```python
+def update_network_wireless_settings(self,
+                                         options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| updateNetworkWirelessSettings |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+update_network_wireless_settings = UpdateNetworkWirelessSettingsModel()
+collect['update_network_wireless_settings'] = update_network_wireless_settings
+
+
+result = wireless_settings_controller.update_network_wireless_settings(collect)
 
 ```
 

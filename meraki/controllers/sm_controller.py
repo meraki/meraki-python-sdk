@@ -479,6 +479,55 @@ class SMController(BaseController):
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body)
 
+    def refresh_network_sm_device_details(self,
+                                          options=dict()):
+        """Does a POST request to /networks/{networkId}/sm/device/{deviceId}/refreshDetails.
+
+        Refresh the details of a device
+
+        Args:
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    network_id -- string -- TODO: type description here.
+                        Example: 
+                    device_id -- string -- TODO: type description here.
+                        Example: 
+
+        Returns:
+            void: Response from the API. Successful operation
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Validate required parameters
+        self.validate_parameters(network_id=options.get("network_id"),
+                                 device_id=options.get("device_id"))
+
+        # Prepare query URL
+        _url_path = '/networks/{networkId}/sm/device/{deviceId}/refreshDetails'
+        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
+            'networkId': options.get('network_id', None),
+            'deviceId': options.get('device_id', None)
+        })
+        _query_builder = Configuration.base_uri
+        _query_builder += _url_path
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare and execute request
+        _request = self.http_client.post(_query_url)
+        CustomHeaderAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
     def get_network_sm_devices(self,
                                options=dict()):
         """Does a GET request to /networks/{networkId}/sm/devices.
@@ -524,17 +573,17 @@ class SMController(BaseController):
                     scope -- string -- Specify a scope (one of all, none,
                         withAny, withAll, withoutAny, or withoutAll) and a set
                         of tags as comma separated values.
-                    batch_token -- string -- On networks with more than 1000
-                        devices, the device list will be limited to 1000
-                        devices per query.     If there are more devices to be
-                        seen, a batch token will be returned as a part of the
-                        device list. To see the remainder of     the devices,
-                        pass in the batchToken as a parameter in the next
-                        request. Requests made with the batchToken do not
-                        require     additional parameters as the batchToken
-                        includes the parameters passed in with the original
-                        request. Additional parameters     passed in with the
-                        batchToken will be ignored.
+                    batch_size -- int -- Number of devices to return, 1000 is
+                        the default as well as the max.
+                    batch_token -- string -- If the network has more devices
+                        than the batch size, a batch token will be returned   
+                        as a part of the device list. To see the remainder of
+                        the devices, pass in the batchToken as a parameter in
+                        the next request.     Requests made with the
+                        batchToken do not require additional parameters as the
+                        batchToken includes the parameters passed in     with
+                        the original request. Additional parameters passed in
+                        with the batchToken will be ignored.
 
         Returns:
             mixed: Response from the API. Successful operation
@@ -563,6 +612,7 @@ class SMController(BaseController):
             'serials': options.get('serials', None),
             'ids': options.get('ids', None),
             'scope': options.get('scope', None),
+            'batchSize': options.get('batch_size', None),
             'batchToken': options.get('batch_token', None)
         }
         _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,

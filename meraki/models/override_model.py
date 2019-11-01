@@ -6,33 +6,39 @@
     This file was automatically generated for meraki by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-import meraki.models.ssids_model
 
-class UpdateNetworkClientSplashAuthorizationStatusModel(object):
+class OverrideModel(object):
 
-    """Implementation of the 'updateNetworkClientSplashAuthorizationStatus' model.
+    """Implementation of the 'Override' model.
 
     TODO: type model description here.
 
     Attributes:
-        ssids (SsidsModel): The target SSIDs. Each SSID must be enabled and
-            must have Click-through splash enabled. For each SSID where
-            isAuthorized is true, the expiration time will automatically be
-            set according to the SSID's splash frequency.
+        switches (list of string): List of switch serials. Applicable only for
+            switch network.
+        switch_profiles (list of string): List of switch profile IDs.
+            Applicable only for template network.
+        mtu_size (int): MTU size for the switches or switch profiles.
 
     """
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "ssids":'ssids'
+        "mtu_size":'mtuSize',
+        "switches":'switches',
+        "switch_profiles":'switchProfiles'
     }
 
     def __init__(self,
-                 ssids=None):
-        """Constructor for the UpdateNetworkClientSplashAuthorizationStatusModel class"""
+                 mtu_size=None,
+                 switches=None,
+                 switch_profiles=None):
+        """Constructor for the OverrideModel class"""
 
         # Initialize members of the class
-        self.ssids = ssids
+        self.switches = switches
+        self.switch_profiles = switch_profiles
+        self.mtu_size = mtu_size
 
 
     @classmethod
@@ -53,9 +59,13 @@ class UpdateNetworkClientSplashAuthorizationStatusModel(object):
             return None
 
         # Extract variables from the dictionary
-        ssids = meraki.models.ssids_model.SsidsModel.from_dictionary(dictionary.get('ssids')) if dictionary.get('ssids') else None
+        mtu_size = dictionary.get('mtuSize')
+        switches = dictionary.get('switches')
+        switch_profiles = dictionary.get('switchProfiles')
 
         # Return an object of this model
-        return cls(ssids)
+        return cls(mtu_size,
+                   switches,
+                   switch_profiles)
 
 

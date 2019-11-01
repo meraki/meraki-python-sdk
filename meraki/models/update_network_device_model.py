@@ -30,6 +30,8 @@ class UpdateNetworkDeviceModel(object):
             profile. For a device to be bindable to a switch profile, it must
             (1) be a switch, and (2) belong to a network that is bound to a
             configuration template.
+        floor_plan_id (string): The floor plan to associate to this device.
+            null disassociates the device from the floorplan.
 
     """
 
@@ -42,7 +44,8 @@ class UpdateNetworkDeviceModel(object):
         "address":'address',
         "notes":'notes',
         "move_map_marker":'moveMapMarker',
-        "switch_profile_id":'switchProfileId'
+        "switch_profile_id":'switchProfileId',
+        "floor_plan_id":'floorPlanId'
     }
 
     def __init__(self,
@@ -53,7 +56,8 @@ class UpdateNetworkDeviceModel(object):
                  address=None,
                  notes=None,
                  move_map_marker=None,
-                 switch_profile_id=None):
+                 switch_profile_id=None,
+                 floor_plan_id=None):
         """Constructor for the UpdateNetworkDeviceModel class"""
 
         # Initialize members of the class
@@ -65,6 +69,7 @@ class UpdateNetworkDeviceModel(object):
         self.notes = notes
         self.move_map_marker = move_map_marker
         self.switch_profile_id = switch_profile_id
+        self.floor_plan_id = floor_plan_id
 
 
     @classmethod
@@ -93,6 +98,7 @@ class UpdateNetworkDeviceModel(object):
         notes = dictionary.get('notes')
         move_map_marker = dictionary.get('moveMapMarker')
         switch_profile_id = dictionary.get('switchProfileId')
+        floor_plan_id = dictionary.get('floorPlanId')
 
         # Return an object of this model
         return cls(name,
@@ -102,6 +108,7 @@ class UpdateNetworkDeviceModel(object):
                    address,
                    notes,
                    move_map_marker,
-                   switch_profile_id)
+                   switch_profile_id,
+                   floor_plan_id)
 
 

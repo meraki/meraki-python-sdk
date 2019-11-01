@@ -38,10 +38,12 @@ class UpdateDeviceSwitchPortModel(object):
             detected (Alert only, Enforce). Default configuration is Alert
             only.
         mac_whitelist (list of string): Only devices with MAC addresses
-            specified in this list will have access to this port.  Up to 20
-            MAC addresses can be defined.
+            specified in this list will have access to this port. Up to 20 MAC
+            addresses can be defined. To disable MAC whitelist, set
+            accessPolicyNumber to null.
         sticky_mac_whitelist (list of string): The initial list of MAC
-            addresses for sticky Mac whitelist.
+            addresses for sticky Mac whitelist. To reset Sticky MAC whitelist,
+            set accessPolicyNumber to null.
         sticky_mac_whitelist_limit (int): The maximum number of MAC addresses
             for sticky MAC whitelist.
 

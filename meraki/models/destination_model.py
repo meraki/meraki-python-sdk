@@ -6,33 +6,40 @@
     This file was automatically generated for meraki by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-import meraki.models.ssids_model
 
-class UpdateNetworkClientSplashAuthorizationStatusModel(object):
+class DestinationModel(object):
 
-    """Implementation of the 'updateNetworkClientSplashAuthorizationStatus' model.
+    """Implementation of the 'Destination' model.
 
     TODO: type model description here.
 
     Attributes:
-        ssids (SsidsModel): The target SSIDs. Each SSID must be enabled and
-            must have Click-through splash enabled. For each SSID where
-            isAuthorized is true, the expiration time will automatically be
-            set according to the SSID's splash frequency.
+        ip (string): The IP address to test connectivity with
+        description (string): Description of the testing destination.
+            Optional, defaults to null
+        default (bool): Boolean indicating whether this is the default testing
+            destination (true) or not (false). Defaults to false. Only one
+            default is allowed
 
     """
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "ssids":'ssids'
+        "ip":'ip',
+        "description":'description',
+        "default":'default'
     }
 
     def __init__(self,
-                 ssids=None):
-        """Constructor for the UpdateNetworkClientSplashAuthorizationStatusModel class"""
+                 ip=None,
+                 description=None,
+                 default=None):
+        """Constructor for the DestinationModel class"""
 
         # Initialize members of the class
-        self.ssids = ssids
+        self.ip = ip
+        self.description = description
+        self.default = default
 
 
     @classmethod
@@ -53,9 +60,13 @@ class UpdateNetworkClientSplashAuthorizationStatusModel(object):
             return None
 
         # Extract variables from the dictionary
-        ssids = meraki.models.ssids_model.SsidsModel.from_dictionary(dictionary.get('ssids')) if dictionary.get('ssids') else None
+        ip = dictionary.get('ip')
+        description = dictionary.get('description')
+        default = dictionary.get('default')
 
         # Return an object of this model
-        return cls(ssids)
+        return cls(ip,
+                   description,
+                   default)
 
 
