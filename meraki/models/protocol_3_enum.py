@@ -10,19 +10,18 @@ class Protocol3Enum(object):
 
     """Implementation of the 'Protocol3' enum.
 
-    The protocol of the incoming packet. Can be one of "ANY", "TCP" or "UDP".
-    Default value is "ANY"
+    The type of protocol (must be 'tcp', 'udp', or 'any').
 
     Attributes:
-        ANY: TODO: type description here.
         TCP: TODO: type description here.
         UDP: TODO: type description here.
+        ANY: TODO: type description here.
 
     """
 
-    ANY = 'ANY'
+    TCP = 'tcp'
 
-    TCP = 'TCP'
+    UDP = 'udp'
 
-    UDP = 'UDP'
+    ANY = 'any'
 

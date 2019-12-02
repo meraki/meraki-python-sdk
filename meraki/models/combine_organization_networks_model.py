@@ -18,23 +18,33 @@ class CombineOrganizationNetworksModel(object):
         network_ids (list of string): A list of the network IDs that will be
             combined. If an ID of a combined network is included in this list,
             the other networks in the list will be grouped into that network
+        enrollment_string (string): A unique identifier which can be used for
+            device enrollment or easy access through the Meraki SM
+            Registration page or the Self Service Portal. Please note that
+            changing this field may cause existing bookmarks to break. All
+            networks that are part of this combined network will have their
+            enrollment string appended by '-network_type'. If left empty, all
+            exisitng enrollment strings will be deleted.
 
     """
 
     # Create a mapping from Model property names to API property names
     _names = {
         "name":'name',
-        "network_ids":'networkIds'
+        "network_ids":'networkIds',
+        "enrollment_string":'enrollmentString'
     }
 
     def __init__(self,
                  name=None,
-                 network_ids=None):
+                 network_ids=None,
+                 enrollment_string=None):
         """Constructor for the CombineOrganizationNetworksModel class"""
 
         # Initialize members of the class
         self.name = name
         self.network_ids = network_ids
+        self.enrollment_string = enrollment_string
 
 
     @classmethod
@@ -57,9 +67,11 @@ class CombineOrganizationNetworksModel(object):
         # Extract variables from the dictionary
         name = dictionary.get('name')
         network_ids = dictionary.get('networkIds')
+        enrollment_string = dictionary.get('enrollmentString')
 
         # Return an object of this model
         return cls(name,
-                   network_ids)
+                   network_ids,
+                   enrollment_string)
 
 

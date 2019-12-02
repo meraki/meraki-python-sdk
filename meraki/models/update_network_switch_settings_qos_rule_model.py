@@ -16,7 +16,7 @@ class UpdateNetworkSwitchSettingsQosRuleModel(object):
     Attributes:
         vlan (int): The VLAN of the incoming packet. A null value will match
             any VLAN.
-        protocol (Protocol4Enum): The protocol of the incoming packet. Can be
+        protocol (Protocol5Enum): The protocol of the incoming packet. Can be
             one of "ANY", "TCP" or "UDP". Default value is "ANY".
         src_port (int): The source port of the incoming packet. Applicable
             only if protocol is TCP or UDP.

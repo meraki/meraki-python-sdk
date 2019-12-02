@@ -33,6 +33,10 @@ class UpdateNetworkModel(object):
         disable_remote_status_page (bool): Disables access to the device
             status page (<a target='_blank'>http://[device's LAN IP])</a>.
             Optional. Can only be set if disableMyMerakiCom is set to false
+        enrollment_string (string): A unique identifier which can be used for
+            device enrollment or easy access through the Meraki SM
+            Registration page or the Self Service Portal. Please note that
+            changing this field may cause existing bookmarks to break.
 
     """
 
@@ -42,7 +46,8 @@ class UpdateNetworkModel(object):
         "time_zone":'timeZone',
         "tags":'tags',
         "disable_my_meraki_com":'disableMyMerakiCom',
-        "disable_remote_status_page":'disableRemoteStatusPage'
+        "disable_remote_status_page":'disableRemoteStatusPage',
+        "enrollment_string":'enrollmentString'
     }
 
     def __init__(self,
@@ -50,7 +55,8 @@ class UpdateNetworkModel(object):
                  time_zone=None,
                  tags=None,
                  disable_my_meraki_com=None,
-                 disable_remote_status_page=None):
+                 disable_remote_status_page=None,
+                 enrollment_string=None):
         """Constructor for the UpdateNetworkModel class"""
 
         # Initialize members of the class
@@ -59,6 +65,7 @@ class UpdateNetworkModel(object):
         self.tags = tags
         self.disable_my_meraki_com = disable_my_meraki_com
         self.disable_remote_status_page = disable_remote_status_page
+        self.enrollment_string = enrollment_string
 
 
     @classmethod
@@ -84,12 +91,14 @@ class UpdateNetworkModel(object):
         tags = dictionary.get('tags')
         disable_my_meraki_com = dictionary.get('disableMyMerakiCom')
         disable_remote_status_page = dictionary.get('disableRemoteStatusPage')
+        enrollment_string = dictionary.get('enrollmentString')
 
         # Return an object of this model
         return cls(name,
                    time_zone,
                    tags,
                    disable_my_meraki_com,
-                   disable_remote_status_page)
+                   disable_remote_status_page,
+                   enrollment_string)
 
 

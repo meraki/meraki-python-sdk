@@ -27,6 +27,7 @@ from meraki.controllers.floorplans_controller import FloorplansController
 from meraki.controllers.group_policies_controller import GroupPoliciesController
 from meraki.controllers.http_servers_controller import HTTPServersController
 from meraki.controllers.intrusion_settings_controller import IntrusionSettingsController
+from meraki.controllers.licenses_controller import LicensesController
 from meraki.controllers.mrl_3_firewall_controller import MRL3FirewallController
 from meraki.controllers.mv_sense_controller import MVSenseController
 from meraki.controllers.mx_11_nat_rules_controller import MX11NATRulesController
@@ -57,6 +58,7 @@ from meraki.controllers.ssids_controller import SsidsController
 from meraki.controllers.security_events_controller import SecurityEventsController
 from meraki.controllers.splash_login_attempts_controller import SplashLoginAttemptsController
 from meraki.controllers.splash_settings_controller import SplashSettingsController
+from meraki.controllers.switch_ac_ls_controller import SwitchACLsController
 from meraki.controllers.switch_port_schedules_controller import SwitchPortSchedulesController
 from meraki.controllers.switch_ports_controller import SwitchPortsController
 from meraki.controllers.switch_profiles_controller import SwitchProfilesController
@@ -151,6 +153,10 @@ class MerakiClient(object):
     @lazy_property
     def intrusion_settings(self):
         return IntrusionSettingsController()
+
+    @lazy_property
+    def licenses(self):
+        return LicensesController()
 
     @lazy_property
     def mr_l_3_firewall(self):
@@ -271,6 +277,10 @@ class MerakiClient(object):
     @lazy_property
     def splash_settings(self):
         return SplashSettingsController()
+
+    @lazy_property
+    def switch_ac_ls(self):
+        return SwitchACLsController()
 
     @lazy_property
     def switch_port_schedules(self):

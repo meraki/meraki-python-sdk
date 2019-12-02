@@ -65,6 +65,8 @@ class APIUsageController(BaseController):
                         'DELETE')
                     response_code -- int -- Filter the results by the response
                         code of the API requests
+                    source_ip -- string -- Filter the results by the IP
+                        address of the originating API request
 
         Returns:
             mixed: Response from the API. Successful operation
@@ -97,7 +99,8 @@ class APIUsageController(BaseController):
             'adminId': options.get('admin_id', None),
             'path': options.get('path', None),
             'method': options.get('method', None),
-            'responseCode': options.get('response_code', None)
+            'responseCode': options.get('response_code', None),
+            'sourceIp': options.get('source_ip', None)
         }
         _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
             _query_parameters, Configuration.array_serialization)

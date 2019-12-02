@@ -17,6 +17,9 @@ class PeerModel(object):
     Attributes:
         name (string): The name of the VPN peer
         public_ip (string): The public IP of the VPN peer
+        remote_id (string): [optional] The remote ID is used to identify the
+            connecting VPN peer. This can either be a valid IPv4 Address, FQDN
+            or User FQDN.
         private_subnets (list of string): The list of the private subnets of
             the VPN peer
         ipsec_policies (IpsecPoliciesModel): Custom IPSec policies for the VPN
@@ -38,6 +41,7 @@ class PeerModel(object):
         "public_ip":'publicIp',
         "private_subnets":'privateSubnets',
         "secret":'secret',
+        "remote_id":'remoteId',
         "ipsec_policies":'ipsecPolicies',
         "ipsec_policies_preset":'ipsecPoliciesPreset',
         "network_tags":'networkTags'
@@ -48,6 +52,7 @@ class PeerModel(object):
                  public_ip=None,
                  private_subnets=None,
                  secret=None,
+                 remote_id=None,
                  ipsec_policies=None,
                  ipsec_policies_preset=None,
                  network_tags=None):
@@ -56,6 +61,7 @@ class PeerModel(object):
         # Initialize members of the class
         self.name = name
         self.public_ip = public_ip
+        self.remote_id = remote_id
         self.private_subnets = private_subnets
         self.ipsec_policies = ipsec_policies
         self.ipsec_policies_preset = ipsec_policies_preset
@@ -85,6 +91,7 @@ class PeerModel(object):
         public_ip = dictionary.get('publicIp')
         private_subnets = dictionary.get('privateSubnets')
         secret = dictionary.get('secret')
+        remote_id = dictionary.get('remoteId')
         ipsec_policies = meraki.models.ipsec_policies_model.IpsecPoliciesModel.from_dictionary(dictionary.get('ipsecPolicies')) if dictionary.get('ipsecPolicies') else None
         ipsec_policies_preset = dictionary.get('ipsecPoliciesPreset')
         network_tags = dictionary.get('networkTags')
@@ -94,6 +101,7 @@ class PeerModel(object):
                    public_ip,
                    private_subnets,
                    secret,
+                   remote_id,
                    ipsec_policies,
                    ipsec_policies_preset,
                    network_tags)

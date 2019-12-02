@@ -11,8 +11,9 @@ class Mode2Enum(object):
     """Implementation of the 'Mode2' enum.
 
     Either 'renew' or 'addDevices'. 'addDevices' will increase the license
-    limit, while 'renew' will extend the amount of time until expiration.
-    Please see <a target='_blank'
+    limit, while 'renew' will extend the amount of time until expiration. This
+    parameter is legacy and only applies to coterm licensing; it should not be
+    specified when claiming per-device licenses. Please see <a target='_blank'
     href='https://documentation.meraki.com/zGeneral_Administration/Licensing/Ad
     ding_an_Enterprise_license_to_an_existing_Dashboard_account'>this
     article</a> for more information.

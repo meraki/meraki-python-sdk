@@ -121,7 +121,7 @@ class SAMLRolesController(BaseController):
 
     def get_organization_saml_role(self,
                                    options=dict()):
-        """Does a GET request to /organizations/{organizationId}/samlRoles/{id}.
+        """Does a GET request to /organizations/{organizationId}/samlRoles/{samlRoleId}.
 
         Return a SAML role
 
@@ -134,7 +134,8 @@ class SAMLRolesController(BaseController):
 
                     organization_id -- string -- TODO: type description here.
                         Example: 
-                    id -- string -- TODO: type description here. Example: 
+                    saml_role_id -- string -- TODO: type description here.
+                        Example: 
 
         Returns:
             mixed: Response from the API. Successful operation
@@ -149,13 +150,13 @@ class SAMLRolesController(BaseController):
 
         # Validate required parameters
         self.validate_parameters(organization_id=options.get("organization_id"),
-                                 id=options.get("id"))
+                                 saml_role_id=options.get("saml_role_id"))
 
         # Prepare query URL
-        _url_path = '/organizations/{organizationId}/samlRoles/{id}'
+        _url_path = '/organizations/{organizationId}/samlRoles/{samlRoleId}'
         _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'organizationId': options.get('organization_id', None),
-            'id': options.get('id', None)
+            'samlRoleId': options.get('saml_role_id', None)
         })
         _query_builder = Configuration.base_uri
         _query_builder += _url_path
@@ -177,7 +178,7 @@ class SAMLRolesController(BaseController):
 
     def update_organization_saml_role(self,
                                       options=dict()):
-        """Does a PUT request to /organizations/{organizationId}/samlRoles/{id}.
+        """Does a PUT request to /organizations/{organizationId}/samlRoles/{samlRoleId}.
 
         Update a SAML role
 
@@ -190,7 +191,8 @@ class SAMLRolesController(BaseController):
 
                     organization_id -- string -- TODO: type description here.
                         Example: 
-                    id -- string -- TODO: type description here. Example: 
+                    saml_role_id -- string -- TODO: type description here.
+                        Example: 
                     update_organization_saml_role --
                         UpdateOrganizationSamlRoleModel -- TODO: type
                         description here. Example: 
@@ -208,13 +210,13 @@ class SAMLRolesController(BaseController):
 
         # Validate required parameters
         self.validate_parameters(organization_id=options.get("organization_id"),
-                                 id=options.get("id"))
+                                 saml_role_id=options.get("saml_role_id"))
 
         # Prepare query URL
-        _url_path = '/organizations/{organizationId}/samlRoles/{id}'
+        _url_path = '/organizations/{organizationId}/samlRoles/{samlRoleId}'
         _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'organizationId': options.get('organization_id', None),
-            'id': options.get('id', None)
+            'samlRoleId': options.get('saml_role_id', None)
         })
         _query_builder = Configuration.base_uri
         _query_builder += _url_path
@@ -237,7 +239,7 @@ class SAMLRolesController(BaseController):
 
     def delete_organization_saml_role(self,
                                       options=dict()):
-        """Does a DELETE request to /organizations/{organizationId}/samlRoles/{id}.
+        """Does a DELETE request to /organizations/{organizationId}/samlRoles/{samlRoleId}.
 
         Remove a SAML role
 
@@ -250,7 +252,8 @@ class SAMLRolesController(BaseController):
 
                     organization_id -- string -- TODO: type description here.
                         Example: 
-                    id -- string -- TODO: type description here. Example: 
+                    saml_role_id -- string -- TODO: type description here.
+                        Example: 
 
         Returns:
             void: Response from the API. Successful operation
@@ -265,13 +268,13 @@ class SAMLRolesController(BaseController):
 
         # Validate required parameters
         self.validate_parameters(organization_id=options.get("organization_id"),
-                                 id=options.get("id"))
+                                 saml_role_id=options.get("saml_role_id"))
 
         # Prepare query URL
-        _url_path = '/organizations/{organizationId}/samlRoles/{id}'
+        _url_path = '/organizations/{organizationId}/samlRoles/{samlRoleId}'
         _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
             'organizationId': options.get('organization_id', None),
-            'id': options.get('id', None)
+            'samlRoleId': options.get('saml_role_id', None)
         })
         _query_builder = Configuration.base_uri
         _query_builder += _url_path

@@ -46,6 +46,8 @@ class UpdateDeviceSwitchPortModel(object):
             set accessPolicyNumber to null.
         sticky_mac_whitelist_limit (int): The maximum number of MAC addresses
             for sticky MAC whitelist.
+        storm_control_enabled (bool): The storm control status of the switch
+            port
 
     """
 
@@ -68,7 +70,8 @@ class UpdateDeviceSwitchPortModel(object):
         "udld":'udld',
         "mac_whitelist":'macWhitelist',
         "sticky_mac_whitelist":'stickyMacWhitelist',
-        "sticky_mac_whitelist_limit":'stickyMacWhitelistLimit'
+        "sticky_mac_whitelist_limit":'stickyMacWhitelistLimit',
+        "storm_control_enabled":'stormControlEnabled'
     }
 
     def __init__(self,
@@ -89,7 +92,8 @@ class UpdateDeviceSwitchPortModel(object):
                  udld=None,
                  mac_whitelist=None,
                  sticky_mac_whitelist=None,
-                 sticky_mac_whitelist_limit=None):
+                 sticky_mac_whitelist_limit=None,
+                 storm_control_enabled=None):
         """Constructor for the UpdateDeviceSwitchPortModel class"""
 
         # Initialize members of the class
@@ -111,6 +115,7 @@ class UpdateDeviceSwitchPortModel(object):
         self.mac_whitelist = mac_whitelist
         self.sticky_mac_whitelist = sticky_mac_whitelist
         self.sticky_mac_whitelist_limit = sticky_mac_whitelist_limit
+        self.storm_control_enabled = storm_control_enabled
 
 
     @classmethod
@@ -149,6 +154,7 @@ class UpdateDeviceSwitchPortModel(object):
         mac_whitelist = dictionary.get('macWhitelist')
         sticky_mac_whitelist = dictionary.get('stickyMacWhitelist')
         sticky_mac_whitelist_limit = dictionary.get('stickyMacWhitelistLimit')
+        storm_control_enabled = dictionary.get('stormControlEnabled')
 
         # Return an object of this model
         return cls(name,
@@ -168,6 +174,7 @@ class UpdateDeviceSwitchPortModel(object):
                    udld,
                    mac_whitelist,
                    sticky_mac_whitelist,
-                   sticky_mac_whitelist_limit)
+                   sticky_mac_whitelist_limit,
+                   storm_control_enabled)
 
 

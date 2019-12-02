@@ -6,7 +6,7 @@
     This file was automatically generated for meraki by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-import meraki.models.rule_11_model
+import meraki.models.rule_12_model
 
 class UpdateOrganizationVpnFirewallRulesModel(object):
 
@@ -15,7 +15,7 @@ class UpdateOrganizationVpnFirewallRulesModel(object):
     TODO: type model description here.
 
     Attributes:
-        rules (list of Rule11Model): An ordered array of the firewall rules
+        rules (list of Rule12Model): An ordered array of the firewall rules
             (not including the default rule)
         syslog_default_rule (bool): Log the special default rule (boolean
             value - enable only if you've configured a syslog server)
@@ -61,7 +61,7 @@ class UpdateOrganizationVpnFirewallRulesModel(object):
         if dictionary.get('rules') != None:
             rules = list()
             for structure in dictionary.get('rules'):
-                rules.append(meraki.models.rule_11_model.Rule11Model.from_dictionary(structure))
+                rules.append(meraki.models.rule_12_model.Rule12Model.from_dictionary(structure))
         syslog_default_rule = dictionary.get('syslogDefaultRule')
 
         # Return an object of this model

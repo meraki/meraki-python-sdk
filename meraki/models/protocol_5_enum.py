@@ -6,12 +6,12 @@
     This file was automatically generated for meraki by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-class Protocol4Enum(object):
+class Protocol5Enum(object):
 
-    """Implementation of the 'Protocol4' enum.
+    """Implementation of the 'Protocol5' enum.
 
     The protocol of the incoming packet. Can be one of "ANY", "TCP" or "UDP".
-    Default value is "ANY"
+    Default value is "ANY".
 
     Attributes:
         ANY: TODO: type description here.

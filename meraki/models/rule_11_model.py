@@ -6,6 +6,8 @@
     This file was automatically generated for meraki by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
+import meraki.models.definition_model
+import meraki.models.per_client_bandwidth_limits_model
 
 class Rule11Model(object):
 
@@ -14,56 +16,39 @@ class Rule11Model(object):
     TODO: type model description here.
 
     Attributes:
-        comment (string): Description of the rule (optional)
-        policy (PolicyEnum): 'allow' or 'deny' traffic specified by this rule
-        protocol (ProtocolEnum): The type of protocol (must be 'tcp', 'udp',
-            'icmp' or 'any')
-        src_port (string): Comma-separated list of source port(s) (integer in
-            the range 1-65535), or 'any'
-        src_cidr (string): Comma-separated list of source IP address(es) (in
-            IP or CIDR notation), or 'any' (FQDN not supported)
-        dest_port (string): Comma-separated list of destination port(s)
-            (integer in the range 1-65535), or 'any'
-        dest_cidr (string): Comma-separated list of destination IP address(es)
-            (in IP or CIDR notation) or 'any' (FQDN not supported)
-        syslog_enabled (bool): Log this rule to syslog (true or false, boolean
-            value) - only applicable if a syslog has been configured
-            (optional)
+        definitions (list of DefinitionModel): A list of objects describing
+            the definitions of your traffic shaping rule. At least one
+            definition is required.
+        per_client_bandwidth_limits (PerClientBandwidthLimitsModel): An object
+            describing the bandwidth settings for your rule.
+        dscp_tag_value (int): The DSCP tag applied by your rule. null means
+            'Do not change DSCP tag'.     For a list of possible tag values,
+            use the trafficShaping/dscpTaggingOptions endpoint.
+        priority (string): A string, indicating the priority level for packets
+            bound to your rule.     Can be 'low', 'normal' or 'high'.
 
     """
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "policy":'policy',
-        "protocol":'protocol',
-        "src_cidr":'srcCidr',
-        "dest_cidr":'destCidr',
-        "comment":'comment',
-        "src_port":'srcPort',
-        "dest_port":'destPort',
-        "syslog_enabled":'syslogEnabled'
+        "definitions":'definitions',
+        "per_client_bandwidth_limits":'perClientBandwidthLimits',
+        "dscp_tag_value":'dscpTagValue',
+        "priority":'priority'
     }
 
     def __init__(self,
-                 policy=None,
-                 protocol=None,
-                 src_cidr=None,
-                 dest_cidr=None,
-                 comment=None,
-                 src_port=None,
-                 dest_port=None,
-                 syslog_enabled=None):
+                 definitions=None,
+                 per_client_bandwidth_limits=None,
+                 dscp_tag_value=None,
+                 priority=None):
         """Constructor for the Rule11Model class"""
 
         # Initialize members of the class
-        self.comment = comment
-        self.policy = policy
-        self.protocol = protocol
-        self.src_port = src_port
-        self.src_cidr = src_cidr
-        self.dest_port = dest_port
-        self.dest_cidr = dest_cidr
-        self.syslog_enabled = syslog_enabled
+        self.definitions = definitions
+        self.per_client_bandwidth_limits = per_client_bandwidth_limits
+        self.dscp_tag_value = dscp_tag_value
+        self.priority = priority
 
 
     @classmethod
@@ -84,23 +69,19 @@ class Rule11Model(object):
             return None
 
         # Extract variables from the dictionary
-        policy = dictionary.get('policy')
-        protocol = dictionary.get('protocol')
-        src_cidr = dictionary.get('srcCidr')
-        dest_cidr = dictionary.get('destCidr')
-        comment = dictionary.get('comment')
-        src_port = dictionary.get('srcPort')
-        dest_port = dictionary.get('destPort')
-        syslog_enabled = dictionary.get('syslogEnabled')
+        definitions = None
+        if dictionary.get('definitions') != None:
+            definitions = list()
+            for structure in dictionary.get('definitions'):
+                definitions.append(meraki.models.definition_model.DefinitionModel.from_dictionary(structure))
+        per_client_bandwidth_limits = meraki.models.per_client_bandwidth_limits_model.PerClientBandwidthLimitsModel.from_dictionary(dictionary.get('perClientBandwidthLimits')) if dictionary.get('perClientBandwidthLimits') else None
+        dscp_tag_value = dictionary.get('dscpTagValue')
+        priority = dictionary.get('priority')
 
         # Return an object of this model
-        return cls(policy,
-                   protocol,
-                   src_cidr,
-                   dest_cidr,
-                   comment,
-                   src_port,
-                   dest_port,
-                   syslog_enabled)
+        return cls(definitions,
+                   per_client_bandwidth_limits,
+                   dscp_tag_value,
+                   priority)
 
 

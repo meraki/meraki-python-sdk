@@ -20,7 +20,7 @@ class UpdateOrganizationSamlRoleModel(object):
         org_access (string): The privilege of the SAML administrator on the
             organization
         tags (list of Tag2Model): The list of tags that the SAML administrator
-            has privileges on
+            has privleges on
         networks (list of Network2Model): The list of networks that the SAML
             administrator has privileges on
 
