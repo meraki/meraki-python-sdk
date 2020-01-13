@@ -11,8 +11,8 @@ else:
         long_description = fh.read()
 
 setup(
-    name='meraki',
-    version='0.6.0',
+    name='meraki-sdk',
+    version='1.5.0',
     description='Python client library for Meraki Dashboard API',
     long_description=long_description,
     long_description_content_type="text/markdown",

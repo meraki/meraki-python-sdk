@@ -1,0 +1,63 @@
+# -*- coding: utf-8 -*-
+
+"""
+    meraki_sdk
+
+    This file was automatically generated for meraki by APIMATIC v2.0 ( https://apimatic.io ).
+"""
+
+import meraki_sdk.models.server_model
+
+class UpdateNetworkSyslogServersModel(object):
+
+    """Implementation of the 'updateNetworkSyslogServers' model.
+
+    TODO: type model description here.
+
+    Attributes:
+        servers (list of ServerModel): A list of the syslog servers for this
+            network
+
+    """
+
+    # Create a mapping from Model property names to API property names
+    _names = {
+        "servers":'servers'
+    }
+
+    def __init__(self,
+                 servers=None):
+        """Constructor for the UpdateNetworkSyslogServersModel class"""
+
+        # Initialize members of the class
+        self.servers = servers
+
+
+    @classmethod
+    def from_dictionary(cls,
+                        dictionary):
+        """Creates an instance of this model from a dictionary
+
+        Args:
+            dictionary (dictionary): A dictionary representation of the object as
+            obtained from the deserialization of the server's response. The keys
+            MUST match property names in the API description.
+
+        Returns:
+            object: An instance of this structure class.
+
+        """
+        if dictionary is None:
+            return None
+
+        # Extract variables from the dictionary
+        servers = None
+        if dictionary.get('servers') != None:
+            servers = list()
+            for structure in dictionary.get('servers'):
+                servers.append(meraki_sdk.models.server_model.ServerModel.from_dictionary(structure))
+
+        # Return an object of this model
+        return cls(servers)
+
+

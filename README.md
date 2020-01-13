@@ -1,11 +1,8 @@
-Note: As of January, 2020, this SDK is deprecated in favor of the library maintained at [https://github.com/meraki/dashboard-api-python/](https://github.com/meraki/dashboard-api-python/).
-
-
 # Getting started
 
 The Cisco Meraki Dashboard API is a modern REST API based on the OpenAPI specification.
 
-> Date: 02 December, 2019
+> Date: 13 January, 2020
 >
 > [What's New](https://meraki.io/whats-new/)
 
@@ -50,13 +47,13 @@ Click on ```Open``` in PyCharm to browse to your generated SDK directory and the
 
 The project files will be displayed in the side bar as follows:
 
-![Open project in PyCharm - Step 3](https://apidocs.io/illustration/python?step=openProject1&workspaceFolder=Meraki-Python&projectName=meraki)     
+![Open project in PyCharm - Step 3](https://apidocs.io/illustration/python?step=openProject1&workspaceFolder=Meraki-Python&projectName=meraki_sdk)     
 
 ### 2. Add a new Test Project
 
 Create a new directory by right clicking on the solution name as shown below:
 
-![Add a new project in PyCharm - Step 1](https://apidocs.io/illustration/python?step=createDirectory&workspaceFolder=Meraki-Python&projectName=meraki)
+![Add a new project in PyCharm - Step 1](https://apidocs.io/illustration/python?step=createDirectory&workspaceFolder=Meraki-Python&projectName=meraki_sdk)
 
 Name the directory as "test"
 
@@ -64,7 +61,7 @@ Name the directory as "test"
    
 Add a python file to this project with the name "testsdk"
 
-![Add a new project in PyCharm - Step 3](https://apidocs.io/illustration/python?step=createFile&workspaceFolder=Meraki-Python&projectName=meraki)
+![Add a new project in PyCharm - Step 3](https://apidocs.io/illustration/python?step=createFile&workspaceFolder=Meraki-Python&projectName=meraki_sdk)
 
 Name it "testsdk"
 
@@ -73,10 +70,10 @@ Name it "testsdk"
 In your python file you will be required to import the generated python library using the following code lines
 
 ```Python
-from meraki.meraki_client import MerakiClient
+from meraki_sdk.meraki_sdk_client import MerakiSdkClient
 ```
 
-![Add a new project in PyCharm - Step 4](https://apidocs.io/illustration/python?step=projectFiles&workspaceFolder=Meraki-Python&libraryName=meraki.meraki_client&projectName=meraki&className=MerakiClient)
+![Add a new project in PyCharm - Step 4](https://apidocs.io/illustration/python?step=projectFiles&workspaceFolder=Meraki-Python&libraryName=meraki_sdk.meraki_sdk_client&projectName=meraki_sdk&className=MerakiSdkClient)
 
 After this you can write code to instantiate an API client object, get a controller object and  make API calls. Sample code is given in the subsequent sections.
 
@@ -84,7 +81,7 @@ After this you can write code to instantiate an API client object, get a control
 
 To run the file within your test project, right click on your Python file inside your Test project and click on ```Run```
 
-![Run Test Project - Step 1](https://apidocs.io/illustration/python?step=runProject&workspaceFolder=Meraki-Python&libraryName=meraki.meraki_client&projectName=meraki&className=MerakiClient)
+![Run Test Project - Step 1](https://apidocs.io/illustration/python?step=runProject&workspaceFolder=Meraki-Python&libraryName=meraki_sdk.meraki_sdk_client&projectName=meraki_sdk&className=MerakiSdkClient)
 
 
 ## How to Test
@@ -114,7 +111,7 @@ API client can be initialized as following.
 # Configuration parameters and credentials
 x_cisco_meraki_api_key = 'x_cisco_meraki_api_key'
 
-client = MerakiClient(x_cisco_meraki_api_key)
+client = MerakiSdkClient(x_cisco_meraki_api_key)
 ```
 
 
@@ -128,6 +125,7 @@ client = MerakiClient(x_cisco_meraki_api_key)
 * [AdminsController](#admins_controller)
 * [AlertSettingsController](#alert_settings_controller)
 * [BluetoothClientsController](#bluetooth_clients_controller)
+* [CameraQualityRetentionProfilesController](#camera_quality_retention_profiles_controller)
 * [CamerasController](#cameras_controller)
 * [ClientsController](#clients_controller)
 * [ConfigTemplatesController](#config_templates_controller)
@@ -143,6 +141,13 @@ client = MerakiClient(x_cisco_meraki_api_key)
 * [HTTPServersController](#http_servers_controller)
 * [IntrusionSettingsController](#intrusion_settings_controller)
 * [LicensesController](#licenses_controller)
+* [LinkAggregationsController](#link_aggregations_controller)
+* [MGDHCPSettingsController](#mgdhcp_settings_controller)
+* [MGLANSettingsController](#mglan_settings_controller)
+* [MGConnectivityMonitoringDestinationsController](#mg_connectivity_monitoring_destinations_controller)
+* [MGPortForwardingRulesController](#mg_port_forwarding_rules_controller)
+* [MGSubnetPoolSettingsController](#mg_subnet_pool_settings_controller)
+* [MGUplinkSettingsController](#mg_uplink_settings_controller)
 * [MRL3FirewallController](#mrl3_firewall_controller)
 * [MVSenseController](#mv_sense_controller)
 * [MX11NATRulesController](#mx11_nat_rules_controller)
@@ -153,6 +158,7 @@ client = MerakiClient(x_cisco_meraki_api_key)
 * [MXVLANPortsController](#mxvlan_ports_controller)
 * [MXVPNFirewallController](#mxvpn_firewall_controller)
 * [MXCellularFirewallController](#mx_cellular_firewall_controller)
+* [MXInboundFirewallController](#mx_inbound_firewall_controller)
 * [MXPortForwardingRulesController](#mx_port_forwarding_rules_controller)
 * [MXStaticRoutesController](#mx_static_routes_controller)
 * [MXWarmSpareSettingsController](#mx_warm_spare_settings_controller)
@@ -173,7 +179,7 @@ client = MerakiClient(x_cisco_meraki_api_key)
 * [SecurityEventsController](#security_events_controller)
 * [SplashLoginAttemptsController](#splash_login_attempts_controller)
 * [SplashSettingsController](#splash_settings_controller)
-* [SwitchACLsController](#switch_ac_ls_controller)
+* [SwitchAclsController](#switch_acls_controller)
 * [SwitchPortSchedulesController](#switch_port_schedules_controller)
 * [SwitchPortsController](#switch_ports_controller)
 * [SwitchProfilesController](#switch_profiles_controller)
@@ -240,10 +246,10 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 114.651830706118
+timespan = 177.790924454011
 collect['timespan'] = timespan
 
-per_page = 114
+per_page = 177
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -261,7 +267,7 @@ collect['path'] = path
 method = 'method'
 collect['method'] = method
 
-response_code = 114
+response_code = 177
 collect['response_code'] = response_code
 
 source_ip = 'sourceIp'
@@ -724,10 +730,10 @@ collect['network_id'] = network_id
 t_0 = 't0'
 collect['t_0'] = t_0
 
-timespan = 114.651830706118
+timespan = 177.790924454011
 collect['timespan'] = timespan
 
-per_page = 114
+per_page = 86
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -779,11 +785,194 @@ collect['bluetooth_client_id'] = bluetooth_client_id
 include_connectivity_history = False
 collect['include_connectivity_history'] = include_connectivity_history
 
-connectivity_history_timespan = 114
+connectivity_history_timespan = 86
 collect['connectivity_history_timespan'] = connectivity_history_timespan
 
 
 result = bluetooth_clients_controller.get_network_bluetooth_client(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="camera_quality_retention_profiles_controller"></a>![Class: ](https://apidocs.io/img/class.png ".CameraQualityRetentionProfilesController") CameraQualityRetentionProfilesController
+
+### Get controller instance
+
+An instance of the ``` CameraQualityRetentionProfilesController ``` class can be accessed from the API Client.
+
+```python
+ camera_quality_retention_profiles_controller = client.camera_quality_retention_profiles
+```
+
+### <a name="get_network_camera_quality_retention_profiles"></a>![Method: ](https://apidocs.io/img/method.png ".CameraQualityRetentionProfilesController.get_network_camera_quality_retention_profiles") get_network_camera_quality_retention_profiles
+
+> List the quality retention profiles for this network
+
+```python
+def get_network_camera_quality_retention_profiles(self,
+                                                      network_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+network_id = 'networkId'
+
+result = camera_quality_retention_profiles_controller.get_network_camera_quality_retention_profiles(network_id)
+
+```
+
+
+### <a name="create_network_camera_quality_retention_profile"></a>![Method: ](https://apidocs.io/img/method.png ".CameraQualityRetentionProfilesController.create_network_camera_quality_retention_profile") create_network_camera_quality_retention_profile
+
+> Creates new quality retention profile for this network.
+
+```python
+def create_network_camera_quality_retention_profile(self,
+                                                        options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| createNetworkCameraQualityRetentionProfile |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+create_network_camera_quality_retention_profile = CreateNetworkCameraQualityRetentionProfileModel()
+collect['create_network_camera_quality_retention_profile'] = create_network_camera_quality_retention_profile
+
+
+result = camera_quality_retention_profiles_controller.create_network_camera_quality_retention_profile(collect)
+
+```
+
+
+### <a name="get_network_camera_quality_retention_profile"></a>![Method: ](https://apidocs.io/img/method.png ".CameraQualityRetentionProfilesController.get_network_camera_quality_retention_profile") get_network_camera_quality_retention_profile
+
+> Retrieve a single quality retention profile
+
+```python
+def get_network_camera_quality_retention_profile(self,
+                                                     options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| qualityRetentionProfileId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+quality_retention_profile_id = 'qualityRetentionProfileId'
+collect['quality_retention_profile_id'] = quality_retention_profile_id
+
+
+result = camera_quality_retention_profiles_controller.get_network_camera_quality_retention_profile(collect)
+
+```
+
+
+### <a name="update_network_camera_quality_retention_profile"></a>![Method: ](https://apidocs.io/img/method.png ".CameraQualityRetentionProfilesController.update_network_camera_quality_retention_profile") update_network_camera_quality_retention_profile
+
+> Update an existing quality retention profile for this network.
+
+```python
+def update_network_camera_quality_retention_profile(self,
+                                                        options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| qualityRetentionProfileId |  ``` Required ```  | TODO: Add a parameter description |
+| updateNetworkCameraQualityRetentionProfile |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+quality_retention_profile_id = 'qualityRetentionProfileId'
+collect['quality_retention_profile_id'] = quality_retention_profile_id
+
+update_network_camera_quality_retention_profile = UpdateNetworkCameraQualityRetentionProfileModel()
+collect['update_network_camera_quality_retention_profile'] = update_network_camera_quality_retention_profile
+
+
+result = camera_quality_retention_profiles_controller.update_network_camera_quality_retention_profile(collect)
+
+```
+
+
+### <a name="delete_network_camera_quality_retention_profile"></a>![Method: ](https://apidocs.io/img/method.png ".CameraQualityRetentionProfilesController.delete_network_camera_quality_retention_profile") delete_network_camera_quality_retention_profile
+
+> Delete an existing quality retention profile for this network.
+
+```python
+def delete_network_camera_quality_retention_profile(self,
+                                                        options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| qualityRetentionProfileId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+quality_retention_profile_id = 'qualityRetentionProfileId'
+collect['quality_retention_profile_id'] = quality_retention_profile_id
+
+
+camera_quality_retention_profiles_controller.delete_network_camera_quality_retention_profile(collect)
 
 ```
 
@@ -799,6 +988,95 @@ An instance of the ``` CamerasController ``` class can be accessed from the API 
 ```python
  cameras_controller = client.cameras
 ```
+
+### <a name="get_device_camera_quality_and_retention_settings"></a>![Method: ](https://apidocs.io/img/method.png ".CamerasController.get_device_camera_quality_and_retention_settings") get_device_camera_quality_and_retention_settings
+
+> Returns quality and retention settings for the given camera
+
+```python
+def get_device_camera_quality_and_retention_settings(self,
+                                                         serial)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| serial |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+serial = 'serial'
+
+result = cameras_controller.get_device_camera_quality_and_retention_settings(serial)
+
+```
+
+
+### <a name="update_device_camera_quality_and_retention_settings"></a>![Method: ](https://apidocs.io/img/method.png ".CamerasController.update_device_camera_quality_and_retention_settings") update_device_camera_quality_and_retention_settings
+
+> Update quality and retention settings for the given camera
+
+```python
+def update_device_camera_quality_and_retention_settings(self,
+                                                            options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| serial |  ``` Required ```  | TODO: Add a parameter description |
+| updateDeviceCameraQualityAndRetentionSettings |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+serial = 'serial'
+collect['serial'] = serial
+
+update_device_camera_quality_and_retention_settings = UpdateDeviceCameraQualityAndRetentionSettingsModel()
+collect['update_device_camera_quality_and_retention_settings'] = update_device_camera_quality_and_retention_settings
+
+
+result = cameras_controller.update_device_camera_quality_and_retention_settings(collect)
+
+```
+
+
+### <a name="get_network_camera_schedules"></a>![Method: ](https://apidocs.io/img/method.png ".CamerasController.get_network_camera_schedules") get_network_camera_schedules
+
+> Returns a list of all camera recording schedules.
+
+```python
+def get_network_camera_schedules(self,
+                                     network_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+network_id = 'networkId'
+
+result = cameras_controller.get_network_camera_schedules(network_id)
+
+```
+
 
 ### <a name="generate_network_camera_snapshot"></a>![Method: ](https://apidocs.io/img/method.png ".CamerasController.generate_network_camera_snapshot") generate_network_camera_snapshot
 
@@ -920,7 +1198,7 @@ collect['serial'] = serial
 t_0 = 't0'
 collect['t_0'] = t_0
 
-timespan = 114.651830706118
+timespan = 86.2956425623482
 collect['timespan'] = timespan
 
 
@@ -962,10 +1240,10 @@ collect['network_id'] = network_id
 t_0 = 't0'
 collect['t_0'] = t_0
 
-timespan = 114.651830706118
+timespan = 86.2956425623482
 collect['timespan'] = timespan
 
-per_page = 114
+per_page = 86
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -1082,7 +1360,7 @@ collect['network_id'] = network_id
 client_id = 'clientId'
 collect['client_id'] = client_id
 
-per_page = 114
+per_page = 86
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -1136,10 +1414,10 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 114.651830706118
+timespan = 86.2956425623482
 collect['timespan'] = timespan
 
-resolution = 114
+resolution = 86
 collect['resolution'] = resolution
 
 
@@ -1328,7 +1606,7 @@ collect['network_id'] = network_id
 client_id = 'clientId'
 collect['client_id'] = client_id
 
-per_page = 114
+per_page = 86
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -1937,7 +2215,7 @@ def claim_network_devices(self,
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | networkId |  ``` Required ```  | TODO: Add a parameter description |
-| claimNetworkDevices |  ``` Required ```  | TODO: Add a parameter description |
+| claimNetworkDevices |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -2101,7 +2379,7 @@ collect['network_id'] = network_id
 serial = 'serial'
 collect['serial'] = serial
 
-timespan = 206
+timespan = 128
 collect['timespan'] = timespan
 
 
@@ -2154,10 +2432,10 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 206.14711259778
+timespan = 128.018815788915
 collect['timespan'] = timespan
 
-resolution = 206
+resolution = 128
 collect['resolution'] = resolution
 
 uplink = UplinkEnum.WAN1
@@ -2326,6 +2604,7 @@ def get_organization_devices(self,
 | perPage |  ``` Optional ```  | The number of entries per page returned. Acceptable range is 3 - 1000. Default is 1000. |
 | startingAfter |  ``` Optional ```  | A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it. |
 | endingBefore |  ``` Optional ```  | A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it. |
+| configurationUpdatedAfter |  ``` Optional ```  | Filter results by whether or not the device's configuration has been updated after the given timestamp |
 
 
 
@@ -2337,7 +2616,7 @@ collect = {}
 organization_id = 'organizationId'
 collect['organization_id'] = organization_id
 
-per_page = 206
+per_page = 128
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -2345,6 +2624,9 @@ collect['starting_after'] = starting_after
 
 ending_before = 'endingBefore'
 collect['ending_before'] = ending_before
+
+configuration_updated_after = 'configurationUpdatedAfter'
+collect['configuration_updated_after'] = configuration_updated_after
 
 
 result = devices_controller.get_organization_devices(collect)
@@ -2378,7 +2660,7 @@ def get_network_events(self,
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | networkId |  ``` Required ```  | TODO: Add a parameter description |
-| productType |  ``` Optional ```  | The product type to fetch events for. This parameter is required for networks with multiple device types. Valid types are wireless, appliance, switch, systemsManager, and camera |
+| productType |  ``` Optional ```  | The product type to fetch events for. This parameter is required for networks with multiple device types. Valid types are wireless, appliance, switch, systemsManager, camera, and cellularGateway |
 | includedEventTypes |  ``` Optional ```  ``` Collection ```  | A list of event types. The returned events will be filtered to only include events with these types. |
 | excludedEventTypes |  ``` Optional ```  ``` Collection ```  | A list of event types. The returned events will be filtered to exclude events with these types. |
 | deviceMac |  ``` Optional ```  | The MAC address of the Meraki device which the list of events will be filtered with |
@@ -2436,7 +2718,7 @@ collect['sm_device_mac'] = sm_device_mac
 sm_device_name = 'smDeviceName'
 collect['sm_device_name'] = sm_device_name
 
-per_page = 206
+per_page = 128
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -3389,7 +3671,7 @@ collect = {}
 organization_id = 'organizationId'
 collect['organization_id'] = organization_id
 
-per_page = 42
+per_page = 36
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -3629,6 +3911,598 @@ result = licenses_controller.update_organization_license(collect)
 
 [Back to List of Controllers](#list_of_controllers)
 
+## <a name="link_aggregations_controller"></a>![Class: ](https://apidocs.io/img/class.png ".LinkAggregationsController") LinkAggregationsController
+
+### Get controller instance
+
+An instance of the ``` LinkAggregationsController ``` class can be accessed from the API Client.
+
+```python
+ link_aggregations_controller = client.link_aggregations
+```
+
+### <a name="get_network_switch_link_aggregations"></a>![Method: ](https://apidocs.io/img/method.png ".LinkAggregationsController.get_network_switch_link_aggregations") get_network_switch_link_aggregations
+
+> List link aggregation groups
+
+```python
+def get_network_switch_link_aggregations(self,
+                                             network_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+network_id = 'networkId'
+
+result = link_aggregations_controller.get_network_switch_link_aggregations(network_id)
+
+```
+
+
+### <a name="create_network_switch_link_aggregation"></a>![Method: ](https://apidocs.io/img/method.png ".LinkAggregationsController.create_network_switch_link_aggregation") create_network_switch_link_aggregation
+
+> Create a link aggregation group
+
+```python
+def create_network_switch_link_aggregation(self,
+                                               options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| createNetworkSwitchLinkAggregation |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+create_network_switch_link_aggregation = CreateNetworkSwitchLinkAggregationModel()
+collect['create_network_switch_link_aggregation'] = create_network_switch_link_aggregation
+
+
+result = link_aggregations_controller.create_network_switch_link_aggregation(collect)
+
+```
+
+
+### <a name="update_network_switch_link_aggregation"></a>![Method: ](https://apidocs.io/img/method.png ".LinkAggregationsController.update_network_switch_link_aggregation") update_network_switch_link_aggregation
+
+> Update a link aggregation group
+
+```python
+def update_network_switch_link_aggregation(self,
+                                               options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| linkAggregationId |  ``` Required ```  | TODO: Add a parameter description |
+| updateNetworkSwitchLinkAggregation |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+link_aggregation_id = 'linkAggregationId'
+collect['link_aggregation_id'] = link_aggregation_id
+
+update_network_switch_link_aggregation = UpdateNetworkSwitchLinkAggregationModel()
+collect['update_network_switch_link_aggregation'] = update_network_switch_link_aggregation
+
+
+result = link_aggregations_controller.update_network_switch_link_aggregation(collect)
+
+```
+
+
+### <a name="delete_network_switch_link_aggregation"></a>![Method: ](https://apidocs.io/img/method.png ".LinkAggregationsController.delete_network_switch_link_aggregation") delete_network_switch_link_aggregation
+
+> Split a link aggregation group into separate ports
+
+```python
+def delete_network_switch_link_aggregation(self,
+                                               options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| linkAggregationId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+link_aggregation_id = 'linkAggregationId'
+collect['link_aggregation_id'] = link_aggregation_id
+
+
+link_aggregations_controller.delete_network_switch_link_aggregation(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="mgdhcp_settings_controller"></a>![Class: ](https://apidocs.io/img/class.png ".MGDHCPSettingsController") MGDHCPSettingsController
+
+### Get controller instance
+
+An instance of the ``` MGDHCPSettingsController ``` class can be accessed from the API Client.
+
+```python
+ mg_dhcp_settings_controller = client.mg_dhcp_settings
+```
+
+### <a name="get_network_cellular_gateway_settings_dhcp"></a>![Method: ](https://apidocs.io/img/method.png ".MGDHCPSettingsController.get_network_cellular_gateway_settings_dhcp") get_network_cellular_gateway_settings_dhcp
+
+> List common DHCP settings of MGs
+
+```python
+def get_network_cellular_gateway_settings_dhcp(self,
+                                                   network_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+network_id = 'networkId'
+
+result = mg_dhcp_settings_controller.get_network_cellular_gateway_settings_dhcp(network_id)
+
+```
+
+
+### <a name="update_network_cellular_gateway_settings_dhcp"></a>![Method: ](https://apidocs.io/img/method.png ".MGDHCPSettingsController.update_network_cellular_gateway_settings_dhcp") update_network_cellular_gateway_settings_dhcp
+
+> Update common DHCP settings of MGs
+
+```python
+def update_network_cellular_gateway_settings_dhcp(self,
+                                                      options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| updateNetworkCellularGatewaySettingsDhcp |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+update_network_cellular_gateway_settings_dhcp = UpdateNetworkCellularGatewaySettingsDhcpModel()
+collect['update_network_cellular_gateway_settings_dhcp'] = update_network_cellular_gateway_settings_dhcp
+
+
+result = mg_dhcp_settings_controller.update_network_cellular_gateway_settings_dhcp(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="mglan_settings_controller"></a>![Class: ](https://apidocs.io/img/class.png ".MGLANSettingsController") MGLANSettingsController
+
+### Get controller instance
+
+An instance of the ``` MGLANSettingsController ``` class can be accessed from the API Client.
+
+```python
+ mg_lan_settings_controller = client.mg_lan_settings
+```
+
+### <a name="get_device_cellular_gateway_settings"></a>![Method: ](https://apidocs.io/img/method.png ".MGLANSettingsController.get_device_cellular_gateway_settings") get_device_cellular_gateway_settings
+
+> Show the LAN Settings of a MG
+
+```python
+def get_device_cellular_gateway_settings(self,
+                                             serial)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| serial |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+serial = 'serial'
+
+result = mg_lan_settings_controller.get_device_cellular_gateway_settings(serial)
+
+```
+
+
+### <a name="update_device_cellular_gateway_settings"></a>![Method: ](https://apidocs.io/img/method.png ".MGLANSettingsController.update_device_cellular_gateway_settings") update_device_cellular_gateway_settings
+
+> Update the LAN Settings for a single MG.
+
+```python
+def update_device_cellular_gateway_settings(self,
+                                                options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| serial |  ``` Required ```  | TODO: Add a parameter description |
+| updateDeviceCellularGatewaySettings |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+serial = 'serial'
+collect['serial'] = serial
+
+update_device_cellular_gateway_settings = UpdateDeviceCellularGatewaySettingsModel()
+collect['update_device_cellular_gateway_settings'] = update_device_cellular_gateway_settings
+
+
+result = mg_lan_settings_controller.update_device_cellular_gateway_settings(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="mg_connectivity_monitoring_destinations_controller"></a>![Class: ](https://apidocs.io/img/class.png ".MGConnectivityMonitoringDestinationsController") MGConnectivityMonitoringDestinationsController
+
+### Get controller instance
+
+An instance of the ``` MGConnectivityMonitoringDestinationsController ``` class can be accessed from the API Client.
+
+```python
+ mg_connectivity_monitoring_destinations_controller = client.mg_connectivity_monitoring_destinations
+```
+
+### <a name="get_network_cellular_gateway_settings_connectivity_monitoring_destinations"></a>![Method: ](https://apidocs.io/img/method.png ".MGConnectivityMonitoringDestinationsController.get_network_cellular_gateway_settings_connectivity_monitoring_destinations") get_network_cellular_gateway_settings_connectivity_monitoring_destinations
+
+> Return the connectivity testing destinations for an MG network
+
+```python
+def get_network_cellular_gateway_settings_connectivity_monitoring_destinations(self,
+                                                                                   network_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+network_id = 'networkId'
+
+result = mg_connectivity_monitoring_destinations_controller.get_network_cellular_gateway_settings_connectivity_monitoring_destinations(network_id)
+
+```
+
+
+### <a name="update_network_cellular_gateway_settings_connectivity_monitoring_destinations"></a>![Method: ](https://apidocs.io/img/method.png ".MGConnectivityMonitoringDestinationsController.update_network_cellular_gateway_settings_connectivity_monitoring_destinations") update_network_cellular_gateway_settings_connectivity_monitoring_destinations
+
+> Update the connectivity testing destinations for an MG network
+
+```python
+def update_network_cellular_gateway_settings_connectivity_monitoring_destinations(self,
+                                                                                      options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| updateNetworkCellularGatewaySettingsConnectivityMonitoringDestinations |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+update_network_cellular_gateway_settings_connectivity_monitoring_destinations = UpdateNetworkCellularGatewaySettingsConnectivityMonitoringDestinationsModel()
+collect['update_network_cellular_gateway_settings_connectivity_monitoring_destinations'] = update_network_cellular_gateway_settings_connectivity_monitoring_destinations
+
+
+result = mg_connectivity_monitoring_destinations_controller.update_network_cellular_gateway_settings_connectivity_monitoring_destinations(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="mg_port_forwarding_rules_controller"></a>![Class: ](https://apidocs.io/img/class.png ".MGPortForwardingRulesController") MGPortForwardingRulesController
+
+### Get controller instance
+
+An instance of the ``` MGPortForwardingRulesController ``` class can be accessed from the API Client.
+
+```python
+ mg_port_forwarding_rules_controller = client.mg_port_forwarding_rules
+```
+
+### <a name="get_device_cellular_gateway_settings_port_forwarding_rules"></a>![Method: ](https://apidocs.io/img/method.png ".MGPortForwardingRulesController.get_device_cellular_gateway_settings_port_forwarding_rules") get_device_cellular_gateway_settings_port_forwarding_rules
+
+> Returns the port forwarding rules for a single MG.
+
+```python
+def get_device_cellular_gateway_settings_port_forwarding_rules(self,
+                                                                   serial)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| serial |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+serial = 'serial'
+
+result = mg_port_forwarding_rules_controller.get_device_cellular_gateway_settings_port_forwarding_rules(serial)
+
+```
+
+
+### <a name="update_device_cellular_gateway_settings_port_forwarding_rules"></a>![Method: ](https://apidocs.io/img/method.png ".MGPortForwardingRulesController.update_device_cellular_gateway_settings_port_forwarding_rules") update_device_cellular_gateway_settings_port_forwarding_rules
+
+> Updates the port forwarding rules for a single MG.
+
+```python
+def update_device_cellular_gateway_settings_port_forwarding_rules(self,
+                                                                      options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| serial |  ``` Required ```  | TODO: Add a parameter description |
+| updateDeviceCellularGatewaySettingsPortForwardingRules |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+serial = 'serial'
+collect['serial'] = serial
+
+update_device_cellular_gateway_settings_port_forwarding_rules = UpdateDeviceCellularGatewaySettingsPortForwardingRulesModel()
+collect['update_device_cellular_gateway_settings_port_forwarding_rules'] = update_device_cellular_gateway_settings_port_forwarding_rules
+
+
+result = mg_port_forwarding_rules_controller.update_device_cellular_gateway_settings_port_forwarding_rules(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="mg_subnet_pool_settings_controller"></a>![Class: ](https://apidocs.io/img/class.png ".MGSubnetPoolSettingsController") MGSubnetPoolSettingsController
+
+### Get controller instance
+
+An instance of the ``` MGSubnetPoolSettingsController ``` class can be accessed from the API Client.
+
+```python
+ mg_subnet_pool_settings_controller = client.mg_subnet_pool_settings
+```
+
+### <a name="get_network_cellular_gateway_settings_subnet_pool"></a>![Method: ](https://apidocs.io/img/method.png ".MGSubnetPoolSettingsController.get_network_cellular_gateway_settings_subnet_pool") get_network_cellular_gateway_settings_subnet_pool
+
+> Return the subnet pool and mask configured for MGs in the network.
+
+```python
+def get_network_cellular_gateway_settings_subnet_pool(self,
+                                                          network_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+network_id = 'networkId'
+
+result = mg_subnet_pool_settings_controller.get_network_cellular_gateway_settings_subnet_pool(network_id)
+
+```
+
+
+### <a name="update_network_cellular_gateway_settings_subnet_pool"></a>![Method: ](https://apidocs.io/img/method.png ".MGSubnetPoolSettingsController.update_network_cellular_gateway_settings_subnet_pool") update_network_cellular_gateway_settings_subnet_pool
+
+> Update the subnet pool and mask configuration for MGs in the network.
+
+```python
+def update_network_cellular_gateway_settings_subnet_pool(self,
+                                                             options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| updateNetworkCellularGatewaySettingsSubnetPool |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+update_network_cellular_gateway_settings_subnet_pool = UpdateNetworkCellularGatewaySettingsSubnetPoolModel()
+collect['update_network_cellular_gateway_settings_subnet_pool'] = update_network_cellular_gateway_settings_subnet_pool
+
+
+result = mg_subnet_pool_settings_controller.update_network_cellular_gateway_settings_subnet_pool(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="mg_uplink_settings_controller"></a>![Class: ](https://apidocs.io/img/class.png ".MGUplinkSettingsController") MGUplinkSettingsController
+
+### Get controller instance
+
+An instance of the ``` MGUplinkSettingsController ``` class can be accessed from the API Client.
+
+```python
+ mg_uplink_settings_controller = client.mg_uplink_settings
+```
+
+### <a name="get_network_cellular_gateway_settings_uplink"></a>![Method: ](https://apidocs.io/img/method.png ".MGUplinkSettingsController.get_network_cellular_gateway_settings_uplink") get_network_cellular_gateway_settings_uplink
+
+> Returns the uplink settings for your MG network.
+
+```python
+def get_network_cellular_gateway_settings_uplink(self,
+                                                     network_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+network_id = 'networkId'
+
+result = mg_uplink_settings_controller.get_network_cellular_gateway_settings_uplink(network_id)
+
+```
+
+
+### <a name="update_network_cellular_gateway_settings_uplink"></a>![Method: ](https://apidocs.io/img/method.png ".MGUplinkSettingsController.update_network_cellular_gateway_settings_uplink") update_network_cellular_gateway_settings_uplink
+
+> Updates the uplink settings for your MG network.
+
+```python
+def update_network_cellular_gateway_settings_uplink(self,
+                                                        options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| updateNetworkCellularGatewaySettingsUplink |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+update_network_cellular_gateway_settings_uplink = UpdateNetworkCellularGatewaySettingsUplinkModel()
+collect['update_network_cellular_gateway_settings_uplink'] = update_network_cellular_gateway_settings_uplink
+
+
+result = mg_uplink_settings_controller.update_network_cellular_gateway_settings_uplink(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
 ## <a name="mrl3_firewall_controller"></a>![Class: ](https://apidocs.io/img/class.png ".MRL3FirewallController") MRL3FirewallController
 
 ### Get controller instance
@@ -3787,7 +4661,7 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 42.6423944894422
+timespan = 200.02825200559
 collect['timespan'] = timespan
 
 object_type = ObjectTypeEnum.PERSON
@@ -3901,10 +4775,10 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 42.6423944894422
+timespan = 200.02825200559
 collect['timespan'] = timespan
 
-resolution = 42
+resolution = 200
 collect['resolution'] = resolution
 
 object_type = ObjectTypeEnum.PERSON
@@ -4508,6 +5382,80 @@ collect['update_network_cellular_firewall_rules'] = update_network_cellular_fire
 
 
 result = mx_cellular_firewall_controller.update_network_cellular_firewall_rules(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="mx_inbound_firewall_controller"></a>![Class: ](https://apidocs.io/img/class.png ".MXInboundFirewallController") MXInboundFirewallController
+
+### Get controller instance
+
+An instance of the ``` MXInboundFirewallController ``` class can be accessed from the API Client.
+
+```python
+ mx_inbound_firewall_controller = client.mx_inbound_firewall
+```
+
+### <a name="get_network_appliance_firewall_inbound_firewall_rules"></a>![Method: ](https://apidocs.io/img/method.png ".MXInboundFirewallController.get_network_appliance_firewall_inbound_firewall_rules") get_network_appliance_firewall_inbound_firewall_rules
+
+> Return the inbound firewall rules for an MX network
+
+```python
+def get_network_appliance_firewall_inbound_firewall_rules(self,
+                                                              network_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+network_id = 'networkId'
+
+result = mx_inbound_firewall_controller.get_network_appliance_firewall_inbound_firewall_rules(network_id)
+
+```
+
+
+### <a name="update_network_appliance_firewall_inbound_firewall_rules"></a>![Method: ](https://apidocs.io/img/method.png ".MXInboundFirewallController.update_network_appliance_firewall_inbound_firewall_rules") update_network_appliance_firewall_inbound_firewall_rules
+
+> Update the inbound firewall rules of an MX network
+
+```python
+def update_network_appliance_firewall_inbound_firewall_rules(self,
+                                                                 options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| updateNetworkApplianceFirewallInboundFirewallRules |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+update_network_appliance_firewall_inbound_firewall_rules = UpdateNetworkApplianceFirewallInboundFirewallRulesModel()
+collect['update_network_appliance_firewall_inbound_firewall_rules'] = update_network_appliance_firewall_inbound_firewall_rules
+
+
+result = mx_inbound_firewall_controller.update_network_appliance_firewall_inbound_firewall_rules(collect)
 
 ```
 
@@ -5142,7 +6090,7 @@ collect = {}
 network_id = 'networkId'
 collect['network_id'] = network_id
 
-with_details = False
+with_details = True
 collect['with_details'] = with_details
 
 
@@ -5216,7 +6164,7 @@ collect['network_id'] = network_id
 target_group_id = 'targetGroupId'
 collect['target_group_id'] = target_group_id
 
-with_details = False
+with_details = True
 collect['with_details'] = with_details
 
 
@@ -5531,7 +6479,7 @@ collect['network_id'] = network_id
 t_0 = 't0'
 collect['t_0'] = t_0
 
-timespan = 0.919221262875582
+timespan = 241.751425232157
 collect['timespan'] = timespan
 
 
@@ -5760,7 +6708,7 @@ collect['network_id'] = network_id
 t_0 = 't0'
 collect['t_0'] = t_0
 
-timespan = 0.919221262875582
+timespan = 241.751425232157
 collect['timespan'] = timespan
 
 device_type = 'deviceType'
@@ -6211,7 +7159,7 @@ collect = {}
 organization_id = 'organizationId'
 collect['organization_id'] = organization_id
 
-include_license_info = False
+include_license_info = True
 collect['include_license_info'] = include_license_info
 
 
@@ -6345,7 +7293,7 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 0.919221262875582
+timespan = 150.256143340495
 collect['timespan'] = timespan
 
 uplink = UplinkEnum.WAN1
@@ -6824,7 +7772,7 @@ collect = {}
 network_id = 'networkId'
 collect['network_id'] = network_id
 
-include_template_profiles = False
+include_template_profiles = True
 collect['include_template_profiles'] = include_template_profiles
 
 
@@ -7547,7 +8495,7 @@ collect['ids'] = ids
 scope = 'scope'
 collect['scope'] = scope
 
-batch_size = 92
+batch_size = 150
 collect['batch_size'] = batch_size
 
 batch_token = 'batchToken'
@@ -9053,10 +10001,10 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 119.949284268054
+timespan = 100.484034675399
 collect['timespan'] = timespan
 
-per_page = 119
+per_page = 100
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -9108,10 +10056,10 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 119.949284268054
+timespan = 100.484034675399
 collect['timespan'] = timespan
 
-per_page = 119
+per_page = 100
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -9163,10 +10111,10 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 119.949284268054
+timespan = 100.484034675399
 collect['timespan'] = timespan
 
-per_page = 119
+per_page = 100
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -9227,7 +10175,7 @@ collect['ssid_number'] = ssid_number
 login_identifier = 'loginIdentifier'
 collect['login_identifier'] = login_identifier
 
-timespan = 119
+timespan = 100
 collect['timespan'] = timespan
 
 
@@ -9324,17 +10272,17 @@ result = splash_settings_controller.update_network_ssids_plash_settings(collect)
 
 [Back to List of Controllers](#list_of_controllers)
 
-## <a name="switch_ac_ls_controller"></a>![Class: ](https://apidocs.io/img/class.png ".SwitchACLsController") SwitchACLsController
+## <a name="switch_acls_controller"></a>![Class: ](https://apidocs.io/img/class.png ".SwitchAclsController") SwitchAclsController
 
 ### Get controller instance
 
-An instance of the ``` SwitchACLsController ``` class can be accessed from the API Client.
+An instance of the ``` SwitchAclsController ``` class can be accessed from the API Client.
 
 ```python
- switch_ac_ls_controller = client.switch_ac_ls
+ switch_acls_controller = client.switch_acls
 ```
 
-### <a name="get_network_switch_access_control_lists"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchACLsController.get_network_switch_access_control_lists") get_network_switch_access_control_lists
+### <a name="get_network_switch_access_control_lists"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchAclsController.get_network_switch_access_control_lists") get_network_switch_access_control_lists
 
 > Return the access control lists for a MS network
 
@@ -9356,12 +10304,12 @@ def get_network_switch_access_control_lists(self,
 ```python
 network_id = 'networkId'
 
-result = switch_ac_ls_controller.get_network_switch_access_control_lists(network_id)
+result = switch_acls_controller.get_network_switch_access_control_lists(network_id)
 
 ```
 
 
-### <a name="update_network_switch_access_control_lists"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchACLsController.update_network_switch_access_control_lists") update_network_switch_access_control_lists
+### <a name="update_network_switch_access_control_lists"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchAclsController.update_network_switch_access_control_lists") update_network_switch_access_control_lists
 
 > Update the access control lists for a MS network
 
@@ -9391,7 +10339,7 @@ update_network_switch_access_control_lists = UpdateNetworkSwitchAccessControlLis
 collect['update_network_switch_access_control_lists'] = update_network_switch_access_control_lists
 
 
-result = switch_ac_ls_controller.update_network_switch_access_control_lists(collect)
+result = switch_acls_controller.update_network_switch_access_control_lists(collect)
 
 ```
 
@@ -9555,6 +10503,45 @@ An instance of the ``` SwitchPortsController ``` class can be accessed from the 
 ```python
  switch_ports_controller = client.switch_ports
 ```
+
+### <a name="get_device_switch_port_statuses"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchPortsController.get_device_switch_port_statuses") get_device_switch_port_statuses
+
+> Return the status for all the ports of a switch
+
+```python
+def get_device_switch_port_statuses(self,
+                                        options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| serial |  ``` Required ```  | TODO: Add a parameter description |
+| t0 |  ``` Optional ```  | The beginning of the timespan for the data. The maximum lookback period is 31 days from today. |
+| timespan |  ``` Optional ```  | The timespan for which the information will be fetched. If specifying timespan, do not specify parameter t0. The value must be in seconds and be less than or equal to 31 days. The default is 1 day. |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+serial = 'serial'
+collect['serial'] = serial
+
+t_0 = 't0'
+collect['t_0'] = t_0
+
+timespan = 100.484034675399
+collect['timespan'] = timespan
+
+
+result = switch_ports_controller.get_device_switch_port_statuses(collect)
+
+```
+
 
 ### <a name="get_device_switch_ports"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchPortsController.get_device_switch_ports") get_device_switch_ports
 
@@ -10199,7 +11186,7 @@ result = switch_settings_controller.update_network_switch_settings_qos_rule(coll
 
 ### <a name="get_network_switch_settings_storm_control"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchSettingsController.get_network_switch_settings_storm_control") get_network_switch_settings_storm_control
 
-> Return the global enhanced storm control configuration
+> Return the storm control configuration for a switch network
 
 ```python
 def get_network_switch_settings_storm_control(self,
@@ -10226,7 +11213,7 @@ result = switch_settings_controller.get_network_switch_settings_storm_control(ne
 
 ### <a name="update_network_switch_settings_storm_control"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchSettingsController.update_network_switch_settings_storm_control") update_network_switch_settings_storm_control
 
-> Update the global enhanced storm control configuration
+> Update the storm control configuration for a switch network
 
 ```python
 def update_network_switch_settings_storm_control(self,
@@ -11262,10 +12249,10 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 78.2261110414872
+timespan = 8.98875278373656
 collect['timespan'] = timespan
 
-per_page = 78
+per_page = 8
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -11332,13 +12319,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 78.2261110414872
+timespan = 8.98875278373656
 collect['timespan'] = timespan
 
-ssid = 78
+ssid = 8
 collect['ssid'] = ssid
 
-vlan = 78
+vlan = 8
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -11388,13 +12375,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 78.2261110414872
+timespan = 8.98875278373656
 collect['timespan'] = timespan
 
-ssid = 78
+ssid = 8
 collect['ssid'] = ssid
 
-vlan = 78
+vlan = 8
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -11450,13 +12437,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 78.2261110414872
+timespan = 8.98875278373656
 collect['timespan'] = timespan
 
-ssid = 78
+ssid = 8
 collect['ssid'] = ssid
 
-vlan = 78
+vlan = 8
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -11510,13 +12497,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 78.2261110414872
+timespan = 8.98875278373656
 collect['timespan'] = timespan
 
-ssid = 78
+ssid = 8
 collect['ssid'] = ssid
 
-vlan = 78
+vlan = 8
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -11568,13 +12555,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 78.2261110414872
+timespan = 8.98875278373656
 collect['timespan'] = timespan
 
-ssid = 78
+ssid = 8
 collect['ssid'] = ssid
 
-vlan = 78
+vlan = 8
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -11623,13 +12610,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 78.2261110414872
+timespan = 8.98875278373656
 collect['timespan'] = timespan
 
-ssid = 78
+ssid = 8
 collect['ssid'] = ssid
 
-vlan = 78
+vlan = 8
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -11679,13 +12666,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 78.2261110414872
+timespan = 50.7119260103032
 collect['timespan'] = timespan
 
-ssid = 78
+ssid = 50
 collect['ssid'] = ssid
 
-vlan = 78
+vlan = 50
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -11741,13 +12728,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 78.2261110414872
+timespan = 50.7119260103032
 collect['timespan'] = timespan
 
-ssid = 78
+ssid = 50
 collect['ssid'] = ssid
 
-vlan = 78
+vlan = 50
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -11801,13 +12788,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 78.2261110414872
+timespan = 50.7119260103032
 collect['timespan'] = timespan
 
-ssid = 78
+ssid = 50
 collect['ssid'] = ssid
 
-vlan = 78
+vlan = 50
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -11861,13 +12848,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 169.72139293315
+timespan = 50.7119260103032
 collect['timespan'] = timespan
 
-ssid = 169
+ssid = 50
 collect['ssid'] = ssid
 
-vlan = 169
+vlan = 50
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -11923,13 +12910,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 169.72139293315
+timespan = 50.7119260103032
 collect['timespan'] = timespan
 
-ssid = 169
+ssid = 50
 collect['ssid'] = ssid
 
-vlan = 169
+vlan = 50
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
