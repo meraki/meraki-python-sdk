@@ -17,27 +17,27 @@ class ProvisionNetworkClientsModel(object):
         mac (string): The MAC address of the client. Required.
         name (string): The display name for the client. Optional. Limited to
             255 bytes.
-        device_policy (string): The policy to apply to the specified client.
-            Can be 'Whitelisted', 'Blocked', 'Normal' or 'Group policy'.
-            Required.
-        group_policy_id (string): The ID of the desired group policy to apply
-            to the client. Required if 'devicePolicy' is set to "Group
-            policy". Otherwise this is ignored.
+        device_policy (DevicePolicyEnum): The policy to apply to the specified
+            client. Can be 'Whitelisted', 'Blocked', 'Normal' or 'Group
+            policy'. Required.
+        group_policy_id (int): The ID of the desired group policy to apply to
+            the client. Required if 'devicePolicy' is set to "Group policy".
+            Otherwise this is ignored.
 
     """
 
     # Create a mapping from Model property names to API property names
     _names = {
         "mac":'mac',
-        "name":'name',
         "device_policy":'devicePolicy',
+        "name":'name',
         "group_policy_id":'groupPolicyId'
     }
 
     def __init__(self,
                  mac=None,
-                 name=None,
                  device_policy=None,
+                 name=None,
                  group_policy_id=None):
         """Constructor for the ProvisionNetworkClientsModel class"""
 
@@ -67,14 +67,14 @@ class ProvisionNetworkClientsModel(object):
 
         # Extract variables from the dictionary
         mac = dictionary.get('mac')
-        name = dictionary.get('name')
         device_policy = dictionary.get('devicePolicy')
+        name = dictionary.get('name')
         group_policy_id = dictionary.get('groupPolicyId')
 
         # Return an object of this model
         return cls(mac,
-                   name,
                    device_policy,
+                   name,
                    group_policy_id)
 
 

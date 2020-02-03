@@ -6,22 +6,19 @@
     This file was automatically generated for meraki by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-class Protocol5Enum(object):
+class Protocol3Enum(object):
 
-    """Implementation of the 'Protocol5' enum.
+    """Implementation of the 'Protocol3' enum.
 
-    The type of protocol (must be 'tcp', 'udp', or 'any').
+    'tcp' or 'udp'
 
     Attributes:
         TCP: TODO: type description here.
         UDP: TODO: type description here.
-        ANY: TODO: type description here.
 
     """
 
     TCP = 'tcp'
 
     UDP = 'udp'
-
-    ANY = 'any'
 

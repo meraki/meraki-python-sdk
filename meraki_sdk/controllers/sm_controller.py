@@ -861,598 +861,6 @@ class SMController(BaseController):
         # Return appropriate type
         return APIHelper.json_deserialize(_context.response.raw_body)
 
-    def create_network_sm_profile_clarity(self,
-                                          options=dict()):
-        """Does a POST request to /networks/{networkId}/sm/profile/clarity.
-
-        Create a new profile containing a Cisco Clarity payload
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    network_id -- string -- TODO: type description here.
-                        Example: 
-                    create_network_sm_profile_clarity --
-                        CreateNetworkSmProfileClarityModel -- TODO: type
-                        description here. Example: 
-
-        Returns:
-            mixed: Response from the API. Successful operation
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Validate required parameters
-        self.validate_parameters(network_id=options.get("network_id"),
-                                 create_network_sm_profile_clarity=options.get("create_network_sm_profile_clarity"))
-
-        # Prepare query URL
-        _url_path = '/networks/{networkId}/sm/profile/clarity'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'networkId': options.get('network_id', None)
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.post(_query_url, headers=_headers, parameters=APIHelper.json_serialize(options.get('create_network_sm_profile_clarity')))
-        CustomHeaderAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body)
-
-    def update_network_sm_profile_clarity(self,
-                                          options=dict()):
-        """Does a PUT request to /networks/{networkId}/sm/profile/clarity/{profileId}.
-
-        Update an existing profile containing a Cisco Clarity payload
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    network_id -- string -- TODO: type description here.
-                        Example: 
-                    profile_id -- string -- TODO: type description here.
-                        Example: 
-                    update_network_sm_profile_clarity --
-                        UpdateNetworkSmProfileClarityModel -- TODO: type
-                        description here. Example: 
-
-        Returns:
-            mixed: Response from the API. Successful operation
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Validate required parameters
-        self.validate_parameters(network_id=options.get("network_id"),
-                                 profile_id=options.get("profile_id"))
-
-        # Prepare query URL
-        _url_path = '/networks/{networkId}/sm/profile/clarity/{profileId}'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'networkId': options.get('network_id', None),
-            'profileId': options.get('profile_id', None)
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.put(_query_url, headers=_headers, parameters=APIHelper.json_serialize(options.get('update_network_sm_profile_clarity')))
-        CustomHeaderAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body)
-
-    def add_network_sm_profile_clarity(self,
-                                       options=dict()):
-        """Does a POST request to /networks/{networkId}/sm/profile/clarity/{profileId}.
-
-        Add a Cisco Clarity payload to an existing profile
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    network_id -- string -- TODO: type description here.
-                        Example: 
-                    profile_id -- string -- TODO: type description here.
-                        Example: 
-                    add_network_sm_profile_clarity --
-                        AddNetworkSmProfileClarityModel -- TODO: type
-                        description here. Example: 
-
-        Returns:
-            mixed: Response from the API. Successful operation
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Validate required parameters
-        self.validate_parameters(network_id=options.get("network_id"),
-                                 profile_id=options.get("profile_id"),
-                                 add_network_sm_profile_clarity=options.get("add_network_sm_profile_clarity"))
-
-        # Prepare query URL
-        _url_path = '/networks/{networkId}/sm/profile/clarity/{profileId}'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'networkId': options.get('network_id', None),
-            'profileId': options.get('profile_id', None)
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.post(_query_url, headers=_headers, parameters=APIHelper.json_serialize(options.get('add_network_sm_profile_clarity')))
-        CustomHeaderAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body)
-
-    def get_network_sm_profile_clarity(self,
-                                       options=dict()):
-        """Does a GET request to /networks/{networkId}/sm/profile/clarity/{profileId}.
-
-        Get details for a Cisco Clarity payload
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    network_id -- string -- TODO: type description here.
-                        Example: 
-                    profile_id -- string -- TODO: type description here.
-                        Example: 
-
-        Returns:
-            mixed: Response from the API. Successful operation
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Validate required parameters
-        self.validate_parameters(network_id=options.get("network_id"),
-                                 profile_id=options.get("profile_id"))
-
-        # Prepare query URL
-        _url_path = '/networks/{networkId}/sm/profile/clarity/{profileId}'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'networkId': options.get('network_id', None),
-            'profileId': options.get('profile_id', None)
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
-        CustomHeaderAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body)
-
-    def delete_network_sm_profile_clarity(self,
-                                          options=dict()):
-        """Does a DELETE request to /networks/{networkId}/sm/profile/clarity/{profileId}.
-
-        Delete a Cisco Clarity payload. Deletes the entire profile if it's
-        empty after removing the payload.
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    network_id -- string -- TODO: type description here.
-                        Example: 
-                    profile_id -- string -- TODO: type description here.
-                        Example: 
-
-        Returns:
-            mixed: Response from the API. Successful operation
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Validate required parameters
-        self.validate_parameters(network_id=options.get("network_id"),
-                                 profile_id=options.get("profile_id"))
-
-        # Prepare query URL
-        _url_path = '/networks/{networkId}/sm/profile/clarity/{profileId}'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'networkId': options.get('network_id', None),
-            'profileId': options.get('profile_id', None)
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.delete(_query_url, headers=_headers)
-        CustomHeaderAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body)
-
-    def create_network_sm_profile_umbrella(self,
-                                           options=dict()):
-        """Does a POST request to /networks/{networkId}/sm/profile/umbrella.
-
-        Create a new profile containing a Cisco Umbrella payload
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    network_id -- string -- TODO: type description here.
-                        Example: 
-                    create_network_sm_profile_umbrella --
-                        CreateNetworkSmProfileUmbrellaModel -- TODO: type
-                        description here. Example: 
-
-        Returns:
-            mixed: Response from the API. Successful operation
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Validate required parameters
-        self.validate_parameters(network_id=options.get("network_id"),
-                                 create_network_sm_profile_umbrella=options.get("create_network_sm_profile_umbrella"))
-
-        # Prepare query URL
-        _url_path = '/networks/{networkId}/sm/profile/umbrella'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'networkId': options.get('network_id', None)
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.post(_query_url, headers=_headers, parameters=APIHelper.json_serialize(options.get('create_network_sm_profile_umbrella')))
-        CustomHeaderAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body)
-
-    def update_network_sm_profile_umbrella(self,
-                                           options=dict()):
-        """Does a PUT request to /networks/{networkId}/sm/profile/umbrella/{profileId}.
-
-        Update an existing profile containing a Cisco Umbrella payload
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    network_id -- string -- TODO: type description here.
-                        Example: 
-                    profile_id -- string -- TODO: type description here.
-                        Example: 
-                    update_network_sm_profile_umbrella --
-                        UpdateNetworkSmProfileUmbrellaModel -- TODO: type
-                        description here. Example: 
-
-        Returns:
-            mixed: Response from the API. Successful operation
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Validate required parameters
-        self.validate_parameters(network_id=options.get("network_id"),
-                                 profile_id=options.get("profile_id"))
-
-        # Prepare query URL
-        _url_path = '/networks/{networkId}/sm/profile/umbrella/{profileId}'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'networkId': options.get('network_id', None),
-            'profileId': options.get('profile_id', None)
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.put(_query_url, headers=_headers, parameters=APIHelper.json_serialize(options.get('update_network_sm_profile_umbrella')))
-        CustomHeaderAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body)
-
-    def add_network_sm_profile_umbrella(self,
-                                        options=dict()):
-        """Does a POST request to /networks/{networkId}/sm/profile/umbrella/{profileId}.
-
-        Add a Cisco Umbrella payload to an existing profile
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    network_id -- string -- TODO: type description here.
-                        Example: 
-                    profile_id -- string -- TODO: type description here.
-                        Example: 
-                    add_network_sm_profile_umbrella --
-                        AddNetworkSmProfileUmbrellaModel -- TODO: type
-                        description here. Example: 
-
-        Returns:
-            mixed: Response from the API. Successful operation
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Validate required parameters
-        self.validate_parameters(network_id=options.get("network_id"),
-                                 profile_id=options.get("profile_id"),
-                                 add_network_sm_profile_umbrella=options.get("add_network_sm_profile_umbrella"))
-
-        # Prepare query URL
-        _url_path = '/networks/{networkId}/sm/profile/umbrella/{profileId}'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'networkId': options.get('network_id', None),
-            'profileId': options.get('profile_id', None)
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json',
-            'content-type': 'application/json; charset=utf-8'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.post(_query_url, headers=_headers, parameters=APIHelper.json_serialize(options.get('add_network_sm_profile_umbrella')))
-        CustomHeaderAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body)
-
-    def get_network_sm_profile_umbrella(self,
-                                        options=dict()):
-        """Does a GET request to /networks/{networkId}/sm/profile/umbrella/{profileId}.
-
-        Get details for a Cisco Umbrella payload
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    network_id -- string -- TODO: type description here.
-                        Example: 
-                    profile_id -- string -- TODO: type description here.
-                        Example: 
-
-        Returns:
-            mixed: Response from the API. Successful operation
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Validate required parameters
-        self.validate_parameters(network_id=options.get("network_id"),
-                                 profile_id=options.get("profile_id"))
-
-        # Prepare query URL
-        _url_path = '/networks/{networkId}/sm/profile/umbrella/{profileId}'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'networkId': options.get('network_id', None),
-            'profileId': options.get('profile_id', None)
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.get(_query_url, headers=_headers)
-        CustomHeaderAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body)
-
-    def delete_network_sm_profile_umbrella(self,
-                                           options=dict()):
-        """Does a DELETE request to /networks/{networkId}/sm/profile/umbrella/{profileId}.
-
-        Delete a Cisco Umbrella payload. Deletes the entire profile if it's
-        empty after removing the payload
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    network_id -- string -- TODO: type description here.
-                        Example: 
-                    profile_id -- string -- TODO: type description here.
-                        Example: 
-
-        Returns:
-            mixed: Response from the API. Successful operation
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Validate required parameters
-        self.validate_parameters(network_id=options.get("network_id"),
-                                 profile_id=options.get("profile_id"))
-
-        # Prepare query URL
-        _url_path = '/networks/{networkId}/sm/profile/umbrella/{profileId}'
-        _url_path = APIHelper.append_url_with_template_parameters(_url_path, { 
-            'networkId': options.get('network_id', None),
-            'profileId': options.get('profile_id', None)
-        })
-        _query_builder = Configuration.base_uri
-        _query_builder += _url_path
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare headers
-        _headers = {
-            'accept': 'application/json'
-        }
-
-        # Prepare and execute request
-        _request = self.http_client.delete(_query_url, headers=_headers)
-        CustomHeaderAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return APIHelper.json_deserialize(_context.response.raw_body)
-
     def get_network_sm_profiles(self,
                                 network_id):
         """Does a GET request to /networks/{networkId}/sm/profiles.
@@ -2213,20 +1621,21 @@ class SMController(BaseController):
                     network_id -- string -- TODO: type description here.
                         Example: 
                     id -- string -- TODO: type description here. Example: 
-                    per_page -- string -- The number of entries per page
-                        returned
+                    per_page -- int -- The number of entries per page
+                        returned. Acceptable range is 3 - 1000. Default is
+                        1000.
                     starting_after -- string -- A token used by the server to
                         indicate the start of the page. Often this is a
                         timestamp or an ID but it is not limited to those.
                         This parameter should not be defined by client
-                        applications. The link for the first, last, next or
-                        prev page in the HTTP Link header should define it.
+                        applications. The link for the first, last, prev, or
+                        next page in the HTTP Link header should define it.
                     ending_before -- string -- A token used by the server to
                         indicate the end of the page. Often this is a
                         timestamp or an ID but it is not limited to those.
                         This parameter should not be defined by client
-                        applications. The link for the first, last, next or
-                        prev page in the HTTP Link header should define it.
+                        applications. The link for the first, last, prev, or
+                        next page in the HTTP Link header should define it.
 
         Returns:
             mixed: Response from the API. Successful operation
@@ -2291,20 +1700,21 @@ class SMController(BaseController):
                     network_id -- string -- TODO: type description here.
                         Example: 
                     id -- string -- TODO: type description here. Example: 
-                    per_page -- string -- The number of entries per page
-                        returned
+                    per_page -- int -- The number of entries per page
+                        returned. Acceptable range is 3 - 1000. Default is
+                        1000.
                     starting_after -- string -- A token used by the server to
                         indicate the start of the page. Often this is a
                         timestamp or an ID but it is not limited to those.
                         This parameter should not be defined by client
-                        applications. The link for the first, last, next or
-                        prev page in the HTTP Link header should define it.
+                        applications. The link for the first, last, prev, or
+                        next page in the HTTP Link header should define it.
                     ending_before -- string -- A token used by the server to
                         indicate the end of the page. Often this is a
                         timestamp or an ID but it is not limited to those.
                         This parameter should not be defined by client
-                        applications. The link for the first, last, next or
-                        prev page in the HTTP Link header should define it.
+                        applications. The link for the first, last, prev, or
+                        next page in the HTTP Link header should define it.
 
         Returns:
             mixed: Response from the API. Successful operation
@@ -2374,20 +1784,21 @@ class SMController(BaseController):
                     network_id -- string -- TODO: type description here.
                         Example: 
                     id -- string -- TODO: type description here. Example: 
-                    per_page -- string -- The number of entries per page
-                        returned
+                    per_page -- int -- The number of entries per page
+                        returned. Acceptable range is 3 - 1000. Default is
+                        1000.
                     starting_after -- string -- A token used by the server to
                         indicate the start of the page. Often this is a
                         timestamp or an ID but it is not limited to those.
                         This parameter should not be defined by client
-                        applications. The link for the first, last, next or
-                        prev page in the HTTP Link header should define it.
+                        applications. The link for the first, last, prev, or
+                        next page in the HTTP Link header should define it.
                     ending_before -- string -- A token used by the server to
                         indicate the end of the page. Often this is a
                         timestamp or an ID but it is not limited to those.
                         This parameter should not be defined by client
-                        applications. The link for the first, last, next or
-                        prev page in the HTTP Link header should define it.
+                        applications. The link for the first, last, prev, or
+                        next page in the HTTP Link header should define it.
 
         Returns:
             mixed: Response from the API. Successful operation
@@ -2452,20 +1863,21 @@ class SMController(BaseController):
                     network_id -- string -- TODO: type description here.
                         Example: 
                     id -- string -- TODO: type description here. Example: 
-                    per_page -- string -- The number of entries per page
-                        returned
+                    per_page -- int -- The number of entries per page
+                        returned. Acceptable range is 3 - 1000. Default is
+                        1000.
                     starting_after -- string -- A token used by the server to
                         indicate the start of the page. Often this is a
                         timestamp or an ID but it is not limited to those.
                         This parameter should not be defined by client
-                        applications. The link for the first, last, next or
-                        prev page in the HTTP Link header should define it.
+                        applications. The link for the first, last, prev, or
+                        next page in the HTTP Link header should define it.
                     ending_before -- string -- A token used by the server to
                         indicate the end of the page. Often this is a
                         timestamp or an ID but it is not limited to those.
                         This parameter should not be defined by client
-                        applications. The link for the first, last, next or
-                        prev page in the HTTP Link header should define it.
+                        applications. The link for the first, last, prev, or
+                        next page in the HTTP Link header should define it.
 
         Returns:
             mixed: Response from the API. Successful operation

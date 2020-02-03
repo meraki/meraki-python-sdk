@@ -6,6 +6,7 @@
     This file was automatically generated for meraki by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
+import meraki_sdk.models.port_rule_model
 
 class Rule7Model(object):
 
@@ -16,22 +17,10 @@ class Rule7Model(object):
     Attributes:
         public_ip (string): The IP address that will be used to access the
             internal resource from the WAN
-        uplink (string): The physical WAN interface on which the traffic will
-            arrive ('internet1' or, if available, 'internet2')
-        port_rules (list of object): An array of associated forwarding rules
-        name (string): A description of the rule
-        protocol (string): 'tcp' or 'udp'
-        public_port (string): Destination port of the traffic that is arriving
-            on the WAN
-        local_ip (string): Local IP address to which traffic will be
-            forwarded
-        local_port (string): Destination port of the forwarded traffic that
-            will be sent from the MX to the specified host on the LAN. If you
-            simply wish to forward the traffic without translating the port,
-            this should be the same as the Public port
-        allowed_ips (string): Remote IP addresses or ranges that are permitted
-            to access the internal resource via this port forwarding rule, or
-            'any'
+        uplink (Uplink1Enum): The physical WAN interface on which the traffic
+            will arrive ('internet1' or, if available, 'internet2')
+        port_rules (list of PortRuleModel): An array of associated forwarding
+            rules
 
     """
 
@@ -39,37 +28,19 @@ class Rule7Model(object):
     _names = {
         "public_ip":'publicIp',
         "uplink":'uplink',
-        "port_rules":'portRules',
-        "name":'name',
-        "protocol":'protocol',
-        "public_port":'publicPort',
-        "local_ip":'localIp',
-        "local_port":'localPort',
-        "allowed_ips":'allowedIps'
+        "port_rules":'portRules'
     }
 
     def __init__(self,
                  public_ip=None,
                  uplink=None,
-                 port_rules=None,
-                 name=None,
-                 protocol=None,
-                 public_port=None,
-                 local_ip=None,
-                 local_port=None,
-                 allowed_ips=None):
+                 port_rules=None):
         """Constructor for the Rule7Model class"""
 
         # Initialize members of the class
         self.public_ip = public_ip
         self.uplink = uplink
         self.port_rules = port_rules
-        self.name = name
-        self.protocol = protocol
-        self.public_port = public_port
-        self.local_ip = local_ip
-        self.local_port = local_port
-        self.allowed_ips = allowed_ips
 
 
     @classmethod
@@ -92,23 +63,15 @@ class Rule7Model(object):
         # Extract variables from the dictionary
         public_ip = dictionary.get('publicIp')
         uplink = dictionary.get('uplink')
-        port_rules = dictionary.get('portRules')
-        name = dictionary.get('name')
-        protocol = dictionary.get('protocol')
-        public_port = dictionary.get('publicPort')
-        local_ip = dictionary.get('localIp')
-        local_port = dictionary.get('localPort')
-        allowed_ips = dictionary.get('allowedIps')
+        port_rules = None
+        if dictionary.get('portRules') != None:
+            port_rules = list()
+            for structure in dictionary.get('portRules'):
+                port_rules.append(meraki_sdk.models.port_rule_model.PortRuleModel.from_dictionary(structure))
 
         # Return an object of this model
         return cls(public_ip,
                    uplink,
-                   port_rules,
-                   name,
-                   protocol,
-                   public_port,
-                   local_ip,
-                   local_port,
-                   allowed_ips)
+                   port_rules)
 
 

@@ -45,6 +45,7 @@ __all__ = [
     'malware_settings_controller',
     'management_interface_settings_controller',
     'meraki_auth_users_controller',
+    'monitored_media_servers_controller',
     'named_tag_scope_controller',
     'netflow_settings_controller',
     'networks_controller',

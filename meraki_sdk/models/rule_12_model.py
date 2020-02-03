@@ -20,7 +20,7 @@ class Rule12Model(object):
         ip_version (IpVersionEnum): IP address version (must be 'any', 'ipv4'
             or 'ipv6'). Applicable only if network supports IPv6. Default
             value is 'ipv4'.
-        protocol (Protocol4Enum): The type of protocol (must be 'tcp', 'udp',
+        protocol (Protocol5Enum): The type of protocol (must be 'tcp', 'udp',
             or 'any').
         src_cidr (string): Source IP address (in IP or CIDR notation) or
             'any'.

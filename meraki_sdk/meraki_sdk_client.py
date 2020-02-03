@@ -53,6 +53,7 @@ from meraki_sdk.controllers.mx_warm_spare_settings_controller import MXWarmSpare
 from meraki_sdk.controllers.malware_settings_controller import MalwareSettingsController
 from meraki_sdk.controllers.management_interface_settings_controller import ManagementInterfaceSettingsController
 from meraki_sdk.controllers.meraki_auth_users_controller import MerakiAuthUsersController
+from meraki_sdk.controllers.monitored_media_servers_controller import MonitoredMediaServersController
 from meraki_sdk.controllers.named_tag_scope_controller import NamedTagScopeController
 from meraki_sdk.controllers.netflow_settings_controller import NetflowSettingsController
 from meraki_sdk.controllers.networks_controller import NetworksController
@@ -266,6 +267,10 @@ class MerakiSdkClient(object):
     @lazy_property
     def meraki_auth_users(self):
         return MerakiAuthUsersController()
+
+    @lazy_property
+    def monitored_media_servers(self):
+        return MonitoredMediaServersController()
 
     @lazy_property
     def named_tag_scope(self):

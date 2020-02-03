@@ -201,7 +201,8 @@ class ClientsController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(network_id=options.get("network_id"))
+        self.validate_parameters(network_id=options.get("network_id"),
+                                 provision_network_clients=options.get("provision_network_clients"))
 
         # Prepare query URL
         _url_path = '/networks/{networkId}/clients/provision'

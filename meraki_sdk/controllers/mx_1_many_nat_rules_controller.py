@@ -93,7 +93,8 @@ class MX1ManyNATRulesController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(network_id=options.get("network_id"))
+        self.validate_parameters(network_id=options.get("network_id"),
+                                 update_network_one_to_many_nat_rules=options.get("update_network_one_to_many_nat_rules"))
 
         # Prepare query URL
         _url_path = '/networks/{networkId}/oneToManyNatRules'

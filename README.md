@@ -1,11 +1,8 @@
-**Note: This SDK is being deprecated in favor of the library maintained at [https://github.com/meraki/dashboard-api-python/](https://github.com/meraki/dashboard-api-python/).**
-
-
 # Getting started
 
 The Cisco Meraki Dashboard API is a modern REST API based on the OpenAPI specification.
 
-> Date: 13 January, 2020
+> Date: 03 February, 2020
 >
 > [What's New](https://meraki.io/whats-new/)
 
@@ -168,6 +165,7 @@ client = MerakiSdkClient(x_cisco_meraki_api_key)
 * [MalwareSettingsController](#malware_settings_controller)
 * [ManagementInterfaceSettingsController](#management_interface_settings_controller)
 * [MerakiAuthUsersController](#meraki_auth_users_controller)
+* [MonitoredMediaServersController](#monitored_media_servers_controller)
 * [NamedTagScopeController](#named_tag_scope_controller)
 * [NetflowSettingsController](#netflow_settings_controller)
 * [NetworksController](#networks_controller)
@@ -249,10 +247,10 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 177.790924454011
+timespan = 13.8189657236538
 collect['timespan'] = timespan
 
-per_page = 177
+per_page = 13
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -270,7 +268,7 @@ collect['path'] = path
 method = 'method'
 collect['method'] = method
 
-response_code = 177
+response_code = 13
 collect['response_code'] = response_code
 
 source_ip = 'sourceIp'
@@ -733,10 +731,10 @@ collect['network_id'] = network_id
 t_0 = 't0'
 collect['t_0'] = t_0
 
-timespan = 177.790924454011
+timespan = 13.8189657236538
 collect['timespan'] = timespan
 
-per_page = 86
+per_page = 13
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -788,7 +786,7 @@ collect['bluetooth_client_id'] = bluetooth_client_id
 include_connectivity_history = False
 collect['include_connectivity_history'] = include_connectivity_history
 
-connectivity_history_timespan = 86
+connectivity_history_timespan = 13
 collect['connectivity_history_timespan'] = connectivity_history_timespan
 
 
@@ -1201,7 +1199,7 @@ collect['serial'] = serial
 t_0 = 't0'
 collect['t_0'] = t_0
 
-timespan = 86.2956425623482
+timespan = 227.095792497087
 collect['timespan'] = timespan
 
 
@@ -1243,10 +1241,10 @@ collect['network_id'] = network_id
 t_0 = 't0'
 collect['t_0'] = t_0
 
-timespan = 86.2956425623482
+timespan = 227.095792497087
 collect['timespan'] = timespan
 
-per_page = 86
+per_page = 227
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -1275,7 +1273,7 @@ def provision_network_clients(self,
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | networkId |  ``` Required ```  | TODO: Add a parameter description |
-| provisionNetworkClients |  ``` Optional ```  | TODO: Add a parameter description |
+| provisionNetworkClients |  ``` Required ```  | TODO: Add a parameter description |
 
 
 
@@ -1363,7 +1361,7 @@ collect['network_id'] = network_id
 client_id = 'clientId'
 collect['client_id'] = client_id
 
-per_page = 86
+per_page = 227
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -1417,10 +1415,10 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 86.2956425623482
+timespan = 227.095792497087
 collect['timespan'] = timespan
 
-resolution = 86
+resolution = 227
 collect['resolution'] = resolution
 
 
@@ -1609,7 +1607,7 @@ collect['network_id'] = network_id
 client_id = 'clientId'
 collect['client_id'] = client_id
 
-per_page = 86
+per_page = 227
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -2382,7 +2380,7 @@ collect['network_id'] = network_id
 serial = 'serial'
 collect['serial'] = serial
 
-timespan = 128
+timespan = 63
 collect['timespan'] = timespan
 
 
@@ -2435,10 +2433,10 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 128.018815788915
+timespan = 63.5910743887495
 collect['timespan'] = timespan
 
-resolution = 128
+resolution = 63
 collect['resolution'] = resolution
 
 uplink = UplinkEnum.WAN1
@@ -2619,7 +2617,7 @@ collect = {}
 organization_id = 'organizationId'
 collect['organization_id'] = organization_id
 
-per_page = 128
+per_page = 63
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -2721,7 +2719,7 @@ collect['sm_device_mac'] = sm_device_mac
 sm_device_name = 'smDeviceName'
 collect['sm_device_name'] = sm_device_name
 
-per_page = 128
+per_page = 63
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -3674,7 +3672,7 @@ collect = {}
 organization_id = 'organizationId'
 collect['organization_id'] = organization_id
 
-per_page = 36
+per_page = 155
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -4664,7 +4662,7 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 200.02825200559
+timespan = 155.086356280412
 collect['timespan'] = timespan
 
 object_type = ObjectTypeEnum.PERSON
@@ -4778,10 +4776,10 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 200.02825200559
+timespan = 113.363183053845
 collect['timespan'] = timespan
 
-resolution = 200
+resolution = 113
 collect['resolution'] = resolution
 
 object_type = ObjectTypeEnum.PERSON
@@ -4920,7 +4918,7 @@ def update_network_one_to_many_nat_rules(self,
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | networkId |  ``` Required ```  | TODO: Add a parameter description |
-| updateNetworkOneToManyNatRules |  ``` Optional ```  | TODO: Add a parameter description |
+| updateNetworkOneToManyNatRules |  ``` Required ```  | TODO: Add a parameter description |
 
 
 
@@ -6057,6 +6055,189 @@ result = meraki_auth_users_controller.get_network_meraki_auth_user(collect)
 
 [Back to List of Controllers](#list_of_controllers)
 
+## <a name="monitored_media_servers_controller"></a>![Class: ](https://apidocs.io/img/class.png ".MonitoredMediaServersController") MonitoredMediaServersController
+
+### Get controller instance
+
+An instance of the ``` MonitoredMediaServersController ``` class can be accessed from the API Client.
+
+```python
+ monitored_media_servers_controller = client.monitored_media_servers
+```
+
+### <a name="get_organization_insight_monitored_media_servers"></a>![Method: ](https://apidocs.io/img/method.png ".MonitoredMediaServersController.get_organization_insight_monitored_media_servers") get_organization_insight_monitored_media_servers
+
+> List the monitored media servers for this organization. Only valid for organizations with Meraki Insight.
+
+```python
+def get_organization_insight_monitored_media_servers(self,
+                                                         organization_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| organizationId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+organization_id = 'organizationId'
+
+result = monitored_media_servers_controller.get_organization_insight_monitored_media_servers(organization_id)
+
+```
+
+
+### <a name="create_organization_insight_monitored_media_server"></a>![Method: ](https://apidocs.io/img/method.png ".MonitoredMediaServersController.create_organization_insight_monitored_media_server") create_organization_insight_monitored_media_server
+
+> Add a media server to be monitored for this organization. Only valid for organizations with Meraki Insight.
+
+```python
+def create_organization_insight_monitored_media_server(self,
+                                                           options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| organizationId |  ``` Required ```  | TODO: Add a parameter description |
+| createOrganizationInsightMonitoredMediaServer |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+organization_id = 'organizationId'
+collect['organization_id'] = organization_id
+
+create_organization_insight_monitored_media_server = CreateOrganizationInsightMonitoredMediaServerModel()
+collect['create_organization_insight_monitored_media_server'] = create_organization_insight_monitored_media_server
+
+
+result = monitored_media_servers_controller.create_organization_insight_monitored_media_server(collect)
+
+```
+
+
+### <a name="get_organization_insight_monitored_media_server"></a>![Method: ](https://apidocs.io/img/method.png ".MonitoredMediaServersController.get_organization_insight_monitored_media_server") get_organization_insight_monitored_media_server
+
+> Return a monitored media server for this organization. Only valid for organizations with Meraki Insight.
+
+```python
+def get_organization_insight_monitored_media_server(self,
+                                                        options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| organizationId |  ``` Required ```  | TODO: Add a parameter description |
+| monitoredMediaServerId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+organization_id = 'organizationId'
+collect['organization_id'] = organization_id
+
+monitored_media_server_id = 'monitoredMediaServerId'
+collect['monitored_media_server_id'] = monitored_media_server_id
+
+
+result = monitored_media_servers_controller.get_organization_insight_monitored_media_server(collect)
+
+```
+
+
+### <a name="update_organization_insight_monitored_media_server"></a>![Method: ](https://apidocs.io/img/method.png ".MonitoredMediaServersController.update_organization_insight_monitored_media_server") update_organization_insight_monitored_media_server
+
+> Update a monitored media server for this organization. Only valid for organizations with Meraki Insight.
+
+```python
+def update_organization_insight_monitored_media_server(self,
+                                                           options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| organizationId |  ``` Required ```  | TODO: Add a parameter description |
+| monitoredMediaServerId |  ``` Required ```  | TODO: Add a parameter description |
+| updateOrganizationInsightMonitoredMediaServer |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+organization_id = 'organizationId'
+collect['organization_id'] = organization_id
+
+monitored_media_server_id = 'monitoredMediaServerId'
+collect['monitored_media_server_id'] = monitored_media_server_id
+
+update_organization_insight_monitored_media_server = UpdateOrganizationInsightMonitoredMediaServerModel()
+collect['update_organization_insight_monitored_media_server'] = update_organization_insight_monitored_media_server
+
+
+result = monitored_media_servers_controller.update_organization_insight_monitored_media_server(collect)
+
+```
+
+
+### <a name="delete_organization_insight_monitored_media_server"></a>![Method: ](https://apidocs.io/img/method.png ".MonitoredMediaServersController.delete_organization_insight_monitored_media_server") delete_organization_insight_monitored_media_server
+
+> Delete a monitored media server from this organization. Only valid for organizations with Meraki Insight.
+
+```python
+def delete_organization_insight_monitored_media_server(self,
+                                                           options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| organizationId |  ``` Required ```  | TODO: Add a parameter description |
+| monitoredMediaServerId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+organization_id = 'organizationId'
+collect['organization_id'] = organization_id
+
+monitored_media_server_id = 'monitoredMediaServerId'
+collect['monitored_media_server_id'] = monitored_media_server_id
+
+
+monitored_media_servers_controller.delete_organization_insight_monitored_media_server(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
 ## <a name="named_tag_scope_controller"></a>![Class: ](https://apidocs.io/img/class.png ".NamedTagScopeController") NamedTagScopeController
 
 ### Get controller instance
@@ -6482,7 +6663,7 @@ collect['network_id'] = network_id
 t_0 = 't0'
 collect['t_0'] = t_0
 
-timespan = 241.751425232157
+timespan = 204.858464945507
 collect['timespan'] = timespan
 
 
@@ -6711,7 +6892,7 @@ collect['network_id'] = network_id
 t_0 = 't0'
 collect['t_0'] = t_0
 
-timespan = 241.751425232157
+timespan = 204.858464945507
 collect['timespan'] = timespan
 
 device_type = 'deviceType'
@@ -7296,7 +7477,7 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 150.256143340495
+timespan = 204.858464945507
 collect['timespan'] = timespan
 
 uplink = UplinkEnum.WAN1
@@ -7775,7 +7956,7 @@ collect = {}
 network_id = 'networkId'
 collect['network_id'] = network_id
 
-include_template_profiles = True
+include_template_profiles = False
 collect['include_template_profiles'] = include_template_profiles
 
 
@@ -8498,7 +8679,7 @@ collect['ids'] = ids
 scope = 'scope'
 collect['scope'] = scope
 
-batch_size = 150
+batch_size = 41
 collect['batch_size'] = batch_size
 
 batch_token = 'batchToken'
@@ -8646,372 +8827,6 @@ collect['device_id'] = device_id
 
 
 result = sm_controller.unenroll_network_sm_device(collect)
-
-```
-
-
-### <a name="create_network_sm_profile_clarity"></a>![Method: ](https://apidocs.io/img/method.png ".SMController.create_network_sm_profile_clarity") create_network_sm_profile_clarity
-
-> Create a new profile containing a Cisco Clarity payload
-
-```python
-def create_network_sm_profile_clarity(self,
-                                          options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| networkId |  ``` Required ```  | TODO: Add a parameter description |
-| createNetworkSmProfileClarity |  ``` Required ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-network_id = 'networkId'
-collect['network_id'] = network_id
-
-create_network_sm_profile_clarity = CreateNetworkSmProfileClarityModel()
-collect['create_network_sm_profile_clarity'] = create_network_sm_profile_clarity
-
-
-result = sm_controller.create_network_sm_profile_clarity(collect)
-
-```
-
-
-### <a name="update_network_sm_profile_clarity"></a>![Method: ](https://apidocs.io/img/method.png ".SMController.update_network_sm_profile_clarity") update_network_sm_profile_clarity
-
-> Update an existing profile containing a Cisco Clarity payload
-
-```python
-def update_network_sm_profile_clarity(self,
-                                          options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| networkId |  ``` Required ```  | TODO: Add a parameter description |
-| profileId |  ``` Required ```  | TODO: Add a parameter description |
-| updateNetworkSmProfileClarity |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-network_id = 'networkId'
-collect['network_id'] = network_id
-
-profile_id = 'profileId'
-collect['profile_id'] = profile_id
-
-update_network_sm_profile_clarity = UpdateNetworkSmProfileClarityModel()
-collect['update_network_sm_profile_clarity'] = update_network_sm_profile_clarity
-
-
-result = sm_controller.update_network_sm_profile_clarity(collect)
-
-```
-
-
-### <a name="add_network_sm_profile_clarity"></a>![Method: ](https://apidocs.io/img/method.png ".SMController.add_network_sm_profile_clarity") add_network_sm_profile_clarity
-
-> Add a Cisco Clarity payload to an existing profile
-
-```python
-def add_network_sm_profile_clarity(self,
-                                       options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| networkId |  ``` Required ```  | TODO: Add a parameter description |
-| profileId |  ``` Required ```  | TODO: Add a parameter description |
-| addNetworkSmProfileClarity |  ``` Required ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-network_id = 'networkId'
-collect['network_id'] = network_id
-
-profile_id = 'profileId'
-collect['profile_id'] = profile_id
-
-add_network_sm_profile_clarity = AddNetworkSmProfileClarityModel()
-collect['add_network_sm_profile_clarity'] = add_network_sm_profile_clarity
-
-
-result = sm_controller.add_network_sm_profile_clarity(collect)
-
-```
-
-
-### <a name="get_network_sm_profile_clarity"></a>![Method: ](https://apidocs.io/img/method.png ".SMController.get_network_sm_profile_clarity") get_network_sm_profile_clarity
-
-> Get details for a Cisco Clarity payload
-
-```python
-def get_network_sm_profile_clarity(self,
-                                       options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| networkId |  ``` Required ```  | TODO: Add a parameter description |
-| profileId |  ``` Required ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-network_id = 'networkId'
-collect['network_id'] = network_id
-
-profile_id = 'profileId'
-collect['profile_id'] = profile_id
-
-
-result = sm_controller.get_network_sm_profile_clarity(collect)
-
-```
-
-
-### <a name="delete_network_sm_profile_clarity"></a>![Method: ](https://apidocs.io/img/method.png ".SMController.delete_network_sm_profile_clarity") delete_network_sm_profile_clarity
-
-> Delete a Cisco Clarity payload. Deletes the entire profile if it's empty after removing the payload.
-
-```python
-def delete_network_sm_profile_clarity(self,
-                                          options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| networkId |  ``` Required ```  | TODO: Add a parameter description |
-| profileId |  ``` Required ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-network_id = 'networkId'
-collect['network_id'] = network_id
-
-profile_id = 'profileId'
-collect['profile_id'] = profile_id
-
-
-result = sm_controller.delete_network_sm_profile_clarity(collect)
-
-```
-
-
-### <a name="create_network_sm_profile_umbrella"></a>![Method: ](https://apidocs.io/img/method.png ".SMController.create_network_sm_profile_umbrella") create_network_sm_profile_umbrella
-
-> Create a new profile containing a Cisco Umbrella payload
-
-```python
-def create_network_sm_profile_umbrella(self,
-                                           options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| networkId |  ``` Required ```  | TODO: Add a parameter description |
-| createNetworkSmProfileUmbrella |  ``` Required ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-network_id = 'networkId'
-collect['network_id'] = network_id
-
-create_network_sm_profile_umbrella = CreateNetworkSmProfileUmbrellaModel()
-collect['create_network_sm_profile_umbrella'] = create_network_sm_profile_umbrella
-
-
-result = sm_controller.create_network_sm_profile_umbrella(collect)
-
-```
-
-
-### <a name="update_network_sm_profile_umbrella"></a>![Method: ](https://apidocs.io/img/method.png ".SMController.update_network_sm_profile_umbrella") update_network_sm_profile_umbrella
-
-> Update an existing profile containing a Cisco Umbrella payload
-
-```python
-def update_network_sm_profile_umbrella(self,
-                                           options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| networkId |  ``` Required ```  | TODO: Add a parameter description |
-| profileId |  ``` Required ```  | TODO: Add a parameter description |
-| updateNetworkSmProfileUmbrella |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-network_id = 'networkId'
-collect['network_id'] = network_id
-
-profile_id = 'profileId'
-collect['profile_id'] = profile_id
-
-update_network_sm_profile_umbrella = UpdateNetworkSmProfileUmbrellaModel()
-collect['update_network_sm_profile_umbrella'] = update_network_sm_profile_umbrella
-
-
-result = sm_controller.update_network_sm_profile_umbrella(collect)
-
-```
-
-
-### <a name="add_network_sm_profile_umbrella"></a>![Method: ](https://apidocs.io/img/method.png ".SMController.add_network_sm_profile_umbrella") add_network_sm_profile_umbrella
-
-> Add a Cisco Umbrella payload to an existing profile
-
-```python
-def add_network_sm_profile_umbrella(self,
-                                        options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| networkId |  ``` Required ```  | TODO: Add a parameter description |
-| profileId |  ``` Required ```  | TODO: Add a parameter description |
-| addNetworkSmProfileUmbrella |  ``` Required ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-network_id = 'networkId'
-collect['network_id'] = network_id
-
-profile_id = 'profileId'
-collect['profile_id'] = profile_id
-
-add_network_sm_profile_umbrella = AddNetworkSmProfileUmbrellaModel()
-collect['add_network_sm_profile_umbrella'] = add_network_sm_profile_umbrella
-
-
-result = sm_controller.add_network_sm_profile_umbrella(collect)
-
-```
-
-
-### <a name="get_network_sm_profile_umbrella"></a>![Method: ](https://apidocs.io/img/method.png ".SMController.get_network_sm_profile_umbrella") get_network_sm_profile_umbrella
-
-> Get details for a Cisco Umbrella payload
-
-```python
-def get_network_sm_profile_umbrella(self,
-                                        options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| networkId |  ``` Required ```  | TODO: Add a parameter description |
-| profileId |  ``` Required ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-network_id = 'networkId'
-collect['network_id'] = network_id
-
-profile_id = 'profileId'
-collect['profile_id'] = profile_id
-
-
-result = sm_controller.get_network_sm_profile_umbrella(collect)
-
-```
-
-
-### <a name="delete_network_sm_profile_umbrella"></a>![Method: ](https://apidocs.io/img/method.png ".SMController.delete_network_sm_profile_umbrella") delete_network_sm_profile_umbrella
-
-> Delete a Cisco Umbrella payload. Deletes the entire profile if it's empty after removing the payload
-
-```python
-def delete_network_sm_profile_umbrella(self,
-                                           options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| networkId |  ``` Required ```  | TODO: Add a parameter description |
-| profileId |  ``` Required ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-network_id = 'networkId'
-collect['network_id'] = network_id
-
-profile_id = 'profileId'
-collect['profile_id'] = profile_id
-
-
-result = sm_controller.delete_network_sm_profile_umbrella(collect)
 
 ```
 
@@ -9490,9 +9305,9 @@ def get_network_sm_connectivity(self,
 |-----------|------|-------------|
 | networkId |  ``` Required ```  | TODO: Add a parameter description |
 | id |  ``` Required ```  | TODO: Add a parameter description |
-| perPage |  ``` Optional ```  | The number of entries per page returned |
-| startingAfter |  ``` Optional ```  | A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it. |
-| endingBefore |  ``` Optional ```  | A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it. |
+| perPage |  ``` Optional ```  | The number of entries per page returned. Acceptable range is 3 - 1000. Default is 1000. |
+| startingAfter |  ``` Optional ```  | A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it. |
+| endingBefore |  ``` Optional ```  | A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it. |
 
 
 
@@ -9507,7 +9322,7 @@ collect['network_id'] = network_id
 id = 'id'
 collect['id'] = id
 
-per_page = 'perPage'
+per_page = 41
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -9537,9 +9352,9 @@ def get_network_sm_desktop_logs(self,
 |-----------|------|-------------|
 | networkId |  ``` Required ```  | TODO: Add a parameter description |
 | id |  ``` Required ```  | TODO: Add a parameter description |
-| perPage |  ``` Optional ```  | The number of entries per page returned |
-| startingAfter |  ``` Optional ```  | A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it. |
-| endingBefore |  ``` Optional ```  | A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it. |
+| perPage |  ``` Optional ```  | The number of entries per page returned. Acceptable range is 3 - 1000. Default is 1000. |
+| startingAfter |  ``` Optional ```  | A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it. |
+| endingBefore |  ``` Optional ```  | A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it. |
 
 
 
@@ -9554,7 +9369,7 @@ collect['network_id'] = network_id
 id = 'id'
 collect['id'] = id
 
-per_page = 'perPage'
+per_page = 41
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -9588,9 +9403,9 @@ def get_network_sm_device_command_logs(self,
 |-----------|------|-------------|
 | networkId |  ``` Required ```  | TODO: Add a parameter description |
 | id |  ``` Required ```  | TODO: Add a parameter description |
-| perPage |  ``` Optional ```  | The number of entries per page returned |
-| startingAfter |  ``` Optional ```  | A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it. |
-| endingBefore |  ``` Optional ```  | A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it. |
+| perPage |  ``` Optional ```  | The number of entries per page returned. Acceptable range is 3 - 1000. Default is 1000. |
+| startingAfter |  ``` Optional ```  | A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it. |
+| endingBefore |  ``` Optional ```  | A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it. |
 
 
 
@@ -9605,7 +9420,7 @@ collect['network_id'] = network_id
 id = 'id'
 collect['id'] = id
 
-per_page = 'perPage'
+per_page = 41
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -9635,9 +9450,9 @@ def get_network_sm_performance_history(self,
 |-----------|------|-------------|
 | networkId |  ``` Required ```  | TODO: Add a parameter description |
 | id |  ``` Required ```  | TODO: Add a parameter description |
-| perPage |  ``` Optional ```  | The number of entries per page returned |
-| startingAfter |  ``` Optional ```  | A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it. |
-| endingBefore |  ``` Optional ```  | A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, next or prev page in the HTTP Link header should define it. |
+| perPage |  ``` Optional ```  | The number of entries per page returned. Acceptable range is 3 - 1000. Default is 1000. |
+| startingAfter |  ``` Optional ```  | A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it. |
+| endingBefore |  ``` Optional ```  | A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it. |
 
 
 
@@ -9652,7 +9467,7 @@ collect['network_id'] = network_id
 id = 'id'
 collect['id'] = id
 
-per_page = 'perPage'
+per_page = 41
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -10004,10 +9819,10 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 100.484034675399
+timespan = 254.630573610603
 collect['timespan'] = timespan
 
-per_page = 100
+per_page = 254
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -10059,10 +9874,10 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 100.484034675399
+timespan = 254.630573610603
 collect['timespan'] = timespan
 
-per_page = 100
+per_page = 254
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -10114,10 +9929,10 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 100.484034675399
+timespan = 254.630573610603
 collect['timespan'] = timespan
 
-per_page = 100
+per_page = 254
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -10178,7 +9993,7 @@ collect['ssid_number'] = ssid_number
 login_identifier = 'loginIdentifier'
 collect['login_identifier'] = login_identifier
 
-timespan = 100
+timespan = 254
 collect['timespan'] = timespan
 
 
@@ -10537,11 +10352,50 @@ collect['serial'] = serial
 t_0 = 't0'
 collect['t_0'] = t_0
 
-timespan = 100.484034675399
+timespan = 254.630573610603
 collect['timespan'] = timespan
 
 
 result = switch_ports_controller.get_device_switch_port_statuses(collect)
+
+```
+
+
+### <a name="get_device_switch_port_statuses_packets"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchPortsController.get_device_switch_port_statuses_packets") get_device_switch_port_statuses_packets
+
+> Return the packet counters for all the ports of a switch
+
+```python
+def get_device_switch_port_statuses_packets(self,
+                                                options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| serial |  ``` Required ```  | TODO: Add a parameter description |
+| t0 |  ``` Optional ```  | The beginning of the timespan for the data. The maximum lookback period is 1 day from today. |
+| timespan |  ``` Optional ```  | The timespan for which the information will be fetched. If specifying timespan, do not specify parameter t0. The value must be in seconds and be less than or equal to 1 day. The default is 1 day. |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+serial = 'serial'
+collect['serial'] = serial
+
+t_0 = 't0'
+collect['t_0'] = t_0
+
+timespan = 254.630573610603
+collect['timespan'] = timespan
+
+
+result = switch_ports_controller.get_device_switch_port_statuses_packets(collect)
 
 ```
 
@@ -10950,6 +10804,68 @@ collect['update_network_switch_settings_mtu'] = update_network_switch_settings_m
 
 
 result = switch_settings_controller.update_network_switch_settings_mtu(collect)
+
+```
+
+
+### <a name="get_network_switch_settings_multicast"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchSettingsController.get_network_switch_settings_multicast") get_network_switch_settings_multicast
+
+> Return Multicast settings for a network
+
+```python
+def get_network_switch_settings_multicast(self,
+                                              network_id)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+network_id = 'networkId'
+
+result = switch_settings_controller.get_network_switch_settings_multicast(network_id)
+
+```
+
+
+### <a name="update_network_switch_settings_multicast"></a>![Method: ](https://apidocs.io/img/method.png ".SwitchSettingsController.update_network_switch_settings_multicast") update_network_switch_settings_multicast
+
+> Update multicast settings for a network
+
+```python
+def update_network_switch_settings_multicast(self,
+                                                 options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| networkId |  ``` Required ```  | TODO: Add a parameter description |
+| updateNetworkSwitchSettingsMulticast |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+network_id = 'networkId'
+collect['network_id'] = network_id
+
+update_network_switch_settings_multicast = UpdateNetworkSwitchSettingsMulticastModel()
+collect['update_network_switch_settings_multicast'] = update_network_switch_settings_multicast
+
+
+result = switch_settings_controller.update_network_switch_settings_multicast(collect)
 
 ```
 
@@ -12252,10 +12168,10 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 8.98875278373656
+timespan = 91.1258555022654
 collect['timespan'] = timespan
 
-per_page = 8
+per_page = 91
 collect['per_page'] = per_page
 
 starting_after = 'startingAfter'
@@ -12322,13 +12238,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 8.98875278373656
+timespan = 91.1258555022654
 collect['timespan'] = timespan
 
-ssid = 8
+ssid = 91
 collect['ssid'] = ssid
 
-vlan = 8
+vlan = 91
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -12378,13 +12294,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 8.98875278373656
+timespan = 91.1258555022654
 collect['timespan'] = timespan
 
-ssid = 8
+ssid = 91
 collect['ssid'] = ssid
 
-vlan = 8
+vlan = 91
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -12440,13 +12356,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 8.98875278373656
+timespan = 91.1258555022654
 collect['timespan'] = timespan
 
-ssid = 8
+ssid = 91
 collect['ssid'] = ssid
 
-vlan = 8
+vlan = 91
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -12500,13 +12416,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 8.98875278373656
+timespan = 91.1258555022654
 collect['timespan'] = timespan
 
-ssid = 8
+ssid = 91
 collect['ssid'] = ssid
 
-vlan = 8
+vlan = 91
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -12558,13 +12474,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 8.98875278373656
+timespan = 91.1258555022654
 collect['timespan'] = timespan
 
-ssid = 8
+ssid = 91
 collect['ssid'] = ssid
 
-vlan = 8
+vlan = 91
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -12613,13 +12529,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 8.98875278373656
+timespan = 91.1258555022654
 collect['timespan'] = timespan
 
-ssid = 8
+ssid = 91
 collect['ssid'] = ssid
 
-vlan = 8
+vlan = 91
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -12669,13 +12585,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 50.7119260103032
+timespan = 49.4026822756988
 collect['timespan'] = timespan
 
-ssid = 50
+ssid = 49
 collect['ssid'] = ssid
 
-vlan = 50
+vlan = 49
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -12731,13 +12647,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 50.7119260103032
+timespan = 49.4026822756988
 collect['timespan'] = timespan
 
-ssid = 50
+ssid = 49
 collect['ssid'] = ssid
 
-vlan = 50
+vlan = 49
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -12791,13 +12707,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 50.7119260103032
+timespan = 49.4026822756988
 collect['timespan'] = timespan
 
-ssid = 50
+ssid = 49
 collect['ssid'] = ssid
 
-vlan = 50
+vlan = 49
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -12851,13 +12767,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 50.7119260103032
+timespan = 49.4026822756988
 collect['timespan'] = timespan
 
-ssid = 50
+ssid = 49
 collect['ssid'] = ssid
 
-vlan = 50
+vlan = 49
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
@@ -12913,13 +12829,13 @@ collect['t_0'] = t_0
 t_1 = 't1'
 collect['t_1'] = t_1
 
-timespan = 50.7119260103032
+timespan = 49.4026822756988
 collect['timespan'] = timespan
 
-ssid = 50
+ssid = 49
 collect['ssid'] = ssid
 
-vlan = 50
+vlan = 49
 collect['vlan'] = vlan
 
 ap_tag = 'apTag'
