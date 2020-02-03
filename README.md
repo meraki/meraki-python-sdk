@@ -1,4 +1,4 @@
-**Note: This SDK is being deprecated in favor of the library maintained at [https://github.com/meraki/dashboard-api-python/](https://github.com/meraki/dashboard-api-python/).*
+**Note: This SDK is being deprecated in favor of the library maintained at [https://github.com/meraki/dashboard-api-python/](https://github.com/meraki/dashboard-api-python/).**
 
 
 # Getting started
